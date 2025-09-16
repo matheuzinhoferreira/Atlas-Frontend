@@ -51,7 +51,7 @@ body {
     border-radius: var(--mini-b-radius); 
     background-color: var(--cor-preta-bl);
     color: var(--cor-branca-bl);         
-    box-shadow: 0 4px 50px 0 #dba2ff7e;  
+    box-shadow: 0 4px 20px 0 #dba2ff7e;  
     font-size: 1rem;
     outline: none;
     transition: box-shadow .2s, border .2s;
