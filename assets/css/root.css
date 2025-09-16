@@ -1,0 +1,15 @@
+:root{
+    --cor-roxa-bl: #DBA2FF;
+    --cor-preta-bl: #000000;
+    --cor-branca-bl: #FFFFFF;
+    --textocor-cinza-bl: #333333;
+    --textocor-cinza2-bl: #E6DDE5;
+    --cor-vermelha-bl: #DF2D2D;
+    --mini-b-radius: 5px;
+    --basic-b-radius: 10px;
+    --font-family: "Montserrat", sans-serif; 
+}
+
+*{
+    font-family: var(--font-family);
+}
