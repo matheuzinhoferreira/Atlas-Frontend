@@ -33,14 +33,15 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 100%;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 25px;
-    margin-bottom: 25px;
+    gap: 5px;
+    margin-bottom: 5px;
 }
 
 .input-field {
@@ -71,7 +72,7 @@ body {
 
 .form-title {
     font-size: 2.5em;
-    margin-bottom: 55px;
+    margin-bottom: 25px;
     font-weight: 800;
 }
 
@@ -88,7 +89,8 @@ body {
     border-radius: var(--mini-b-radius);
     font-weight: bold;
     font-size: 18px;
-    margin-bottom: 45px;
+    margin-bottom: 35px;
+    margin-top: 25px;
     transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
@@ -111,27 +113,12 @@ body {
     opacity: 0.8;
 }
 
-.a-esqueci {
-    align-self: flex-end; 
-    color: var(--cor-roxa-bl);
-    text-decoration: underline;
-    font-size: 13px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    transition: opacity 0.2s;
-}
-
-.a-esqueci:hover {
-    cursor: pointer;
-    opacity: 0.8;
-}
-
 .img-section {
     display: flex;
     align-items: center;
     justify-content: center;
     background-image: url('../img/atlasgym.png');
-    box-shadow: 0 0 2500px 90px var(--cor-preta-bl) inset, 0 0 80px 8px var(--cor-preta-bl) inset;
+    box-shadow: 0 0 2500px 90px #000000 inset, 0 0 80px 8px #000 inset;
     background-size: cover;
     background-position: center;
     width: 100%;

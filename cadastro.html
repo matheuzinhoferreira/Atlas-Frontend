@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página de Login | Atlas Gym</title>
+    <title>Página de Cadastro | Atlas Gym</title>
     <link rel="stylesheet" href="assets/css/root.css" />
-    <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="assets/css/cadastro.css" />
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,34 +17,58 @@
         <a href="index.html" class="header-logo">
             <img class="logo" src="assets/img/logo-atlas.png" alt="Atlas Gym" />
         </a>
-    </header>
     <div class="container">
         <div class="form-section">
-            <h1 class="form-title">Login<label class="labelponto">.</label></h1>
+            <h1 class="form-title">Cadastre-se<label class="labelponto">.</label></h1>
             <form action="">
                 <div class="form-group">
                     <div>
-                        <label for="emailcpf" class="input-label">E-mail ou CPF</label>
-                    <input id="emailcpf" class="input-field" type="text" placeholder="" required />
+                        <label for="nome" class="input-label">Nome Completo</label>
+                        <input id="nome" class="input-field" type="text" required />
+                    </div>
+                    
+                    <div>
+                        <label for="nascimento" class="input-label">Data de Nascimento</label>
+                        <input id="nascimento" class="input-field" type="text" required />
+                    </div>
+                    
+                    <div>
+                        <label for="cpf" class="input-label">CPF</label>
+                        <input id="cpf" class="input-field" type="text" required />
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="input-label">E-mail</label>
+                        <input id="email" class="input-field" type="text" required />
+                    </div>
+                    
+                    <div>
+                        <label for="cref" class="input-label">CREF</label>
+                        <input id="cref" class="input-field" type="text" required />
                     </div>
                     
                     <div>
                         <label for="senha" class="input-label">Senha</label>
-                    <input id="senha" class="input-field" type="password" placeholder="" required />
+                        <input id="senha" class="input-field" type="password" required />
                     </div>
 
-                    <a class="a-esqueci" href="#">Esqueci minha senha</a>
+                    <div>
+                        <label for="confirmarsenha" class="input-label">Confirmar Senha</label>
+                        <input id="confirmarsenha" class="input-field" type="password" required />
+                    </div>
                 </div>
                 <a class="btn-submit" href="#">Entrar</a>
             </form>
+
             <div>
-                <a class="a-section" href="cadastro.html">Ainda não tenho uma conta</a>
+                <a class="a-section" href="login.html">Já possuo uma conta</a>
             </div>
         </div>
 
         <div class="img-section"></div>
     </div>
 
+    
     <div class="barra-preta"></div>
 
     <footer class="footer">
