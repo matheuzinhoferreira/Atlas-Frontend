@@ -5,7 +5,7 @@
 
 .banner-atlas {
     position: relative;
-    height: 80vh;
+    height: 90vh;
     min-height: 480px;
     width: 100%;
     background: url("../img/banner-atlas.png") center center/cover no-repeat;
@@ -19,7 +19,6 @@
     position: absolute;
     inset: 0;
     background: rgba(18, 9, 20, 0.78);
-    /* escurece a imagem */
     z-index: 1;
 }
 
@@ -31,7 +30,7 @@
 }
 
 .banner-content h1 {
-    font-size: 3rem;
+    font-size: 90px;
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 18px;
@@ -39,29 +38,32 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
+    color: var(--cor-roxa-bl);
+    
 }
 
 .bold-purple {
-    color: #cfb7fc;
+    color: var(--cor-roxa-bl);
     font-style: italic;
     font-weight: 800;
     margin-right: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
 }
 
 .outline-purple {
     color: transparent;
-    -webkit-text-stroke: 2px #cfb7fc;
-    text-stroke: 2px #cfb7fc;
-    /* fallback */
+    -webkit-text-stroke: 0.5px var(--cor-roxa-bl);
     font-style: italic;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: 1px;
+    font-family: 'Barlow Condensed', sans-serif;
+
 }
 
 .subtitle-banner {
-    color: #cfb7fc;
+    color: var(--cor-roxa-bl);
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 18px;
     letter-spacing: 2px;
     margin-top: 12px;
     font-weight: 400;
