@@ -5,11 +5,38 @@
 
 .header {
     width: 100%;
-    background: var(--cor-preta-bl);
+    background: #000000b5;
     display: flex;
     justify-content: center;
-    padding: 16px 0;
+    padding: 26.6px 0;
+    z-index: 100;
+    position: fixed;
+    border-bottom: var(--cor-roxa-bl) 1px solid;
+    transition: padding 0.28s cubic-bezier(.55,.06,.68,.19), background 0.28s;
 }
+
+header h1{
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cor-roxa-bl);
+    align-self: center;
+}
+
+
+.header.header-compact {
+    padding: 16px 0;
+    background: #111111e0; 
+}
+
+.logo {
+    height: 60px;
+    transition: height 0.28s cubic-bezier(.55,.06,.68,.19);
+}
+
+.header.header-compact .logo {
+    height: 30px;
+}
+
 
 .container-header {
     display: flex;
@@ -17,6 +44,7 @@
     width: 100%;
     padding: 0 40px;
     box-sizing: border-box;
+    z-index: 100;
 }
 
 .left-header {
@@ -25,6 +53,7 @@
     flex: 1;
     min-width: 0;
     gap: 100px;
+    z-index: 100;
 }
 
 .logo-section {
@@ -32,10 +61,6 @@
     align-items: center;
     margin-right: 32px;
     cursor: pointer;
-}
-
-.logo {
-    height: 60px;
 }
 
 .nav {
@@ -79,7 +104,7 @@
 }
 
 .profile-icon a:hover {
-    color: #d8b9ff;
+    color: var(--cor-roxa-bl);
     text-shadow:
         0 0 5px #d8b9ff,
         0 0 10px #d8b9ff,
@@ -88,3 +113,30 @@
         0 0 40px #a059f5;
 }
 
+.user{
+    display: flex;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--cor-roxa-bl);
+    transition: color 0.3s ease, text-shadow 0.3s ease, font-size 0.28s cubic-bezier(.55,.06,.68,.19);
+
+}
+
+.user:hover {
+    color: var(--cor-roxa-bl);
+    text-shadow:
+        0 0 2px #d8b9ff,
+        0 0 5px #d8b9ff,
+        0 0 10px #b571ff,
+        0 0 15px #b571ff,
+        0 0 20px #a059f5;
+}
+
+.header.header-compact #user {
+    font-size: 16px;
+}
+
+
+#entrar{
+    display: none;
+}
