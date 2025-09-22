@@ -17,10 +17,11 @@
   <header class="atlas-header">
     <div class="atlas-header__logo">
       <a href="index.html"><img src="assets/img/logo-atlas.png" alt="Atlas Gym" /></a>
+
+      <p>MEU PERFIL</p>
     </div>
-    <div class="atlas-header__title">MEU PERFIL</div>
-    <div class="atlas-header__perfil">
-      <i class="fa-solid fa-user"></i>
+    <div >
+      <i class="fa-solid fa-user user"></i>
     </div>
   </header>
   
@@ -35,12 +36,12 @@
         </div>
       </div>
       <nav>
-        <a href="#" class="atlas-sidebar__nav-item"><i class="fa-solid fa-arrow-left"></i> Voltar</a>
-        <a href="#" class="atlas-sidebar__nav-item">Minha conta</a>
-        <a href="#" class="atlas-sidebar__nav-item ativo"><i class="fa-solid fa-dumbbell"></i> Alunos</a>
+        <a href="index.html" class="atlas-sidebar__nav-item"><i class="fa-solid fa-circle-chevron-left"></i> Voltar
+        <a href="#" class="atlas-sidebar__nav-item ativo"><i class="fa-solid fa-user"></i>Minha conta</a>
+        <a href="#" class="atlas-sidebar__nav-item "><i class="fa-solid fa-graduation-cap"></i> Alunos</a>
         <a href="#" class="atlas-sidebar__nav-item"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
-        <a href="#" class="atlas-sidebar__nav-item"><i class="fa-solid fa-scale-balanced"></i> Punições</a>
-        <a href="#" class="atlas-sidebar__nav-item sair"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+        <a href="#" class="atlas-sidebar__nav-item"><i class="fa-solid fa-ban"></i> Punições</a>
+        <a href="#" class="atlas-sidebar__nav-item-sair"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
       </nav>
     </aside>
 
@@ -49,13 +50,34 @@
       <div class="atlas-bio-box">
         <form>
           <h2 class="atlas-bio-title">Registro de bioimpedância</h2>
-          <input type="text" placeholder="Peso corporal (kg)">
-          <input type="text" placeholder="Massa Magra (%)">
-          <input type="text" placeholder="Massa Muscular (kg)">
-          <input type="text" placeholder="Água Corporal Total (%)">
-          <input type="text" placeholder="Massa Óssea (%)">
-          <input type="text" placeholder="Massa de Gordura Total (kg)">
-          <input type="text" placeholder="Índice de Massa Corporal (kg)">
+          <div>
+            <label for="emailcpf" class="input-label">Peso corporal</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Magra</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Muscular</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Água Corporal Total</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(L)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Óssea</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa de Gordura Total</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">índice de Massa Corporal</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>  
           <button type="submit">Criar Registro</button>
         </form>
       </div>
@@ -68,10 +90,54 @@
   <!-- Footer do Atlas -->
   <footer class="footer">
     <div class="footer-content">
-      <!-- ... coloque seu bloco pronto aqui ... -->
+      <div class="footer-logo">
+        <img src="assets/img/logo-atlas.png" alt="Atlas Gym" />
+      </div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="#">Treinos</a></li>
+            <li><a href="#">Horário de treinos</a></li>
+            <li><a href="#">Programas de treinos</a></li>
+            <li><a href="#">Sobre a bio</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><a href="#">Trabalhe conosco</a></li>
+            <li><a href="#">Termos e condições</a></li>
+            <li><a href="#">Portal de privacidade</a></li>
+            <li><a href="#">Contratos e Documentos</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><a href="#">Imprensa</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-social-app">
+        <div class="footer-social">
+          <a href="#"><img src="assets/img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="assets/img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="assets/img/spotify.png" alt="Spotify" /></a>
+          <a href="#"><img src="assets/img/youtube.png" alt="YouTube" /></a>
+        </div>
+        <div class="footer-app">
+          <span>CONHEÇA NOSSO APP! BAIXE AGORA:</span>
+          <div class="app-buttons">
+            <a href="#"><img src="assets/img/download-appstore.png" alt="App Store" /></a>
+            <a href="#"><img src="assets/img/download-googleplay.png" alt="Google Play" /></a>
+          </div>
+        </div>
+      </div>
     </div>
     <hr class="footer-divider" />
-    <div class="footer-copy">Copyright © 2025 Atlas Gym</div>
+    <div class="footer-copy">
+      Copyright © 2025 Atlas Gym
+    </div>
   </footer>
 
 </body>

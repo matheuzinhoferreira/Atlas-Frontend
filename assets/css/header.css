@@ -8,7 +8,7 @@
     background: #000000b5;
     display: flex;
     justify-content: center;
-    padding: 26.6px 0;
+    padding: 15.6px 0;
     z-index: 100;
     position: fixed;
     border-bottom: var(--cor-roxa-bl) 1px solid;
