@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil - Atlas Gym</title>
+  <link rel="stylesheet" href="assets/css/perfil.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/root.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="assets/js/cadastro-aluno.js"></script>
+  <script src="assets/js/personal-perfil.js"></script>
+
+
+</head>
+<body>
+
+  <!-- Header Dark, logo left, perfil right -->
+  <header class="atlas-header">
+    <div class="atlas-header__logo">
+      <a href="index.html"><img src="assets/img/logo-atlas.png" alt="Atlas Gym" /></a>  
+
+      <p>MEU PERFIL</p>
+    </div>
+    <div class="profile-icon">
+      <a id="entrar" href="login.html">ENTRAR</a>
+      <a href="personal-perfil.html">
+        <i class="fa-solid fa-user user"></i>
+        <p>Matheus</p>
+      </a>
+    </div>
+  </header>
+  
+  <div class="atlas-main-bg">
+    <!-- Sidebar -->
+    <aside class="atlas-sidebar">
+      <div class="atlas-sidebar__profile">
+        <i class="fa-solid fa-user"></i>
+        <div>
+          <div class="atlas-sidebar__profile-nome">Personal Lucas</div>
+          <div class="atlas-sidebar__profile-email">personal.lucas@gmail.com</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html" class="atlas-sidebar__nav-item" id="nav-voltar"><i class="fa-solid fa-circle-chevron-left"></i> Voltar</a>
+        <a href="#" class="atlas-sidebar__nav-item ativo" id="nav-minhaconta"><i class="fa-solid fa-user"></i>Minha conta</a>
+        <a href="#" class="atlas-sidebar__nav-item " id="nav-alunos"><i class="fa-solid fa-graduation-cap"></i> Alunos</a>
+        <a href="#" class="atlas-sidebar__nav-item" id="nav-relatorios"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
+        <a href="#" class="atlas-sidebar__nav-item" id="nav-punicoes"><i class="fa-solid fa-ban"></i> Punições</a>
+        <a href="#" class="atlas-sidebar__nav-item-sair"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+      </nav>
+
+    </aside>
+
+    <!-- Central (bioimpedância) -->
+    <main class="atlas-main">
+      <div id="div-minhaconta" style="display: block;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Campos com asteriscos ( * ) são obrigatórios.</h2>
+          <div>
+            <label for="input-email" class="input-label">E-mail*</label>
+            <input id="input-email" class="input-field" type="email" placeholder="exemplo@dominio.com" required />
+          </div>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo*</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Seu nome completo" required />
+          </div>
+          <div>
+            <label for="input-data-nasc" class="input-label">Data de Nascimento*</label>
+            <input id="input-data-nasc" class="input-field" type="date" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Somente números" required />
+          </div>
+          <div>
+            <label for="input-cref" class="input-label">CREF</label>
+            <input id="input-cref" class="input-field" type="text" placeholder="Seu número CREF" required />
+          </div>
+
+          <h2 style="margin-top: 10px;" class="atlas-bio-title">Campos com asteriscos ( * ) são obrigatórios.</h2>
+
+          <div>
+            <label for="input-senha-atual" class="input-label">Senha Atual</label>
+            <input id="input-senha-atual" class="input-field" type="password" placeholder="Digite sua senha atual" required />
+          </div>  
+          <div>
+            <label for="input-senha-nova" class="input-label">Senha Nova</label>
+            <input id="input-senha-nova" class="input-field" type="password" placeholder="Crie uma nova senha forte" required />
+          </div>  
+          <button type="submit">Criar Registro</button>
+        </form>
+
+      </div>
+
+      <div id="div-bioimpedancia" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Registro de bioimpedância</h2>
+          <div>
+            <label for="emailcpf" class="input-label">Peso corporal</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Magra</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Muscular</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Água Corporal Total</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(L)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Óssea</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa de Gordura Total</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">índice de Massa Corporal</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>  
+          <button type="submit">Criar Registro</button>
+        </form>
+      </div>
+
+      <div id="div-alunos" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+      </div>
+
+      <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+
+      </div>
+
+      <div id="div-punicoes" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Faixa roxa decorativa igual da referência -->
+  <div class="atlas-faixa"></div>
+
+  <!-- Footer do Atlas -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="assets/img/logo-atlas.png" alt="Atlas Gym" />
+      </div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="#">Treinos</a></li>
+            <li><a href="#">Horário de treinos</a></li>
+            <li><a href="#">Programas de treinos</a></li>
+            <li><a href="#">Sobre a bio</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><a href="#">Trabalhe conosco</a></li>
+            <li><a href="#">Termos e condições</a></li>
+            <li><a href="#">Portal de privacidade</a></li>
+            <li><a href="#">Contratos e Documentos</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><a href="#">Imprensa</a></li>
+            <li><a href="#">Ajuda</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-social-app">
+        <div class="footer-social">
+          <a href="#"><img src="assets/img/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="assets/img/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="assets/img/spotify.png" alt="Spotify" /></a>
+          <a href="#"><img src="assets/img/youtube.png" alt="YouTube" /></a>
+        </div>
+        <div class="footer-app">
+          <span>CONHEÇA NOSSO APP! BAIXE AGORA:</span>
+          <div class="app-buttons">
+            <a href="#"><img src="assets/img/download-appstore.png" alt="App Store" /></a>
+            <a href="#"><img src="assets/img/download-googleplay.png" alt="Google Play" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider" />
+    <div class="footer-copy">
+      Copyright © 2025 Atlas Gym
+    </div>
+  </footer>
+
+</body>
+</html>

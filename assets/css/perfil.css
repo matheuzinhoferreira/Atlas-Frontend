@@ -149,7 +149,7 @@ body {
 
 .atlas-sidebar__nav-item-sair {
     color: var(--cor-vermelha-bl);
-    margin-top: 130px;
+    margin-top: 50px;
     text-decoration: none;
     font-size: 14px;
     padding: 10px 16px;
@@ -215,7 +215,7 @@ body {
 .atlas-bio-title {
     font-size: 14px;
     color: var(--cor-branca-bl);
-    margin-bottom: 17px;
+    margin-bottom: 10px;
     font-weight: normal;
     text-align: left;
     letter-spacing: 1px;

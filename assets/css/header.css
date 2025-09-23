@@ -101,6 +101,14 @@ header h1{
     font-size: 12px;
     letter-spacing: 0.02em;
     transition: color 0.3s ease, text-shadow 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-icon p {
+    font-size: 16px;
 }
 
 .profile-icon a:hover {

@@ -46,7 +46,7 @@ body {
 .input-field {
     width: 363px;
     padding: 13px;
-    border: 1px solid #DBA2FF;           
+    border: 1px solid var(--cor-roxa-bl);         
     border-radius: var(--mini-b-radius); 
     background-color: var(--cor-preta-bl);
     color: var(--cor-branca-bl);         
@@ -56,8 +56,8 @@ body {
     transition: box-shadow .2s, border .2s;
 }
 .input-field:focus {
-    box-shadow: 0 4px 60px 0 #DBA2FF, 0 0 0 1px #DBA2FF;
-    border-color: #DBA2FF;
+    box-shadow: 0 4px 60px 0 var(--cor-roxa-bl)   , 0 0 0 1px var(--cor-roxa-bl);    
+    border-color: var(--cor-roxa-bl);   
 }
 
 .input-label {
