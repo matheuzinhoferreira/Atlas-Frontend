@@ -146,3 +146,46 @@ body {
     background-color: var(--cor-preta-bl);
     padding: 100px;
 }
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Uma coluna só */
+        height: auto; /* Ajusta a altura automática */
+    }
+
+    .img-section {
+        display: none; /* Esconder a imagem para economizar espaço */
+    }
+
+    .form-section {
+        width: 90vw; /* Ajusta largura do formulário para caber */
+        margin: 0 auto;
+    }
+
+    .input-field {
+        width: 100%; /* Campos de input responsivos */
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+}
+
+/* Para telas ainda menores, até 480px (smartphones pequenos) */
+@media (max-width: 480px) {
+    .form-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .input-label {
+        font-size: 11px;
+    }
+
+    .btn-submit {
+        font-size: 16px;
+        height: 40px;
+    }
+
+    
+}

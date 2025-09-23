@@ -163,4 +163,86 @@
     width: 100%;
 }
 
+/* Ajustes para dispositivos médios/tablets até 768px */
+@media (max-width: 768px) {
+    .banner-atlas {
+        height: 55vh; /* diminuiu um pouco a altura */
+        min-height: 280px;
+    }
 
+    .banner-content h1 {
+        font-size: 42px; /* reduzido para menos impacto visual */
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .subtitle-banner {
+        font-size: 13px;
+        margin-top: 6px;
+    }
+
+    .sobre-container {
+        padding: 0 12px;
+    }
+
+    .sobre-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .sobre-left, .sobre-right {
+        max-width: 100%;
+        flex: none;
+    }
+
+    .sobre-chamada {
+        font-size: 16px; /* um pouco menor */
+        margin-bottom: 10px;
+    }
+
+    .sobre-right {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .sobre-divisor {
+        margin: 70px 0 0 0;
+    }
+    .sobre-titulo {
+        font-size: 18px; /* ainda menor para celulares */
+    }
+
+    
+}
+
+/* Ajustes para smartphones até 480px */
+@media (max-width: 480px) {
+    .banner-atlas {
+        height: 45vh; /* altura abaixada para caber melhor */
+        min-height: 200px;
+    }
+
+    .banner-content h1 {
+        font-size: 26px; /* muito menor para melhor encaixe */
+        gap: 4px;
+        line-height: 1.1;
+    }
+
+    .subtitle-banner {
+        font-size: 10px;
+        margin-top: 4px;
+    }
+
+    .sobre-chamada {
+        font-size: 14px; /* menor para texto principal */
+    }
+
+    .sobre-right {
+        font-size: 12px;
+    }
+     .sobre-titulo {
+        font-size: 18px; /* ainda menor para celulares */
+    }
+}

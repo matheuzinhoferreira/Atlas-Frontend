@@ -148,3 +148,93 @@ header h1{
 #entrar{
     display: none;
 }
+
+
+/* Para tablets e dispositivos médios até 768px */
+@media (max-width: 768px) {
+    .container-header {
+        padding: 0 20px;
+        gap: 16px;
+        flex-wrap: wrap; /* Permite quebra de linha */
+        justify-content: space-between;
+    }
+    
+    .left-header {
+        gap: 32px;
+    }
+
+    .nav {
+        gap: 16px;
+        font-size: 10px;
+    }
+
+    .nav a {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    .profile-icon a p {
+        font-size: 10px;
+    }
+
+    .logo {
+        height: 45px;
+        transition: height 0.2s ease;
+    }
+}
+
+/* Para smartphones até 480px */
+@media (max-width: 480px) {
+    .container-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 10px;
+        gap: 12px;
+    }
+
+    .left-header {
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        font-size: 9px;
+    }
+
+    .nav a {
+        padding: 4px 6px;
+        font-size: 8px;
+    }
+
+    .profile-icon {
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .profile-icon a p {
+        font-size: 8px;
+        display: none; /* Esconder o nome para economizar espaço */
+    }
+
+    #entrar {
+        display: inline-block; /* Mostrar botão de entrar */
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--cor-roxa-bl);
+        text-transform: uppercase;
+    }
+
+    .logo {
+        height: 35px;
+        transition: height 0.2s ease;
+    }
+
+    .header {
+        padding: 10px 0;
+    }
+}
