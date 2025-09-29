@@ -67,7 +67,7 @@ class SistemaLoginPersonal {
         });
     }
 
-    // ✅ FUNÇÃO DEBUG COMPLETA
+   
     fazerLogin() {
         console.log('🔍 === DEBUG COMPLETO ===');
         

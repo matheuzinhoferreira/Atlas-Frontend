@@ -26,7 +26,7 @@ class GerenciadorCadastroAluno {
             this.mostrarMensagem('Acesso restrito a Personal Trainers e Administradores', 'error');
             setTimeout(() => {
                 window.location.href = 'login.html';
-            }, 2000);
+            }, 1500);
             return;
         }
     }
