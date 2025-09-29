@@ -13,8 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="assets/js/cadastro-aluno.js"></script>
+  <script src="assets/js/cadastro-personal.js"></script>
   <script src="assets/js/personal-perfil.js"></script>
   <script src="assets/js/header-dinamico.js"></script>
+</script>
 </head>
 <body>
 
@@ -22,8 +24,6 @@
   <header class="atlas-header">
     <div class="atlas-header__logo">
       <a href="index.html"><img src="assets/img/logo-atlas.png" alt="Atlas Gym" /></a>  
-
-      <p>MEU PERFIL</p>
     </div>
     <div class="area-usuario-header" style="display: none;"></div>
   </header>
@@ -232,15 +232,15 @@
       </div>
 
       <div id="div-professores" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Professores</h2>
+        <form id="form-cadastrar-personal">
+          <h2 class="atlas-bio-title">Cadastro de Personal</h2>
           <div>
             <label for="input-nome" class="input-label">Nome Completo</label>
             <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
           </div>
           <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+            <label for="input-data-nasc" class="input-label">Data de nascimento</label>
+            <input id="input-data-nasc" class="input-field" type="date" placeholder="Selecione a data" required />
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
@@ -251,24 +251,12 @@
             <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
           </div>
           <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"  />
+            <label for="input-formacao" class="input-label">Formação</label>
+            <input id="input-formacao" class="input-field" type="text" placeholder="Educação Física" required />
           </div>
           <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)"  />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"  />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"  />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
+            <label for="input-cref" class="input-label">CREF</label>
+            <input id="input-cref" class="input-field" type="text" placeholder="xxxxxx-G/XX" required />
           </div>
           <div>
             <label for="input-email" class="input-label">E-mail</label>
@@ -281,6 +269,8 @@
           <button type="submit">Criar Registro</button>
         </form>
       </div>
+
+
 
       <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
         <form>
@@ -352,26 +342,6 @@
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
             <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"  />
-          </div>
-          <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)"  />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"  />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"  />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
           </div>
           <div>
             <label for="input-email" class="input-label">E-mail</label>

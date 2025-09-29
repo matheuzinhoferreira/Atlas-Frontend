@@ -1,9 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-  // Botão de olho para mostrar/ocultar senha
-  if ($('#toggle-senha').length === 0) {
-    $('#input-senha').wrap('<div style="position:relative"></div>');
-    $('#input-senha').after(`
+    // Botão de olho para mostrar/ocultar senha
+    if ($('#toggle-senha').length === 0) {
+        $('#input-senha').wrap('<div style="position:relative"></div>');
+        $('#input-senha').after(`
       <span id="toggle-senha" style="
         position:absolute;right:15px;top:50%;
         transform:translateY(-50%);
@@ -11,22 +11,21 @@ $(document).ready(function() {
         <i class="fa fa-eye" style="color:#aaa"></i>
       </span>
     `);
-    $('#toggle-senha').on('click', function() {
-      let input = $('#input-senha');
-      let icon = $(this).find('i');
-      if (input.attr('type') === 'password') {
-        input.attr('type', 'text'); icon.removeClass('fa-eye').addClass('fa-eye-slash');
-      } else {
-        input.attr('type', 'password'); icon.removeClass('fa-eye-slash').addClass('fa-eye');
-      }
-    });
-  }
+        $('#toggle-senha').on('click', function () {
+            let input = $('#input-senha');
+            let icon = $(this).find('i');
+            if (input.attr('type') === 'password') {
+                input.attr('type', 'text'); icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                input.attr('type', 'password'); icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+    }
 
-  // Limitar data nascimento de 1900-01-01 até hoje
-  let hoje = new Date().toISOString().split('T')[0];
-  $('#input-data-nasc').attr('min', '1900-01-01').attr('max', hoje);
+    // Limitar data nascimento de 1900-01-01 até hoje
+    let hoje = new Date().toISOString().split('T')[0];
+    $('#input-data-nasc').attr('min', '1900-01-01').attr('max', hoje);
 });
-
 
 // Sistema de cadastro integrado com JWT
 class GerenciadorCadastroAluno {
@@ -42,7 +41,7 @@ class GerenciadorCadastroAluno {
                 e.preventDefault();
                 this.cadastrarAluno();
             });
-            
+
             this.verificarAutenticacao();
         });
     }
@@ -51,12 +50,12 @@ class GerenciadorCadastroAluno {
     verificarAutenticacao() {
         const token = localStorage.getItem('jwt-token-atlas');
         const tipoUsuario = localStorage.getItem('tipo-usuario-atlas');
-        
+
         if (!token || (tipoUsuario !== '2' && tipoUsuario !== '3')) {
             this.mostrarMensagem('Acesso restrito a Personal Trainers e Administradores', 'error');
             setTimeout(() => {
                 window.location.href = 'login.html';
-            }, 12000);
+            }, 1500);
             return;
         }
     }
@@ -72,7 +71,7 @@ class GerenciadorCadastroAluno {
 
         const dadosAluno = this.coletarDadosFormulario();
         const validacao = this.validarDados(dadosAluno);
-        
+
         if (!validacao.valido) {
             this.mostrarMensagem(validacao.mensagem, 'error');
             return;
@@ -100,10 +99,16 @@ class GerenciadorCadastroAluno {
         });
     }
 
+
     coletarDadosFormulario() {
+        // Converte data de nascimento ISO para dd/mm/yyyy
+        let dataISO = $('#div-alunos #input-data').val();
+        let dataSplit = dataISO ? dataISO.split('-') : ['', '', ''];
+        let dataBR = dataSplit.length === 3 ? `${dataSplit[2]}/${dataSplit[1]}/${dataSplit[0]}` : '';
+
         return {
             nome: $('#div-alunos #input-nome').val().trim(),
-            data_nascimento: $('#div-alunos #input-data').val(),
+            data_nascimento: dataBR,
             cpf: $('#div-alunos #input-cpf').val().replace(/[^0-9]/g, ''),
             telefone: $('#div-alunos #input-telefone').val().replace(/[^0-9]/g, ''),
             email: $('#div-alunos #input-email').val().toLowerCase().trim(),
@@ -117,7 +122,7 @@ class GerenciadorCadastroAluno {
     }
 
     validarDados(dados) {
-        if (!dados.nome || !dados.data_nascimento || !dados.cpf || 
+        if (!dados.nome || !dados.data_nascimento || !dados.cpf ||
             !dados.telefone || !dados.email || !dados.senha || !dados.descricao_objetivos) {
             return { valido: false, mensagem: 'Preencha todos os campos obrigatórios' };
         }
@@ -149,9 +154,9 @@ class GerenciadorCadastroAluno {
 
     validarSenha(senha) {
         if (senha.length < 8) {
-            return { 
-                valido: false, 
-                mensagem: 'Senha deve ter pelo menos 8 caracteres, uma maiúscula, minúscula, número e símbolo' 
+            return {
+                valido: false,
+                mensagem: 'Senha deve ter pelo menos 8 caracteres, uma maiúscula, minúscula, número e símbolo'
             };
         }
 
@@ -161,9 +166,9 @@ class GerenciadorCadastroAluno {
         const temEspecial = /[!@#$%^&*(),.?":{}|<>-]/.test(senha);
 
         if (!temMaiuscula || !temMinuscula || !temNumero || !temEspecial) {
-            return { 
-                valido: false, 
-                mensagem: 'Senha deve conter maiúscula, minúscula, número e símbolo especial' 
+            return {
+                valido: false,
+                mensagem: 'Senha deve conter maiúscula, minúscula, número e símbolo especial'
             };
         }
 
@@ -172,7 +177,7 @@ class GerenciadorCadastroAluno {
 
     tratarErroRequisicao(xhr) {
         let mensagem = 'Erro interno do servidor';
-        
+
         if (xhr.responseJSON && xhr.responseJSON.message) {
             mensagem = xhr.responseJSON.message;
         } else if (xhr.status === 401) {
@@ -209,10 +214,10 @@ class GerenciadorCadastroAluno {
 
     mostrarMensagem(mensagem, tipo) {
         $('.mensagem-sistema').remove();
-        
-        const cor = tipo === 'success' ? '#28a745' : 
-                   tipo === 'error' ? '#dc3545' : '#ffc107';
-        
+
+        const cor = tipo === 'success' ? '#28a745' :
+            tipo === 'error' ? '#dc3545' : '#ffc107';
+
         const mensagemHTML = `
             <div class="mensagem-sistema" style="
                 position: fixed;
@@ -230,9 +235,9 @@ class GerenciadorCadastroAluno {
                 ${mensagem}
             </div>
         `;
-        
+
         $('body').append(mensagemHTML);
-        
+
         setTimeout(() => {
             $('.mensagem-sistema').fadeOut(() => {
                 $('.mensagem-sistema').remove();
@@ -249,3 +254,4 @@ class GerenciadorCadastroAluno {
 $(document).ready(() => {
     window.cadastroAlunoManager = new GerenciadorCadastroAluno();
 });
+
