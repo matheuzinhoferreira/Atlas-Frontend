@@ -19,6 +19,10 @@ $(document).ready(function() {
   $('.atlas-sidebar__profile-nome').text(nomeExibido);
   $('.atlas-sidebar__profile-email').text(emailUsuario);
 
+  // Inicial do nome exibida no círculo do ícone sidebar
+  const inicialNome = nomeCompleto.charAt(0).toUpperCase() || '';
+  $('.user-icon-sidebar').text(inicialNome);
+
   // Handler principal dos cliques nos itens da nav que tem id
   $('.atlas-sidebar nav a.atlas-sidebar__nav-item').not('#nav-voltar').on('click', function(e) {
     e.preventDefault();
@@ -43,3 +47,4 @@ $(document).ready(function() {
     window.location.href = 'index.html';
   });
 });
+  

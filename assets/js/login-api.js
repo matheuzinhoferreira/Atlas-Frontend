@@ -30,7 +30,7 @@ class SistemaLoginPersonal {
         
         if (senhaInput.attr('type') === 'password') {
             senhaInput.attr('type', 'text');
-            toggleBtn.removeClass('fa-eye').addClass('fa-eye-slash');
+            toggleBtn.removeClass('fa-eye', 'btn-toggle-senha').addClass('fa-eye-slash');
         } else {
             senhaInput.attr('type', 'password');
             toggleBtn.removeClass('fa-eye-slash').addClass('fa-eye');
@@ -160,13 +160,16 @@ class SistemaLoginPersonal {
         localStorage.setItem('tipo-usuario-atlas', response.tipo);
         localStorage.setItem('email-usuario-atlas', response.email);
 
-        const primeiroNome = response.nome.split(' ')[0];
-        this.mostrarMensagem(`Bem-vindo, ${primeiroNome}!`, 'success');
-
-        setTimeout(() => {
+        // Redirecionamento por tipo
+        if (response.tipo === 3) {
+            window.location.href = 'administrador-perfil.html';
+        } else if (response.tipo === 2) {
+            window.location.href = 'personal-perfil.html';
+        } else {
             window.location.href = 'index.html';
-        }, 1500);
+        }
     }
+
 
     tratarErroLogin(xhr) {
         let mensagem = 'Erro interno do servidor';

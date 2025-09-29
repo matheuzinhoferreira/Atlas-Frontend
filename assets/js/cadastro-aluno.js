@@ -1,3 +1,33 @@
+$(document).ready(function() {
+
+  // Botão de olho para mostrar/ocultar senha
+  if ($('#toggle-senha').length === 0) {
+    $('#input-senha').wrap('<div style="position:relative"></div>');
+    $('#input-senha').after(`
+      <span id="toggle-senha" style="
+        position:absolute;right:15px;top:50%;
+        transform:translateY(-50%);
+        cursor:pointer;">
+        <i class="fa fa-eye" style="color:#aaa"></i>
+      </span>
+    `);
+    $('#toggle-senha').on('click', function() {
+      let input = $('#input-senha');
+      let icon = $(this).find('i');
+      if (input.attr('type') === 'password') {
+        input.attr('type', 'text'); icon.removeClass('fa-eye').addClass('fa-eye-slash');
+      } else {
+        input.attr('type', 'password'); icon.removeClass('fa-eye-slash').addClass('fa-eye');
+      }
+    });
+  }
+
+  // Limitar data nascimento de 1900-01-01 até hoje
+  let hoje = new Date().toISOString().split('T')[0];
+  $('#input-data-nasc').attr('min', '1900-01-01').attr('max', hoje);
+});
+
+
 // Sistema de cadastro integrado com JWT
 class GerenciadorCadastroAluno {
     constructor() {
@@ -26,7 +56,7 @@ class GerenciadorCadastroAluno {
             this.mostrarMensagem('Acesso restrito a Personal Trainers e Administradores', 'error');
             setTimeout(() => {
                 window.location.href = 'login.html';
-            }, 1500);
+            }, 12000);
             return;
         }
     }

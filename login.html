@@ -111,4 +111,23 @@
         </div>
     </footer>
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('jwt-token-atlas');
+    const tipoUsuario = localStorage.getItem('tipo-usuario-atlas');
+
+    if (token && tipoUsuario) {
+      if (tipoUsuario === '3') {
+        window.location.href = 'index.html';
+      } else if (tipoUsuario === '2') {
+        window.location.href = 'index.html';
+      } else {
+        // Se tipo inválido, pode limpar localStorage e ficar na login
+        localStorage.clear();
+      }
+    }
+  });
+</script>
+
 </html>
