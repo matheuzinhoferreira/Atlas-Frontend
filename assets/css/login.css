@@ -77,8 +77,8 @@ body {
 
 .btn-submit {
     display: flex;
-    width: 370px;
-    padding: 10px;
+    width: 391px;
+    padding: 23px;
     height: 33px;
     background: linear-gradient(90deg, #836199 0%, #DBA2FF 47%);
     color: var(--cor-branca-bl);
@@ -146,6 +146,83 @@ body {
     background-color: var(--cor-preta-bl);
     padding: 100px;
 }
+
+/* Adicione estas linhas ao seu CSS existente */
+
+.senha-container {
+    position: relative;
+}
+
+.input-senha-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.btn-toggle-senha {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--cor-roxa-bl);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.btn-toggle-senha:hover {
+    color: #c694ff;
+}
+
+.btn-toggle-senha:focus {
+    outline: none;
+}
+
+/* ✅ CSS PARA ÁREA DINÂMICA DO USUÁRIO */
+.area-usuario-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+/* Se quiser manter o estilo original do profile-icon */
+.area-usuario-header .btn-entrar-header {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.area-usuario-header .usuario-logado-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Para manter compatibilidade com seu CSS existente */
+.area-usuario-header .user-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.area-usuario-header .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+/* Ajustar padding do input senha para dar espaço ao botão */
+
 
 @media (max-width: 768px) {
     .container {
