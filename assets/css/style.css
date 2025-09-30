@@ -217,8 +217,10 @@
     
 }
 
+
+
 /* Ajustes para smartphones até 480px */
-@media (max-width: 480px) {
+@media (max-width: 630px) {
     .banner-atlas {
         height: 45vh; /* altura abaixada para caber melhor */
         min-height: 200px;

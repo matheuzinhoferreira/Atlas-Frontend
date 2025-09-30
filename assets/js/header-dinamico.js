@@ -40,7 +40,7 @@ class HeaderDinamico {
             position: relative;
             cursor: pointer;
             padding: 8px 15px;
-            border-radius: 8px;
+            border-radius: 5px;
             transition: all 0.3s ease;
             color: var(--cor-branca-bl);
         " onmouseover="this.style.backgroundColor='rgba(219, 162, 255, 0.1)'" onmouseout="this.style.backgroundColor='transparent'">
@@ -91,7 +91,7 @@ class HeaderDinamico {
                 right: 0;
                 background: var(--cor-preta-bl);
                 border: 2px solid var(--cor-roxa-bl);
-                border-radius: 8px;
+                border-radius: 5px;
                 padding: 8px 0;
                 min-width: 180px;
                 box-shadow: 0 8px 25px rgba(0,0,0,0.4);
@@ -165,9 +165,10 @@ class HeaderDinamico {
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                padding: 10px 20px;
+                padding: 7px 16px;
+                font-size:13px;
                 border: 2px solid var(--cor-roxa-bl);
-                border-radius: 8px;
+                border-radius: 5px;
                 transition: all 0.3s ease;
                 background: transparent;
             " onmouseover="
@@ -236,7 +237,7 @@ class HeaderDinamico {
                 top: 20px;
                 right: 20px;
                 padding: 15px 25px;
-                border-radius: 8px;
+                border-radius: 5px;
                 color: white;
                 font-weight: 600;
                 z-index: 9999;
@@ -347,7 +348,7 @@ class HeaderDinamico {
                 top: 20px;
                 right: 20px;
                 padding: 15px 25px;
-                border-radius: 8px;
+                border-radius: 5px;
                 color: white;
                 font-weight: 600;
                 z-index: 9999;
@@ -407,4 +408,18 @@ $('head').append(`
 // Inicializar o header dinâmico
 $(document).ready(() => {
     window.headerDinamico = new HeaderDinamico();
+});
+
+$(document).ready(() => {
+  const toggleSidebar = () => {
+    const sidebar = $('.atlas-sidebar');
+    if (sidebar.css('display') === 'none') {
+      sidebar.css('display', 'flex');
+    } else {
+      sidebar.css('display', 'none');
+    }
+  };
+
+  $('#hamburguer').on('click', toggleSidebar);
+  $('#hamburguer2').on('click', toggleSidebar);
 });

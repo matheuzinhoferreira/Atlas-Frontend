@@ -59,7 +59,6 @@ header h1{
 .logo-section {
     display: flex;
     align-items: center;
-    margin-right: 32px;
     cursor: pointer;
 }
 
@@ -151,7 +150,7 @@ header h1{
 
 
 /* Para tablets e dispositivos médios até 768px */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .container-header {
         padding: 0 20px;
         gap: 16px;
@@ -184,18 +183,19 @@ header h1{
 }
 
 /* Para smartphones até 480px */
-@media (max-width: 480px) {
+@media (max-width: 899px) {
     .container-header {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         padding: 8px 10px;
         gap: 12px;
     }
 
     .left-header {
-        justify-content: center;
+        justify-content: start;
         gap: 16px;
         flex-wrap: wrap;
+        margin-left: 20px;
     }
 
     .nav {
@@ -230,11 +230,17 @@ header h1{
     }
 
     .logo {
-        height: 35px;
+        height: 40px;
         transition: height 0.2s ease;
     }
 
     .header {
         padding: 10px 0;
+    }
+    .banner-atlas{
+        display: none;
+    }
+    .sobre-atlas{    
+        padding: 60px 0 40px 0;
     }
 }

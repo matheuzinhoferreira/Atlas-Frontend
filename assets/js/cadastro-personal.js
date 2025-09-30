@@ -71,47 +71,52 @@ class GerenciadorCadastroPersonal {
     }
 
     coletarDadosFormulario() {
-        // Buscar valores dos inputs do formulário correto pelo id do form
-        let dataISO = $('#input-data-nasc').val();
+        let dataISO = $('#div-professores #input-data-nasc').val() || '';
         let dataSplit = dataISO ? dataISO.split('-') : ['', '', ''];
         let dataBR = dataSplit.length === 3 ? `${dataSplit[2]}/${dataSplit[1]}/${dataSplit[0]}` : '';
 
         return {
-            nome: $('#div-professores #input-nome').val().trim(),
-            data_nascimento: $('#div-professores #input-data'.val().trim()),
-            cpf: $('#div-professores #input-cpf').val().replace(/[^0-9]/g, ''),
-            telefone: $('#div-professores #input-telefone').val().replace(/[^0-9]/g, ''),
-            formacao: $('#div-professores #input-formacao').val().trim(),
-            cref: $('#div-professores #input-cref').val().trim(),
-            email: $('#div-professores #input-email').val().toLowerCase().trim(),
-            senha: $('#div-professores #input-senha').val()
+            nome: ($('#div-professores #input-nome').val() || '').trim(),
+            data_nascimento: dataBR,
+            cpf: ($('#div-professores #input-cpf').val() || '').replace(/[^0-9]/g, ''),
+            telefone: ($('#div-professores #input-telefone').val() || '').replace(/[^0-9]/g, ''),
+            formacao: ($('#div-professores #input-formacao').val() || '').trim(),
+            cref: ($('#div-professores #input-cref').val() || '').trim(),
+            email: ($('#div-professores #input-email').val() || '').toLowerCase().trim(),
+            senha: $('#div-professores #input-senha').val() || ''
         };
-    }
+        }
+
 
     validarDados(dados) {
-        if (!dados.nome || !dados.data_nascimento || !dados.cpf ||
-            !dados.telefone || !dados.formacao || !dados.cref ||
-            !dados.email || !dados.senha) {
-            return { valido: false, mensagem: 'Preencha todos os campos obrigatórios' };
-        }
-        if (dados.cpf.length !== 11) {
-            return { valido: false, mensagem: 'CPF deve ter 11 dígitos' };
-        }
-        if (dados.telefone.length !== 13) {
-            return { valido: false, mensagem: 'Telefone deve ter 13 dígitos (ex: 5518123451234)' };
-        }
-        if (!this.validarEmail(dados.email)) {
-            return { valido: false, mensagem: 'Email inválido' };
-        }
-        if (!dados.cref.match(/^\d+-G\/\w+$/)) {
-            return { valido: false, mensagem: 'CREF em formato inválido' };
-        }
-        const senhaValidacao = this.validarSenha(dados.senha);
-        if (!senhaValidacao.valido) {
-            return { valido: false, mensagem: senhaValidacao.mensagem };
-        }
-        return { valido: true };
+    if (!dados.nome || !dados.data_nascimento || !dados.cpf ||
+        !dados.telefone || !dados.formacao || !dados.cref ||
+        !dados.email || !dados.senha) {
+        return { valido: false, mensagem: 'Preencha todos os campos obrigatórios' };
     }
+    if (dados.cpf.length !== 11) {
+        return { valido: false, mensagem: 'CPF deve ter 11 dígitos' };
+    }
+    if (dados.telefone.length !== 13) {
+        return { valido: false, mensagem: 'Telefone deve ter 13 dígitos (ex: 5518123451234)' };
+    }
+    if (!this.validarEmail(dados.email)) {
+        return { valido: false, mensagem: 'Email inválido' };
+    }
+    // Limpa e padroniza CREF para conter apenas números e letras minúsculas
+    let crefLimpo = dados.cref.replace(/[^a-z0-9]/gi, "").toLowerCase();
+
+    if (!crefLimpo.match(/^\d+[a-z]+$/)) {
+        return { valido: false, mensagem: 'CREF em formato inválido' };
+    }
+
+    const senhaValidacao = this.validarSenha(dados.senha);
+    if (!senhaValidacao.valido) {
+        return { valido: false, mensagem: senhaValidacao.mensagem };
+    }
+    return { valido: true };
+}
+
 
     validarEmail(email) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

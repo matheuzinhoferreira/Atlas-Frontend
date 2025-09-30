@@ -290,43 +290,48 @@
         margin-top: 0;
     }
 
-    /* Responsividade */
-   /* Ajustes para telas até 900px */
-@media (max-width: 900px) {
+    #hamburguer {
+        font-size: 26px;
+        display: none !important;
+    }
 
-    .atlas-sidebar__profile{
+    #hamburguer2 {
+        font-size: 26px;
+        display: none !important;
+    }
+
+/* Ajustes para telas até 900px */
+@media (max-width: 900px) {
+    .atlas-sidebar__profile {
         display: none;
     }
     .atlas-main-bg {
         flex-direction: column;
     }
-
     .atlas-sidebar {
         width: 100vw;
         min-height: auto;
         flex-direction: row;
         padding: 12px 0;
         justify-content: center;
+        display: none;
+        
     }
-
     .atlas-sidebar nav {
-        flex-direction: row;
+        flex-direction: column;
         gap: 12px;
         padding-top: 0;
     }
-
-    .atlas-sidebar__nav-item, 
+    .atlas-sidebar__nav-item,
     .atlas-sidebar__nav-item-sair {
         font-size: 12px;
         padding: 8px 12px;
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
-
     .atlas-main {
         padding: 8vw 4vw;
         width: 100%;
     }
-
     .atlas-bio-box {
         margin-top: 16px;
         padding: 24px 20px;
@@ -334,18 +339,37 @@
         box-shadow: none;
         border-radius: 8px;
     }
-
     .atlas-header {
         padding: 16px 20px;
+    }
+
+    #hamburguer {
+        display: none !important;
+    }
+    #hamburguer2 {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
     }
 }
 
 /* Ajustes para telas até 600px */
 @media (max-width: 600px) {
+
+    #hamburguer {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    #hamburguer2 {
+        display: none !important;
+    }
+
     .atlas-main {
         padding: 10vw 4vw;
     }
-
     .atlas-header {
         flex-direction: column;
         align-items: center;
@@ -353,39 +377,33 @@
         height: auto;
         gap: 12px;
     }
-
     .atlas-header__logo {
         gap: 24px;
-        justify-content: center;
+        justify-content: space-between;
         width: 100%;
     }
-
     .atlas-header__logo img {
         height: 45px;
     }
-
     .atlas-header__logo p {
         font-size: 14px;
         white-space: nowrap;
     }
-
     .profile-icon a p {
-        display: none; /* esconder texto "Matheus" para economizar espaço */
+        display: none;
     }
-
     .atlas-sidebar {
         flex-direction: column;
         align-items: center;
         padding: 16px 0;
         min-height: auto;
         width: 100%;
+        display: none;
     }
-
     .atlas-sidebar nav {
         flex-direction: column;
         gap: 14px;
     }
-
     .atlas-sidebar__nav-item,
     .atlas-sidebar__nav-item-sair {
         font-size: 14px;
@@ -394,21 +412,18 @@
         justify-content: center;
         border-left: none;
         border-bottom: 1px solid rgba(189, 169, 255, 0.12);
-        margin-top: 0px!important;
+        margin-top: 0px !important;
     }
-
     .atlas-bio-box {
         padding: 20px;
         margin-top: 12px;
         box-shadow: none;
         border-radius: 6px;
     }
-
     .atlas-bio-box input {
         font-size: 14px;
         padding: 12px 10px;
     }
-
     .atlas-bio-box button[type=submit] {
         font-size: 16px;
         padding: 12px 0;

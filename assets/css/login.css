@@ -101,7 +101,7 @@ body {
 .a-section {
     color: var(--cor-roxa-bl);
     text-decoration: underline;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     margin-bottom: 20px;
     transition: opacity 0.2s;
@@ -115,7 +115,7 @@ body {
     align-self: flex-end; 
     color: var(--cor-roxa-bl);
     text-decoration: underline;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     margin-bottom: 20px;
     transition: opacity 0.2s;
@@ -240,7 +240,7 @@ body {
     }
 
     .input-field {
-        width: 100%; /* Campos de input responsivos */
+        width: 88%; /* Campos de input responsivos */
     }
 
     .btn-submit {
