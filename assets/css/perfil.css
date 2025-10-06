@@ -377,7 +377,7 @@
         }
         .aluno-info div {
         margin-bottom: 6px; 
-        font-size: 12px;
+        font-size: 10px;
         }
         .btn-add-aluno {
         background: var(--cor-roxa-bl);
@@ -387,9 +387,8 @@
         border: none;
         outline: none;
         border-radius: 5px;
-        padding: 9px 24px;
+        padding: 12px 24px;
         cursor: pointer;
-        margin-top: 8px;
         float: right;
         transition: filter .19s;
         }
@@ -398,17 +397,21 @@
         }
 
         .btn-voltar-aluno {
-        background: #b56af5;
-        color: #fff;
+        background: var(--cor-roxa-bl);
+        color: var(--cor-preta-bl);
         border: none;
         border-radius: 5px;
         padding: 10px 13px;  
         font-weight: bold;
-        margin-top: 12px;
         cursor: pointer;
         font-size: 16px;
-        position: relative;
-        bottom: 20px;
+        }
+
+        .pai-botoes {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 5px;
         }
 
 
@@ -480,9 +483,9 @@
         .div-lista-exer {
         width: 750px;
         margin: 48px auto;
-        background: var(--cor-preta-bl, #181429);
+        background: var(--cor-preta-bl);
         border-radius: 20px;
-        box-shadow: 0 0 24px 2px var(--cor-roxa-bl, #b56af5);
+        box-shadow: 0 0 24px 2px var(--cor-roxa-bl);
         padding: 40px 20px;
         display: flex;
         justify-content: center;
@@ -505,7 +508,7 @@
 
         .tabela-semana-esquema th {
         width: 120px;
-        background: var(--cor-roxa-bl, #b56af5);
+        background: var(--cor-roxa-bl);
         color: var(--cor-preta-bl, #181429);
         text-align: center;
         font-weight: bold;
@@ -515,8 +518,8 @@
 
         .tabela-semana-esquema .domingo {
         width: 120px;
-        background: var(--cor-roxa-bl, #b56af5);
-        color: var(--cor-preta-bl, #181429);
+        background: var(--cor-roxa-bl);
+        color: var(--cor-preta-bl);
         font-weight: bold;
         border-top-left-radius: 10px;
         
@@ -535,7 +538,7 @@
 
         .tabela-semana-esquema .sabado {
         width: 120px;
-        background: var(--cor-roxa-bl, #b56af5);
+        background: var(--cor-roxa-bl);
         color: var(--cor-preta-bl, #181429);
         font-weight: bold;
         border-bottom-left-radius: 10px;

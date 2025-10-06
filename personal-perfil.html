@@ -142,73 +142,16 @@
               <div>Histórico: [HISTORICO]</div>
             </div>
           </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
-              <div>Nome: [NOME]</div>
-              <div>E-mail: [EMAIL]</div>
-              <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
-            </div>
-          </div>
-
           <!-- ... -->
         </div>
-        <button id="btn-add-aluno" class="btn-add-aluno">Adicionar aluno</button>
+        <div>
+          <button id="btn-add-aluno" class="btn-add-aluno">Adicionar aluno</button>
+
+          <div class="pai-botoes">
+              <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
+                <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
       </div>
 
       
@@ -276,16 +219,18 @@
           <!-- Coluna direita: Informações -->
           <div class="info-usuario-col-dir">
             <div class="info-usuario-item">E-mail: <span>[EMAIL]</span></div>
-            <div class="info-usuario-item">[TIPO]</div>
+            <div class="info-usuario-item" id="tipo-usuario">[TIPO]</div>
             <div class="info-usuario-item">Telefone: <span>[TELEFONE]</span></div>
             <div class="info-usuario-vermenos"><em>Ver menos <i class="fa fa-chevron-down"></i></em></div>
             <div class="info-usuario-item">Medicamentos: <span>[DESCRICAO_MEDICAMENTOS ou "Nenhum"]</span></div>
             <div class="info-usuario-item">Limitações: <span>[DESCRICAO_LIMITACOES ou "Nenhuma"]</span></div>
             <div class="info-usuario-item">Objetivos: <span>[DESCRICAO_OBJETIVOS]</span></div>
-            <div class="info-usuario-item">Experiência anterior: <span>[DESCRICAO_TREINAMENTOS_ANTERIORES ou "Nenhuma"]</span></div>
+            <div class="info-usuario-item">Experiência anterior: <span>[DESCRICAO_TREINAMENTOS_ANTERIORES ou "Nenhuma"]</span>
+            </div>
           </div>
         </div>
       </div>
+
 
       <div id="div-lista-exer" class="div-lista-exer" style="display: none;">
         <table class="tabela-semana-esquema">
