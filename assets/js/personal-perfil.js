@@ -34,6 +34,10 @@ $(document).ready(function() {
 
     // Esconde todas as divs pai 'atlas-bio-box'
     $('.atlas-bio-box').hide();
+    $('.atlas-alunos-box').hide();
+    $('#div-info-usuario').hide();
+    $('#div-lista-exer').hide();
+      
 
     // Mostra a div correspondente pelo id do link clicado
     let idLink = $(this).attr('id'); // exemplo: nav-alunos
@@ -47,4 +51,32 @@ $(document).ready(function() {
     window.location.href = 'index.html';
   });
 });
-  
+
+ $(document).on('click', '#btn-add-aluno', function() {
+    $('.atlas-bio-box').hide();
+    $('.atlas-alunos-box').hide();
+    $('#div-abrir-alunos').show();
+  });
+
+$(document).on('click', '#btn-voltar-aluno', function() {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-alunos').show();
+});  
+
+$(document).on('click', 'div.aluno-card', function() {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-info-usuario').show();
+});  
+
+$(document).on('click', '#btn-gerenciar', function() {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.atlas-alunos-box2').hide();
+  $('.div-lista-exer').hide();
+  $('#div-lista-exer').show();
+});  

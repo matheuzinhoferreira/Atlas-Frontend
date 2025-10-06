@@ -124,7 +124,97 @@
         </form>
       </div>
 
-      <div id="div-alunos" style="display: none;" class="atlas-bio-box">
+      <div id="div-alunos" class="atlas-alunos-box" style="display: none;">
+        <div class="alunos-header">
+          <div class="alunos-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchAluno" placeholder="Pesquisar Aluno">
+          </div>
+        </div>
+        <div class="alunos-grid">
+          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+
+          <!-- ... -->
+        </div>
+        <button id="btn-add-aluno" class="btn-add-aluno">Adicionar aluno</button>
+      </div>
+
+      
+      <div id="div-abrir-alunos" style="display: none;" class="atlas-bio-box">
+
+          <button id="btn-voltar-aluno" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
         <form>
           <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
           <div>
@@ -174,6 +264,64 @@
           <button type="submit">Criar Registro</button>
         </form>
       </div>
+
+      <div id="div-info-usuario" class="atlas-alunos-box2" style="display:none;">
+        <div class="info-usuario-flex">
+          <!-- Coluna esquerda: Imagem e botões -->
+          <div class="info-usuario-col-esq">
+            <div class="info-usuario-img">[Imagem]</div>
+            <button id="btn-gerenciar" class="btn-plano-info">Gerenciar planos</button>
+            <button class="btn-registro-bioimpedancia">Criar registro de bioimpedância</button>
+          </div>
+          <!-- Coluna direita: Informações -->
+          <div class="info-usuario-col-dir">
+            <div class="info-usuario-item">E-mail: <span>[EMAIL]</span></div>
+            <div class="info-usuario-item">[TIPO]</div>
+            <div class="info-usuario-item">Telefone: <span>[TELEFONE]</span></div>
+            <div class="info-usuario-vermenos"><em>Ver menos <i class="fa fa-chevron-down"></i></em></div>
+            <div class="info-usuario-item">Medicamentos: <span>[DESCRICAO_MEDICAMENTOS ou "Nenhum"]</span></div>
+            <div class="info-usuario-item">Limitações: <span>[DESCRICAO_LIMITACOES ou "Nenhuma"]</span></div>
+            <div class="info-usuario-item">Objetivos: <span>[DESCRICAO_OBJETIVOS]</span></div>
+            <div class="info-usuario-item">Experiência anterior: <span>[DESCRICAO_TREINAMENTOS_ANTERIORES ou "Nenhuma"]</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="div-lista-exer" class="div-lista-exer" style="display: none;">
+        <table class="tabela-semana-esquema">
+          <tbody>
+            <tr>
+              <th class="domingo">DOM.</th>
+              <td class="tddomingo">Exercício 1, Exercício 49, Exercício 33, Exercício 10</td>
+            </tr>
+            <tr>
+              <th>SEG.</th>
+              <td>Exercício 4, Exercício 19, Exercício 7, Exercício 45</td>
+            </tr>
+            <tr>
+              <th>TER.</th>
+              <td>Exercício 8, Exercício 13, Exercício 22, Exercício 15</td>
+            </tr>
+            <tr>
+              <th>QUA.</th>
+              <td>Exercício 21, Exercício 3, Exercício 39, Exercício 40</td>
+            </tr>
+            <tr>
+              <th>QUI.</th>
+              <td>Exercício 11, Exercício 18, Exercício 24, Exercício 33</td>
+            </tr>
+            <tr>
+              <th>SEX.</th>
+              <td>Vazio</td>
+            </tr>
+            <tr>
+              <th class="sabado">SAB.</th>
+              <td class="tddomingo">Vazio</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
 
       <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
         <form>

@@ -37,7 +37,7 @@ class GerenciadorCadastroAluno {
     initEventListeners() {
         $(document).ready(() => {
             // Event listener para cadastro de alunos
-            $('#div-alunos form').on('submit', (e) => {
+            $('#div-abrir-alunos form').on('submit', (e) => {
                 e.preventDefault();
                 this.cadastrarAluno();
             });
@@ -102,22 +102,22 @@ class GerenciadorCadastroAluno {
 
     coletarDadosFormulario() {
         // Converte data de nascimento ISO para dd/mm/yyyy
-        let dataISO = $('#div-alunos #input-data').val();
+        let dataISO = $('#div-abrir-alunos #input-data').val();
         let dataSplit = dataISO ? dataISO.split('-') : ['', '', ''];
         let dataBR = dataSplit.length === 3 ? `${dataSplit[2]}/${dataSplit[1]}/${dataSplit[0]}` : '';
 
         return {
-            nome: $('#div-alunos #input-nome').val().trim(),
+            nome: $('#div-abrir-alunos #input-nome').val().trim(),
             data_nascimento: dataBR,
-            cpf: $('#div-alunos #input-cpf').val().replace(/[^0-9]/g, ''),
-            telefone: $('#div-alunos #input-telefone').val().replace(/[^0-9]/g, ''),
-            email: $('#div-alunos #input-email').val().toLowerCase().trim(),
-            senha: $('#div-alunos #input-senha').val(),
-            historico_medico_relevante: $('#div-alunos #input-histmed').val().trim() || null,
-            descricao_medicamentos: $('#div-alunos #input-medicamentos').val().trim() || null,
-            descricao_treinamentos_anteriores: $('#div-alunos #input-experiencia').val().trim() || null,
-            descricao_limitacoes: $('#div-alunos #input-limitacoes').val().trim() || null,
-            descricao_objetivos: $('#div-alunos #input-objetivo').val().trim()
+            cpf: $('#div-abrir-alunos #input-cpf').val().replace(/[^0-9]/g, ''),
+            telefone: $('#div-abrir-alunos #input-telefone').val().replace(/[^0-9]/g, ''),
+            email: $('#div-abrir-alunos #input-email').val().toLowerCase().trim(),
+            senha: $('#div-abrir-alunos #input-senha').val(),
+            historico_medico_relevante: $('#div-abrir-alunos #input-histmed').val().trim() || null,
+            descricao_medicamentos: $('#div-abrir-alunos #input-medicamentos').val().trim() || null,
+            descricao_treinamentos_anteriores: $('#div-abrir-alunos #input-experiencia').val().trim() || null,
+            descricao_limitacoes: $('#div-abrir-alunos #input-limitacoes').val().trim() || null,
+            descricao_objetivos: $('#div-abrir-alunos #input-objetivo').val().trim()
         };
     }
 
@@ -200,7 +200,7 @@ class GerenciadorCadastroAluno {
     }
 
     mostrarLoading(mostrar) {
-        const button = $('#div-alunos button[type="submit"]');
+        const button = $('#div-abrir-alunos button[type="submit"]');
         if (mostrar) {
             button.prop('disabled', true).text('Cadastrando...');
         } else {
@@ -209,7 +209,7 @@ class GerenciadorCadastroAluno {
     }
 
     limparFormulario() {
-        $('#div-alunos form')[0].reset();
+        $('#div-abrir-alunos form')[0].reset();
     }
 
     mostrarMensagem(mensagem, tipo) {
