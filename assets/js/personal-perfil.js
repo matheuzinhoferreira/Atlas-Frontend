@@ -82,7 +82,7 @@ $(document).on('click', '#btn-gerenciar', function() {
 });  
 
 $(document).ready(function () {
-  const API_BASE = "http://127.0.0.1:5500/usuarios/personal";
+  const API_BASE = "http://127.0.0.1:5000/usuarios/personal";
   const $alunosGrid = $(".alunos-grid");
   const $btnLeft = $(".btn-voltar-aluno").first();
   const $btnRight = $(".btn-voltar-aluno").last();
