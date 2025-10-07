@@ -515,7 +515,7 @@
         }
 
         .btn-plano-info,
-        .btn-registro-bioimpedancia {
+        .btn-edit-usuario {
         width: 230px;
         background: var(--cor-branca-bl);
         color: var(--cor-preta-bl);
