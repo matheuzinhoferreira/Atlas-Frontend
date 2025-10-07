@@ -15,6 +15,7 @@
   <script src="assets/js/cadastro-aluno.js"></script>
   <script src="assets/js/personal-perfil.js"></script>
   <script src="assets/js/header-dinamico.js"></script>
+  <script src="assets/js/cadastro-exerc.js"></script>
 </head>
 <body>
 
@@ -41,7 +42,7 @@
         <a href="index.html" class="atlas-sidebar__nav-item" id="nav-voltar"><i class="fa-solid fa-circle-chevron-left"></i> Voltar</a>
         <a href="#" class="atlas-sidebar__nav-item ativo" id="nav-minhaconta"><i class="fa-solid fa-user"></i>Minha conta</a>
         <a href="#" class="atlas-sidebar__nav-item " id="nav-alunos"><i class="fa-solid fa-graduation-cap"></i> Alunos</a>
-        <a href="#" class="atlas-sidebar__nav-item" id="nav-relatorios"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
+        <a href="#" class="atlas-sidebar__nav-item" id="nav-exercicios"><i class="fa-solid fa-chart-line"></i> Exercícios</a>
         <a href="#" class="atlas-sidebar__nav-item" id="nav-punicoes"><i class="fa-solid fa-ban"></i> Punições</a>
         <a href="#" class="atlas-sidebar__nav-item-sair"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
       </nav>
@@ -218,9 +219,12 @@
           </div>
           <!-- Coluna direita: Informações -->
           <div class="info-usuario-col-dir">
+            <div class="info-usuario-item">Nome: <span>[NOME]</span></div>
             <div class="info-usuario-item">E-mail: <span>[EMAIL]</span></div>
             <div class="info-usuario-item" id="tipo-usuario">[TIPO]</div>
             <div class="info-usuario-item">Telefone: <span>[TELEFONE]</span></div>
+            <div class="info-usuario-item">CPF: <span>[CPF]</span></div>
+            <div class="info-usuario-item">TIPO: <span>[TIPO]</span></div>
             <div class="info-usuario-vermenos"><em>Ver menos <i class="fa fa-chevron-down"></i></em></div>
             <div class="info-usuario-item">Medicamentos: <span>[DESCRICAO_MEDICAMENTOS ou "Nenhum"]</span></div>
             <div class="info-usuario-item">Limitações: <span>[DESCRICAO_LIMITACOES ou "Nenhuma"]</span></div>
@@ -268,57 +272,84 @@
       </div>
 
 
-      <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
-          <div>
-            <label for="input-nome" class="input-label">Nome Completo</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+     <div id="div-exercicios" class="atlas-alunos-box" style="display: none;">
+        <div class="alunos-header">
+          <div class="alunos-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchAluno" placeholder="Pesquisar Aluno">
           </div>
-          <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+        </div>
+        <div class="alunos-grid">
+          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
+              <div>Exercício: [EXERCICIO]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
           </div>
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
-          </div>
-          <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
-          </div>
-          <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
-          </div>
-          <div>
-            <label for="input-email" class="input-label">E-mail</label>
-            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
-          </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
-        </form>
+          <!-- ... -->
+        </div>
+        <div>
+          <button id="btn-add-aluno" class="btn-add-aluno">Adicionar aluno</button>
 
+          <div class="pai-botoes">
+              <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
+                <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
       </div>
+
+    <div id="div-abrir-exercicios" style="display: none;"    class="atlas-bio-box">
+      <form id="form-exercicio">
+        <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
+        <div>
+          <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
+          <input id="input-nome-exerc" class="input-field" type="text" required placeholder="Supino reto"/>
+        </div>
+        <div>
+          <label for="input-descricao" class="input-label">Descrição</label>
+          <input id="input-descricao" class="input-field" type="text" required placeholder="Descreva o exercício"/>
+        </div>
+        <div class="input-label">Grupos Musculares</div>
+          <div id="checkbox-grupos">
+            <label><input type="checkbox" name="gruposMusculares" value="1" /> Cabeça e pescoço</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="2" /> Tórax (peito)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="3" /> Costas (região dorsal)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="4" /> Ombros (cintura escapular)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="5" /> Braço (região braquial)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="6" /> Antebraço (musculatura do antebraço — grupos superficiais e profundos)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="7" /> Mão (músculos intrínsecos da mão)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="8" /> Abdome (parede abdominal)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="9" /> Pelve e região glútea</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="10" /> Coxa (região femoral)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="11" /> Joelho e perna (região crural)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="12" /> Tornozelo e pé (músculos intrínsecos do pé)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="13" /> Músculos posturais e profunda coluna</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="15" /> Músculos viscerais</label><br/>
+          </div>
+
+
+
+        <div>
+          <label for="input-dificuldade" class="input-label">Nível de Dificuldade</label>
+          <select id="input-dificuldade" class="input-field" required>
+            <option value="">Selecione</option>
+            <option value="1">Fácil</option>
+            <option value="2">Médio</option>
+            <option value="3">Difícil</option>
+          </select>
+        </div>
+        <div>
+          <label for="input-video" class="input-label">URL Vídeo (opcional)</label>
+          <input id="input-video" class="input-field" type="text" placeholder="https://www.youtube.com/user/NomeDoCanal" />
+        </div>
+        <button type="submit">Criar Exercício</button>
+      </form>
+    </div>
+
 
       <div id="div-punicoes" style="display: none;" class="atlas-bio-box">
         <form>

@@ -222,7 +222,6 @@
     }
     .atlas-bio-box input {
         width: 100%;
-        margin-bottom: px;
         padding: 10px 12px;
         border: 1.3px solid var(--cor-roxa-bl);
         border-radius: var(--mini-b-radius);
@@ -251,6 +250,80 @@
     .atlas-bio-box button[type=submit]:hover {
         background: linear-gradient(90deg, #cd9dff 0%, #a370fa 100%);
     }
+
+    .atlas-bio-box select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.3px solid var(--cor-roxa-bl);
+    border-radius: var(--mini-b-radius);
+    background: transparent;
+    color: var(--cor-branca-bl);
+    font-size: 12px;
+    outline: none;
+    appearance: none; /* remove estilo padrão do navegador */
+    box-sizing: border-box;
+    }
+
+    /* Opcional: melhorar a aparência das opções (nem todo navegador permite customizar) */
+    .atlas-bio-box select option {
+        color: var(--cor-branca-bl);
+        background: var(--cor-preta-bl);
+        font-size: 12px;
+        margin-top: 2px;
+    }
+    /* Container das checkboxes para alinhamento e espaçamento */
+    #checkbox-grupos label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--cor-branca-bl);
+    margin-bottom: -10px;
+    }
+
+    /* Esconde checkbox padrão */
+    #checkbox-grupos input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 5px;
+    height: 5px;
+    padding: 9px;
+    border: 1.3px solid var(--cor-roxa-bl);
+    border-radius: var(--mini-b-radius);
+    background: transparent;
+    margin-right: 8px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    }
+
+    /* Checkbox marcada com ícone de check (custom) */
+    #checkbox-grupos input[type="checkbox"]:checked {
+    background-color: var(--cor-roxa-bl);
+    border-color: var(--cor-roxa-bl);
+    width: 10;
+    }
+
+    #checkbox-grupos input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid var(--cor-branca-bl);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    }
+
+    /* Ao focar */
+    #checkbox-grupos input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 2px var(--cor-roxa-bl);
+    border-color: var(--cor-roxa-bl);
+    }
+
+
 
     .user {
         display: flex;
