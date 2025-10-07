@@ -92,6 +92,19 @@ $(document).on('click', '#btn-edit-usuario', function() {
   $('#div-edit-usuarios').show();
 });  
 
+$(document).on('click', '#btn-add-exer', function() {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.atlas-alunos-box2').hide();
+  $('.div-lista-exer').hide();
+  $('#div-lista-exer').hide();
+  $('#div-div-exercicios').hide();
+  $('#div-abrir-exercicios').show();
+});  
+
+
+
 $(document).ready(function () {
   const API_BASE = "http://127.0.0.1:5000/usuarios/personal";
   const $alunosGrid = $(".alunos-grid");

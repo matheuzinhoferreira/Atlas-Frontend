@@ -391,12 +391,14 @@
         z-index: 2;
         }
 
-        .alunos-header {
+        .alunos-header,
+        .exer-header {
         display: flex;
         justify-content: flex-start;
         margin-bottom: 26px;
         }
-        .alunos-search {
+        .alunos-search,
+        .exer-search {
         background: var(--cor-preta-bl);
         border-radius: 5px;
         padding: 12px 20px;
@@ -409,7 +411,8 @@
         width: 100%;
         border: var(--cor-roxa-bl) 1px solid;
         }
-        .alunos-search input {
+        .alunos-search input,
+        .exer-search input {
         border: none;
         background: transparent;
         color: #fff;
@@ -418,13 +421,15 @@
         width: 100%;
         }
 
-        .alunos-grid {
+        .alunos-grid,
+        .exer-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px 32px;
         margin-bottom: 20px;
         }
-        .aluno-card {
+        .aluno-card,
+        .exer-card {
         background: var(--cor-preta-bl);
         border-radius: 5px;
         display: flex;
@@ -436,7 +441,8 @@
         border: var(--cor-roxa-bl) 1px solid;
         cursor: pointer;
         }
-        .aluno-img {
+        .aluno-img,
+        .exer-img {
         width: 80px;
         height: 80px;
         background: var(--cor-branca-bl);
@@ -448,11 +454,13 @@
         font-size: 12px;
         color: var(--cor-preta-bl);
         }
-        .aluno-info div {
+        .aluno-info div,
+        .exer-info div {
         margin-bottom: 6px; 
         font-size: 10px;
         }
-        .btn-add-aluno {
+        .btn-add-aluno,
+        .btn-add-exer {
         background: var(--cor-roxa-bl);
         color: var(--cor-preta-bl);
         font-weight: bold;
@@ -465,11 +473,13 @@
         float: right;
         transition: filter .19s;
         }
-        .btn-add-aluno:hover {
+        .btn-add-aluno:hover,
+        .btn-add-exer:hover {
         filter: brightness(1.08);
         }
 
-        .btn-voltar-aluno {
+        .btn-voltar-aluno,
+        .btn-voltar-exer {
         background: var(--cor-roxa-bl);
         color: var(--cor-preta-bl);
         border: none;
@@ -635,6 +645,26 @@
         .tabela-semana-esquema td {
         height: 74px;
         }
+
+        .btn-editar {
+        background-color: var(--cor-roxa-bl);
+        border-radius: 5px;
+        border: none;
+        padding: 8px 8px;
+        cursor: pointer;
+        color: var(--cor-preta-bl);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto; /* para colocar o botão do lado direito */
+        transition: filter 0.2s ease;
+        }
+
+        .btn-editar:hover {
+        filter: brightness(1.1);
+        }
+
 
 
 

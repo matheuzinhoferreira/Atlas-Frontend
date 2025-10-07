@@ -16,6 +16,8 @@
   <script src="assets/js/personal-perfil.js"></script>
   <script src="assets/js/header-dinamico.js"></script>
   <script src="assets/js/cadastro-exerc.js"></script>
+  <script src="assets/js/listagem-exer.js"></script>
+  <script src="assets/js/editar-exer.js"></script>
 </head>
 <body>
 
@@ -326,17 +328,16 @@
 
 
      <div id="div-exercicios" class="atlas-alunos-box" style="display: none;">
-        <div class="alunos-header">
-          <div class="alunos-search">
+        <div class="exer-header">
+          <div class="exer-search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchAluno" placeholder="Pesquisar Aluno">
+            <input type="text" id="searchExer" placeholder="Pesquisar Exercício">
           </div>
         </div>
-        <div class="alunos-grid">
-          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
-          <div class="aluno-card">
-            <div class="aluno-img">[Imagem]</div>
-            <div class="aluno-info">
+        <div class="exer-grid">
+          <!-- Exemplo de cartão de exercício, repita para cada exercício dinamicamente -->
+          <div class="exer-card">
+            <div class="exer-info">
               <div>Exercício: [EXERCICIO]</div>
               <div>E-mail: [EMAIL]</div>
               <div>Telefone: [TELEFONE]</div>
@@ -346,14 +347,15 @@
           <!-- ... -->
         </div>
         <div>
-          <button id="btn-add-aluno" class="btn-add-aluno">Adicionar aluno</button>
+          <button id="btn-add-exer" class="btn-add-exer">Adicionar exercício</button>
 
           <div class="pai-botoes">
-              <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
-                <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+            <button class="btn-voltar-exer"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="btn-voltar-exer"><i class="fa-solid fa-arrow-right"></i></button>
           </div>
         </div>
       </div>
+
 
     <div id="div-abrir-exercicios" style="display: none;"    class="atlas-bio-box">
       <form id="form-exercicio">
@@ -383,9 +385,51 @@
             <label><input type="checkbox" name="gruposMusculares" value="13" /> Músculos posturais e profunda coluna</label><br/>
             <label><input type="checkbox" name="gruposMusculares" value="15" /> Músculos viscerais</label><br/>
           </div>
+        <div>
+          <label for="input-dificuldade" class="input-label">Nível de Dificuldade</label>
+          <select id="input-dificuldade" class="input-field" required>
+            <option value="">Selecione</option>
+            <option value="1">Fácil</option>
+            <option value="2">Médio</option>
+            <option value="3">Difícil</option>
+          </select>
+        </div>
+        <div>
+          <label for="input-video" class="input-label">URL Vídeo (opcional)</label>
+          <input id="input-video" class="input-field" type="text" placeholder="https://www.youtube.com/user/NomeDoCanal" />
+        </div>
+        <button type="submit">Criar Exercício</button>
+      </form>
+    </div>
 
-
-
+    <div id="div-editar-exercicios" style="display: none;"    class="atlas-bio-box">
+      <form id="form-exercicio">
+        <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
+        <div>
+          <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
+          <input id="input-nome-exerc" class="input-field" type="text" required placeholder="Supino reto"/>
+        </div>
+        <div>
+          <label for="input-descricao" class="input-label">Descrição</label>
+          <input id="input-descricao" class="input-field" type="text" required placeholder="Descreva o exercício"/>
+        </div>
+        <div class="input-label">Grupos Musculares</div>
+          <div id="checkbox-grupos">
+            <label><input type="checkbox" name="gruposMusculares" value="1" /> Cabeça e pescoço</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="2" /> Tórax (peito)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="3" /> Costas (região dorsal)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="4" /> Ombros (cintura escapular)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="5" /> Braço (região braquial)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="6" /> Antebraço (musculatura do antebraço — grupos superficiais e profundos)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="7" /> Mão (músculos intrínsecos da mão)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="8" /> Abdome (parede abdominal)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="9" /> Pelve e região glútea</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="10" /> Coxa (região femoral)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="11" /> Joelho e perna (região crural)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="12" /> Tornozelo e pé (músculos intrínsecos do pé)</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="13" /> Músculos posturais e profunda coluna</label><br/>
+            <label><input type="checkbox" name="gruposMusculares" value="15" /> Músculos viscerais</label><br/>
+          </div>
         <div>
           <label for="input-dificuldade" class="input-label">Nível de Dificuldade</label>
           <select id="input-dificuldade" class="input-field" required>
