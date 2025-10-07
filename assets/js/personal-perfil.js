@@ -37,6 +37,7 @@ $(document).ready(function() {
     $('.atlas-alunos-box').hide();
     $('#div-info-usuario').hide();
     $('#div-lista-exer').hide();
+    $('#div-edit-usuario').hide();
       
 
     // Mostra a div correspondente pelo id do link clicado
@@ -79,6 +80,16 @@ $(document).on('click', '#btn-gerenciar', function() {
   $('.atlas-alunos-box2').hide();
   $('.div-lista-exer').hide();
   $('#div-lista-exer').show();
+});  
+
+$(document).on('click', '#btn-edit-usuario', function() {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.atlas-alunos-box2').hide();
+  $('.div-lista-exer').hide();
+  $('#div-lista-exer').hide();
+  $('#div-edit-usuarios').show();
 });  
 
 $(document).ready(function () {
