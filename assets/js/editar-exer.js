@@ -21,14 +21,12 @@ function abrirEdicaoExercicio(idExercicio, exercicio) {
 
   // Limpar todos os checkboxes dos grupos musculares
   $('#checkbox-grupos input[type="checkbox"]').prop('checked', false);
-
-  // Caso receba grupos musculares relacionados no objeto exercicio, marque os checkboxes
-  // Exemplo: exercicio.GRUPOS_MUSCULARES = [1, 5, 7]
   if (exercicio.GRUPOS_MUSCULARES && Array.isArray(exercicio.GRUPOS_MUSCULARES)) {
     exercicio.GRUPOS_MUSCULARES.forEach(valor => {
       $(`#checkbox-grupos input[type="checkbox"][value="${valor}"]`).prop('checked', true);
     });
   }
+
 
   // Armazenar o ID no formulário para usar na edição (se desejar)
   $('#form-exercicio').data('id-exercicio', idExercicio);

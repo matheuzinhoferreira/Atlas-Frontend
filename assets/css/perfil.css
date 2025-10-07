@@ -665,6 +665,25 @@
         filter: brightness(1.1);
         }
 
+        .btn-excluir {
+        background-color: var(--cor-vermelha-bl);
+        border-radius: 5px;
+        border: none;
+        padding: 8px 11px;
+        cursor: pointer;
+        color: var(--cor-preta-bl);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto; /* para colocar o botão do lado direito */
+        transition: filter 0.2s ease;
+        }
+
+        .btn-excluir:hover {
+         filter: brightness(1.1);
+        }
+
 
 
 
