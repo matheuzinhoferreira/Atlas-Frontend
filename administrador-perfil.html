@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +12,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="assets/js/cadastro-aluno.js"></script>
   <script src="assets/js/cadastro-personal.js"></script>
   <script src="assets/js/cadastro-administrador.js"></script>
   <script src="assets/js/personal-perfil.js"></script>
   <script src="assets/js/header-dinamico.js"></script>
-</script>
+  <script src="assets/js/administrador-perfil.js"></script>
+  </script>
 </head>
+
 <body>
 
   <!-- Header Dark, logo left, perfil right -->
   <header class="atlas-header">
     <div class="atlas-header__logo">
-      <a href="index.html"><img src="assets/img/logo-atlas.png" alt="Atlas Gym" /></a>  
+      <a href="index.html"><img src="assets/img/logo-atlas.png" alt="Atlas Gym" /></a>
       <i id="hamburguer" class="fa-solid fa-bars hamburguer"></i>
     </div>
     <div class="area-usuario-header" style="display: none;"></div>
     <i id="hamburguer2" class="fa-solid fa-bars hamburguer"></i>
   </header>
-  
+
   <div class="atlas-main-bg">
     <!-- Sidebar -->
     <aside class="atlas-sidebar">
@@ -42,12 +46,18 @@
         </div>
       </div>
       <nav>
-        <a href="index.html" class="atlas-sidebar__nav-item" id="nav-voltar"><i class="fa-solid fa-circle-chevron-left"></i> Voltar</a>
-        <a href="#" class="atlas-sidebar__nav-item ativo" id="nav-minhaconta"><i class="fa-solid fa-user"></i>Minha conta</a>
-        <a href="#" class="atlas-sidebar__nav-item " id="nav-alunos"><i class="fa-solid fa-graduation-cap"></i> Alunos</a>
-        <a href="#" class="atlas-sidebar__nav-item " id="nav-professores"><i class="fa-solid fa-graduation-cap"></i> Professores</a>
-        <a href="#" class="atlas-sidebar__nav-item " id="nav-administradores"><i class="fa-solid fa-graduation-cap"></i> Administradores</a>
-        <a href="#" class="atlas-sidebar__nav-item" id="nav-relatorios"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
+        <a href="index.html" class="atlas-sidebar__nav-item" id="nav-voltar"><i
+            class="fa-solid fa-circle-chevron-left"></i> Voltar</a>
+        <a href="#" class="atlas-sidebar__nav-item ativo" id="nav-minhaconta"><i class="fa-solid fa-user"></i>Minha
+          conta</a>
+        <a href="#" class="atlas-sidebar__nav-item " id="nav-alunos"><i class="fa-solid fa-graduation-cap"></i>
+          Alunos</a>
+        <a href="#" class="atlas-sidebar__nav-item " id="nav-professores"><i class="fa-solid fa-graduation-cap"></i>
+          Professores</a>
+        <a href="#" class="atlas-sidebar__nav-item " id="nav-administradores"><i class="fa-solid fa-graduation-cap"></i>
+          Administradores</a>
+        <a href="#" class="atlas-sidebar__nav-item" id="nav-relatorios"><i class="fa-solid fa-chart-line"></i>
+          Relatórios</a>
         <a href="#" class="atlas-sidebar__nav-item" id="nav-punicoes"><i class="fa-solid fa-ban"></i> Punições</a>
         <a href="#" class="atlas-sidebar__nav-item-sair"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
       </nav>
@@ -56,6 +66,36 @@
 
     <!-- Central (bioimpedância) -->
     <main class="atlas-main">
+
+      <div id="div-professores" class="atlas-prof-box" style="display: none;">
+        <div class="prof-header">
+          <div class="prof-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchAluno" placeholder="Pesquisar Professor">
+          </div>
+        </div>
+        <div class="div-lista-professores">
+          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
+          <div class="prof-card">
+            <div class="prof-img">[Imagem]</div>
+            <div class="prof-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <!-- ... -->
+        </div>
+
+        <button id="btn-add-professor" class="btn-add-aluno">Adicionar professor</button>
+
+        <div class="pai-botoes">
+          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
+          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
       <div id="div-minhaconta" style="display: block;" class="atlas-bio-box">
         <form>
           <h2 class="atlas-bio-title">Campos com asteriscos ( * ) são obrigatórios.</h2>
@@ -84,157 +124,20 @@
 
           <div>
             <label for="input-senha-atual" class="input-label">Senha Atual</label>
-            <input id="input-senha-atual" class="input-field" type="password" placeholder="Digite sua senha atual" required />
-          </div>  
+            <input id="input-senha-atual" class="input-field" type="password" placeholder="Digite sua senha atual"
+              required />
+          </div>
           <div>
             <label for="input-senha-nova" class="input-label">Senha Nova</label>
-            <input id="input-senha-nova" class="input-field" type="password" placeholder="Crie uma nova senha forte" required />
-          </div>  
+            <input id="input-senha-nova" class="input-field" type="password" placeholder="Crie uma nova senha forte"
+              required />
+          </div>
           <button type="submit">Salvar alterações</button>
         </form>
 
       </div>
 
-
-    <div id="div-bioimpedancia" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Registro de bioimpedância</h2>
-          <div>
-            <label for="emailcpf" class="input-label">Peso corporal</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
-          </div>
-          <div>
-            <label for="emailcpf" class="input-label">Massa Magra</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
-          </div>
-          <div>
-            <label for="emailcpf" class="input-label">Massa Muscular</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
-          </div>
-          <div>
-            <label for="emailcpf" class="input-label">Água Corporal Total</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(L)" required />
-          </div>
-          <div>
-            <label for="emailcpf" class="input-label">Massa Óssea</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
-          </div>
-          <div>
-            <label for="emailcpf" class="input-label">Massa de Gordura Total</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
-          </div>
-          <div>
-            <label for="emailcpf" class="input-label">índice de Massa Corporal</label>
-            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
-          </div>  
-          <button type="submit">Criar Registro</button>
-        </form>
-      </div>
-
-      <div id="div-alunos" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
-          <div>
-            <label for="input-nome" class="input-label">Nome Completo</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
-          </div>
-          <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
-          </div>
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
-          </div>
-          <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"  />
-          </div>
-          <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)"  />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"  />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"  />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
-          </div>
-          <div>
-            <label for="input-email" class="input-label">E-mail</label>
-            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
-          </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
-        </form>
-      </div>
-
-      <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
-          <div>
-            <label for="input-nome" class="input-label">Nome Completo</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
-          </div>
-          <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
-          </div>
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
-          </div>
-          <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
-          </div>
-          <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
-          </div>
-          <div>
-            <label for="input-email" class="input-label">E-mail</label>
-            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
-          </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
-        </form>
-
-      </div>
-
-      <div id="div-professores" style="display: none;" class="atlas-bio-box">
+      <div id="div-professores2" style="display: none;" class="atlas-bio-box">
         <form id="form-cadastrar-personal">
           <h2 class="atlas-bio-title">Cadastro de Personal</h2>
           <div>
@@ -273,58 +176,33 @@
         </form>
       </div>
 
+      <div id="div-administradores" class="atlas-admin-box" style="display: none;">
+        <div class="admin-header">
+          <div class="admin-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchAluno" placeholder="Pesquisar Professor">
+          </div>
+        </div>
+        <div class="div-lista-administrador">
+          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
+          <div class="admin-card">
+            <div class="admin-img">[Imagem]</div>
+            <div class="admin-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <!-- ... -->
+        </div>
 
+        <button id="btn-add-administrador" class="btn-add-aluno">Adicionar Administrador</button>
 
-      <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
-          <div>
-            <label for="input-nome" class="input-label">Nome Completo</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
-          </div>
-          <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
-          </div>
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
-          </div>
-          <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
-          </div>
-          <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
-          </div>
-          <div>
-            <label for="input-email" class="input-label">E-mail</label>
-            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
-          </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
-        </form>
-
+        <div class="pai-botoes">
+          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
+          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
       </div>
 
       <div id="div-administradores" style="display: none;" class="atlas-bio-box">
@@ -358,6 +236,265 @@
         </form>
       </div>
 
+
+      <div id="div-bioimpedancia" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Registro de bioimpedância</h2>
+          <div>
+            <label for="emailcpf" class="input-label">Peso corporal</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Magra</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Muscular</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Água Corporal Total</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(L)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa Óssea</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">Massa de Gordura Total</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <div>
+            <label for="emailcpf" class="input-label">índice de Massa Corporal</label>
+            <input id="emailcpf" class="input-field" type="text" placeholder="(Kg)" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+      </div>
+
+      <!-- MUDANÇAS COMEÇAM AQUI -->
+      <!-- listagem dos professores -->
+      <div id="div-info-usuario" class="atlas-professores-box2" style="display:none;">
+        <div class="info-usuario-flex">
+          <div class="info-usuario-col-esq">
+            <div class="info-usuario-img">[Imagem]</div>
+            <button id="btn-gerenciar" class="btn-plano-info">Gerenciar planos</button>
+            <button id="btn-edit-usuario" class="btn-edit-usuario">Editar Usuário</button>
+          </div>
+          <div class="info-usuario-col-dir">
+            <div class="info-usuario-item">Nome: <span>[NOME]</span></div>
+            <div class="info-usuario-item">E-mail: <span>[EMAIL]</span></div>
+            <div class="info-usuario-item" id="tipo-usuario">[TIPO]</div>
+            <div class="info-usuario-item">Telefone: <span>[TELEFONE]</span></div>
+            <div class="info-usuario-item">CPF: <span>[CPF]</span></div>
+            <div class="info-usuario-item">TIPO: <span>[TIPO]</span></div>
+            <div class="info-usuario-item">DATA_NASCIMENTO: <span>[DATA_NASCIMENTO]</span></div>
+            <div class="info-usuario-item">FORMACAO: <span>[FORMACAO]</span></div>
+            <div class="info-usuario-item">REGISTRO_CREF: <span>[REGISTRO_CREF]</span></div>
+            <div class="info-usuario-vermenos"><em>Ver menos <i class="fa fa-chevron-down"></i></em></div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div id="div-edit-usuarios" style="display: none;" class="atlas-bio-box">
+
+        <button id="btn-voltar-professor" class="btn-voltar-professor"><i class="fa-solid fa-arrow-left"></i></button>
+        <form>
+          <h2 class="atlas-bio-title">Edição de Personal</h2>
+
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-data" class="input-label">Data de Nascimento</label>
+            <input id="input-data-edita" class="input-field" type="date" />
+          </div>
+
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf-edita" class="input-field" type="number" />
+          </div>
+
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone-edita" class="input-field" type="number" />
+          </div>
+
+          <div>
+            <label for="input-formacao" class="input-label">Formação</label>
+            <input id="input-formacao-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-cref" class="input-label">Registro CREF</label>
+            <input id="input-cref-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email-edita" class="input-field" type="email" />
+          </div>
+
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha-edita" class="input-field" type="password" />
+          </div>
+
+          <button type="button" id="btn-atualizar">Atualizar Dados</button>
+        </form>
+      </div>
+
+      <!-- listagem de alunos -->
+      <div id="div-info-usuario" class="atlas-professores-box2" style="display:none;">
+        <div class="info-usuario-flex">
+          <div class="info-usuario-col-esq">
+            <div class="info-usuario-img">[Imagem]</div>
+            <button id="btn-gerenciar" class="btn-plano-info">Gerenciar planos</button>
+            <button id="btn-edit-usuario" class="btn-edit-usuario">Editar Usuário</button>
+          </div>
+          <div class="info-usuario-col-dir">
+            <div class="info-usuario-item">Nome: <span>[NOME]</span></div>
+            <div class="info-usuario-item">E-mail: <span>[EMAIL]</span></div>
+            <div class="info-usuario-item" id="tipo-usuario">[TIPO]</div>
+            <div class="info-usuario-item">Telefone: <span>[TELEFONE]</span></div>
+            <div class="info-usuario-item">CPF: <span>[CPF]</span></div>
+            <div class="info-usuario-item">TIPO: <span>[TIPO]</span></div>
+            <div class="info-usuario-vermenos"><em>Ver menos <i class="fa fa-chevron-down"></i></em></div>
+            <div class="info-usuario-item">Medicamentos: <span>[DESCRICAO_MEDICAMENTOS ou "Nenhum"]</span></div>
+            <div class="info-usuario-item">Limitações: <span>[DESCRICAO_LIMITACOES ou "Nenhuma"]</span></div>
+            <div class="info-usuario-item">Objetivos: <span>[DESCRICAO_OBJETIVOS]</span></div>
+            <div class="info-usuario-item">Experiência anterior: <span>[DESCRICAO_TREINAMENTOS_ANTERIORES ou
+                "Nenhuma"]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="div-edit-usuarios" style="display: none;" class="atlas-bio-box">
+
+        <button id="btn-voltar-professor" class="btn-voltar-professor"><i class="fa-solid fa-arrow-left"></i></button>
+        <form>
+          <h2 class="atlas-bio-title">Edição de Aluno</h2>
+
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-data" class="input-label">Data de Nascimento</label>
+            <input id="input-data-edita" class="input-field" type="date" />
+          </div>
+
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-histmed" class="input-label">Histórico Médico</label>
+            <input id="input-histmed-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-medicamentos" class="input-label">Medicamentos</label>
+            <input id="input-medicamentos-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-limitacoes" class="input-label">Limitações</label>
+            <input id="input-limitacoes-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-objetivo" class="input-label">Objetivos</label>
+            <input id="input-objetivo-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-experiencia" class="input-label">Experiência Anterior</label>
+            <input id="input-experiencia-edita" class="input-field" type="text" />
+          </div>
+
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email-edita" class="input-field" type="email" />
+          </div>
+
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha-edita" class="input-field" type="password" />
+          </div>
+
+          <button type="button" id="btn-atualizar">🔄 Atualizar Dados</button>
+        </form>
+      </div>
+      <!-- MUDANÇAS ACABAM AQUI -->
+
+      <div id="div-personais" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text"
+              placeholder="Descreva o histórico médico (se houver)" />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text"
+              placeholder="Informe medicamentos necessários (se houver)" />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text"
+              placeholder="Descreva a experiência (se houver)" />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text"
+              placeholder="Descreva suas limitações (se houver)" />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
+              required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+      </div>
+
       <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
         <form>
           <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
@@ -379,23 +516,145 @@
           </div>
           <div>
             <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
+              required />
           </div>
           <div>
             <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
+            <input id="input-medicamentos" class="input-field" type="text"
+              placeholder="Informe medicamentos necessários (se houver)" required />
           </div>
           <div>
             <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
+              required />
           </div>
           <div>
             <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
+              required />
           </div>
           <div>
             <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
+              required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+
+      </div>
+
+    
+      <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
+              required />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text"
+              placeholder="Informe medicamentos necessários (se houver)" required />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
+              required />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
+              required />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
+              required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+
+      </div>
+
+      
+
+      <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
+              required />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text"
+              placeholder="Informe medicamentos necessários (se houver)" required />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
+              required />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
+              required />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
+              required />
           </div>
           <div>
             <label for="input-email" class="input-label">E-mail</label>
@@ -431,23 +690,28 @@
           </div>
           <div>
             <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)" required />
+            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
+              required />
           </div>
           <div>
             <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text" placeholder="Informe medicamentos necessários (se houver)" required />
+            <input id="input-medicamentos" class="input-field" type="text"
+              placeholder="Informe medicamentos necessários (se houver)" required />
           </div>
           <div>
             <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)" required />
+            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
+              required />
           </div>
           <div>
             <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)" required />
+            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
+              required />
           </div>
           <div>
             <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia" required />
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
+              required />
           </div>
           <div>
             <label for="input-email" class="input-label">E-mail</label>
@@ -460,9 +724,8 @@
           <button type="submit">Criar Registro</button>
         </form>
 
+
       </div>
-    </main>
-  </div>
 
 
     </main>
@@ -527,4 +790,5 @@
   </footer>
 
 </body>
+
 </html>

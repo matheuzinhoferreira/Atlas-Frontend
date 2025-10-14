@@ -383,7 +383,9 @@
         box-shadow: 0 0 12px 2px var(--cor-roxa-bl);      
         }
 
-    .atlas-alunos-box {
+    .atlas-alunos-box,
+    .atlas-prof-box,
+    .atlas-admin-box {
         padding: 36px 24px 24px 24px;
         border-radius: 18px;
         width: 750px ;
@@ -392,13 +394,17 @@
         }
 
         .alunos-header,
-        .exer-header {
+        .exer-header,
+        .prof-header,
+        .admin-header{
         display: flex;
         justify-content: flex-start;
         margin-bottom: 26px;
         }
         .alunos-search,
-        .exer-search {
+        .exer-search,
+        .prof-search,
+        .admin-search {
         background: var(--cor-preta-bl);
         border-radius: 5px;
         padding: 12px 20px;
@@ -412,7 +418,9 @@
         border: var(--cor-roxa-bl) 1px solid;
         }
         .alunos-search input,
-        .exer-search input {
+        .exer-search input,
+        .prof-search input,
+        .admin-search input{
         border: none;
         background: transparent;
         color: #fff;
@@ -422,14 +430,18 @@
         }
 
         .alunos-grid,
-        .exer-grid {
+        .exer-grid,
+        .div-lista-professores,
+        .div-lista-administrador {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px 32px;
         margin-bottom: 20px;
         }
         .aluno-card,
-        .exer-card {
+        .exer-card,
+        .prof-card,
+        .admin-card {
         background: var(--cor-preta-bl);
         border-radius: 5px;
         display: flex;
@@ -442,7 +454,9 @@
         cursor: pointer;
         }
         .aluno-img,
-        .exer-img {
+        .exer-img,
+        .prof-img,
+        .admin-img{
         width: 80px;
         height: 80px;
         background: var(--cor-branca-bl);
@@ -455,12 +469,16 @@
         color: var(--cor-preta-bl);
         }
         .aluno-info div,
-        .exer-info div {
+        .exer-info div,
+        .prof-info div,
+        .admin-info div{
         margin-bottom: 6px; 
         font-size: 10px;
         }
         .btn-add-aluno,
-        .btn-add-exer {
+        .btn-add-exer,
+        .btn-add-prof,
+        .btn-add-admin {
         background: var(--cor-roxa-bl);
         color: var(--cor-preta-bl);
         font-weight: bold;
@@ -474,12 +492,15 @@
         transition: filter .19s;
         }
         .btn-add-aluno:hover,
-        .btn-add-exer:hover {
+        .btn-add-exer:hover,
+        .btn-add-prof:hover,
+        .btn-add-admin:hover  {
         filter: brightness(1.08);
         }
 
         .btn-voltar-aluno,
-        .btn-voltar-exer {
+        .btn-voltar-exer,
+        .btn-voltar-professor {
         background: var(--cor-roxa-bl);
         color: var(--cor-preta-bl);
         border: none;
@@ -489,7 +510,6 @@
         cursor: pointer;
         font-size: 16px;
         }
-
         .pai-botoes {
             display: flex;
             align-items: center;

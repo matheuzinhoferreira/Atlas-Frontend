@@ -71,19 +71,19 @@ class GerenciadorCadastroPersonal {
     }
 
     coletarDadosFormulario() {
-        let dataISO = $('#div-professores #input-data-nasc').val() || '';
+        let dataISO = $('#div-professores2 #input-data-nasc').val() || '';
         let dataSplit = dataISO ? dataISO.split('-') : ['', '', ''];
         let dataBR = dataSplit.length === 3 ? `${dataSplit[2]}/${dataSplit[1]}/${dataSplit[0]}` : '';
 
         return {
-            nome: ($('#div-professores #input-nome').val() || '').trim(),
+            nome: ($('#div-professores2 #input-nome').val() || '').trim(),
             data_nascimento: dataBR,
-            cpf: ($('#div-professores #input-cpf').val() || '').replace(/[^0-9]/g, ''),
-            telefone: ($('#div-professores #input-telefone').val() || '').replace(/[^0-9]/g, ''),
-            formacao: ($('#div-professores #input-formacao').val() || '').trim(),
-            cref: ($('#div-professores #input-cref').val() || '').trim(),
-            email: ($('#div-professores #input-email').val() || '').toLowerCase().trim(),
-            senha: $('#div-professores #input-senha').val() || ''
+            cpf: ($('#div-professores2 #input-cpf').val() || '').replace(/[^0-9]/g, ''),
+            telefone: ($('#div-professores2 #input-telefone').val() || '').replace(/[^0-9]/g, ''),
+            formacao: ($('#div-professores2 #input-formacao').val() || '').trim(),
+            cref: ($('#div-professores2 #input-cref').val() || '').trim(),
+            email: ($('#div-professores2 #input-email').val() || '').toLowerCase().trim(),
+            senha: $('#div-professores2 #input-senha').val() || ''
         };
         }
 

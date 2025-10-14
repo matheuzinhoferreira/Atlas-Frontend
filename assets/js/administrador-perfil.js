@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$(document).ready(function () {
   // Atualiza nome e email do usuário logado na sidebar
   const nomeCompleto = localStorage.getItem('nome-usuario-atlas') || '';
   const emailUsuario = localStorage.getItem('email-usuario-atlas') || '';
@@ -19,67 +19,263 @@ $(document).ready(() => {
   $('.atlas-sidebar__profile-nome').text(nomeExibido);
   $('.atlas-sidebar__profile-email').text(emailUsuario);
 
-  // Definir as fitas (abas) dinamicamente para o administrador
-  const fitas = [
-    { id: 'minhaconta', texto: 'Minha conta', icon: 'fa-user' },
-    { id: 'alunos', texto: 'Alunos', icon: 'fa-graduation-cap' },
-    { id: 'professores', texto: 'Professores', icon: 'fa-chalkboard-teacher' },
-    { id: 'administradores', texto: 'Administradores', icon: 'fa-user-shield' },
-    { id: 'relatorios', texto: 'Relatórios', icon: 'fa-chart-line' },
-    { id: 'punicoes', texto: 'Punições', icon: 'fa-ban' }
-  ];
+  // Inicial do nome exibida no círculo do ícone sidebar
+  const inicialNome = nomeCompleto.charAt(0).toUpperCase() || '';
+  $('.user-icon-sidebar').text(inicialNome);
 
-  const navContainer = $('.atlas-sidebar nav');
-  const mainContainer = $('.atlas-main');
-
-  // Limpar conteúdo atual da nav e main
-  navContainer.empty();
-  mainContainer.empty();
-
-  // Criar link "Voltar"
-  navContainer.append(`
-    <a href="index.html" class="atlas-sidebar__nav-item" id="nav-voltar">
-      <i class="fa-solid fa-circle-chevron-left"></i> Voltar
-    </a>
-  `);
-
-  // Criar links das fitas
-  fitas.forEach((fita, index) => {
-    navContainer.append(`
-      <a href="#" class="atlas-sidebar__nav-item${index === 0 ? ' ativo' : ''}" id="nav-${fita.id}">
-        <i class="fa-solid ${fita.icon}"></i> ${fita.texto}
-      </a>
-    `);
-
-    // Criar div de conteúdo para cada fita
-    mainContainer.append(`
-      <div id="div-${fita.id}" class="atlas-bio-box" style="display: ${index === 0 ? 'block' : 'none'};">
-        <h2>${fita.texto}</h2>
-        <p>Conteúdo para ${fita.texto} aqui.</p>
-      </div>
-    `);
-  });
-
-  // Handler principal dos cliques nas fitas (abas)
-  navContainer.find('a.atlas-sidebar__nav-item').not('#nav-voltar').on('click', function(e) {
+  // Handler principal dos cliques nos itens da nav que tem id
+  $('.atlas-sidebar nav a.atlas-sidebar__nav-item').not('#nav-voltar').on('click', function (e) {
     e.preventDefault();
 
     // Remove ativo dos links
-    navContainer.find('a.atlas-sidebar__nav-item').removeClass('ativo');
+    $('.atlas-sidebar nav a.atlas-sidebar__nav-item').removeClass('ativo');
     // Aplica ativo no link clicado
     $(this).addClass('ativo');
 
-    // Esconde todas as divs de conteúdo
-    mainContainer.find('.atlas-bio-box').hide();
+    // Esconde todas as divs pai 'atlas-bio-box'
+    $('.atlas-bio-box').hide();
+    $('.atlas-alunos-box').hide();
+    $('#div-info-usuario').hide();
+    $('#div-lista-exer').hide();
+    $('#div-edit-usuario').hide();
+    $('#div-professores').hide();
 
-    // Mostra div correspondente
-    const idLink = $(this).attr('id'); // ex: nav-alunos
-    const idDiv = idLink.replace('nav-', 'div-'); // ex: div-alunos
+
+    // Mostra a div correspondente pelo id do link clicado
+    let idLink = $(this).attr('id'); // exemplo: nav-alunos
+    let idDiv = idLink.replace('nav-', 'div-'); // exemplo: div-alunos
+
     $('#' + idDiv).show();
   });
 
-  // Voltar à página inicial
-  $('#nav-voltar').on('click', () => {
+  // Link voltar navega para a index.html
+  $('#nav-voltar').on('click', function () {
     window.location.href = 'index.html';
   });
 });
+
+$(document).on('click', '#nav-professores', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-abrir-alunos').hide();
+  $('#div-professores').show();
+});
+
+$(document).on('click', '#nav-alunos', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.div-lista-professores').show();
+  $('#div-abrir-alunos').hide();
+});
+
+$(document).on('click', '#btn-voltar-professor', function () {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-alunos').show();
+});
+
+$(document).on('click', 'div.aluno-card', function () {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-info-usuario').show();
+});
+
+$(document).on('click', '#btn-gerenciar', function () {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.atlas-professores-box2').hide();
+  $('.div-lista-exer').hide();
+  $('#div-lista-exer').show();
+});
+
+
+$(document).on('click', '#btn-edit-usuario', function () {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.atlas-professores-box2').hide();
+  $('.div-lista-professores').hide();
+  $('.div-lista-exer').hide();
+  $('#div-lista-exer').hide();
+  $('#div-edit-usuarios').show();
+});
+
+$(document).on('click', '#btn-add-exer', function () {
+  // Esconde todas as divs de box e mostra a lista de alunos
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('.atlas-professores-box2').hide();
+  $('.div-lista-exer').hide();
+  $('#div-lista-exer').hide();
+  $('#div-div-exercicios').hide();
+  $('#div-abrir-exercicios').show();
+});
+
+$(document).on('click', '#btn-add-professor', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-prof-box').hide();
+  $('#div-professores2').show();
+});
+
+
+
+
+$(document).ready(function () {
+  const API_BASE = "http://10.92.3.214:5000/usuarios/admin";
+  const $alunosGrid = $(".div-lista-professores");
+  const $btnLeft = $(".btn-voltar-professor").first();
+  const $btnRight = $(".btn-voltar-professor").last();
+
+  let paginaAtual = 1;
+  const maxPorPagina = 8;
+  let tipoFiltro = 2; // Tipo 1 para alunos
+
+  // Função para criar o card de usuário
+  function montarCardUsuario(usuario) {
+    let id = usuario[0] || "";
+    let nome = usuario[1] || "";
+    let email = usuario[2] || "";
+    let telefone = usuario[4] || "";
+
+    let historico = usuario[3];
+    if (typeof historico !== "string" || historico.trim() === "") {
+      historico = "Nenhum";
+    }
+
+
+    return $(`
+    <div class="prof-card" onclick="trazerCampos(${id})" data-id="${id}">
+      <div class="prof-img">[Imagem]</div>
+      <div class="prof-info">
+        <div>Nome: ${nome}</div>
+        <div>E-mail: ${email}</div>
+        <div>Telefone: ${telefone}</div>
+        <div>CPF: ${historico}</div>
+      </div>
+    </div>
+  `);
+  }
+
+  console.log(localStorage.getItem('jwt-token-atlas'));
+  async function carregarPagina(pagina = 1, tipo = tipoFiltro) {
+    paginaAtual = pagina;
+    $alunosGrid.empty().append('<div class="loader">Carregando...</div>');
+
+    const token = localStorage.getItem("jwt-token-atlas");
+
+    try {
+      const url = `${API_BASE}/${pagina}/${tipo}`;
+      console.log('Chamando API:', url);
+      console.log('Token:', token);
+
+      const resposta = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      if (!resposta.ok) {
+        console.error('Erro na resposta:', resposta.status, resposta.statusText);
+        throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+      }
+      const data = await resposta.json();
+      const usuarios = data.usuarios || [];
+
+      $alunosGrid.empty();
+      if (!usuarios.length) {
+        $alunosGrid.append('<div class="nenhum">Nenhum usuário encontrado.</div>');
+      } else {
+        usuarios.forEach(u => {
+          const $card = montarCardUsuario(u);
+          $alunosGrid.append($card);
+        });
+      }
+      atualizarBotoes(usuarios.length);
+    } catch (err) {
+      console.error('Erro no carregamento:', err);
+      $alunosGrid.empty().append(`<div class="erro">Erro ao carregar usuários: ${err.message}</div>`);
+    }
+  }
+
+  // Função para buscar dados completos do usuário pelo id
+  async function buscarDadosUsuarioDetalhado(idUsuario) {
+    const token = localStorage.getItem("jwt-token-atlas");
+    const url = `http://10.92.3.214:5000/usuarios/info/${idUsuario}/personal`;
+    try {
+      const resposta = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      if (!resposta.ok) {
+        throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+      }
+      const json = await resposta.json();
+      if (json.error) {
+        throw new Error("Erro ao buscar dados do usuário");
+      }
+      return json.dados;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+
+  // Evento clique no card
+  $(document).on('click', '.aluno-card', async function () {
+    const id = $(this).data('id');
+    const dadosDetalhados = await buscarDadosUsuarioDetalhado(id);
+    if (!dadosDetalhados) {
+      alert("Não foi possível carregar detalhes do usuário.");
+      return;
+    }
+    const $div = $('#div-info-usuario');
+
+    $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
+    $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
+    $div.find('.info-usuario-item:contains("Telefone:") span').text(dadosDetalhados["Telefone"] || "");
+    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+
+    let tipoTexto = "";
+    switch (dadosDetalhados["Tipo"] || dadosDetalhados["TIPO"] || dadosDetalhados["tipo"]) {
+      case 1: case '1': tipoTexto = "Aluno"; break;
+      case 2: case '2': tipoTexto = "Personal"; break;
+      case 3: case '3': tipoTexto = "Admin"; break;
+      default: tipoTexto = "Desconhecido";
+    }
+    $div.find('.info-usuario-item:contains("TIPO:") span').text(tipoTexto);
+
+    // Campos médicos
+    $div.find('.info-usuario-item:contains("Medicamentos:") span').text(dadosDetalhados["Descrição de medicamentos"] || "Nenhum");
+    $div.find('.info-usuario-item:contains("Limitações:") span').text(dadosDetalhados["Descrição de limitações"] || "Nenhuma");
+    $div.find('.info-usuario-item:contains("Objetivos:") span').text(dadosDetalhados["Descrição de Objetivos"] || "Nenhum");
+    $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(dadosDetalhados["Experiência Anterior com Academia"] || "Nenhuma");
+
+    $div.show();
+  });
+
+  // Atualizar estado dos botões de navegação
+  function atualizarBotoes(qtdNaPagina) {
+    $btnLeft.prop("disabled", paginaAtual <= 1);
+    $btnRight.prop("disabled", qtdNaPagina < maxPorPagina);
+  }
+
+  // Eventos dos botões de paginação
+  $btnLeft.on("click", () => {
+    if (paginaAtual > 1) {
+      carregarPagina(paginaAtual - 1, tipoFiltro);
+    }
+  });
+
+  $btnRight.on("click", () => {
+    carregarPagina(paginaAtual + 1, tipoFiltro);
+  });
+
+  // Inicializa carregando a primeira página
+  carregarPagina(1, tipoFiltro);
+});
+;
