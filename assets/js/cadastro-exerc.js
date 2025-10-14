@@ -59,7 +59,7 @@ $(document).on('submit', '#form-exercicio', async function(e) {
 
 
   try {
-    const resposta = await fetch('http://127.0.0.1:5000/exercicios/criar/', {
+    const resposta = await fetch('http://10.92.3.214:5000/exercicios/criar/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

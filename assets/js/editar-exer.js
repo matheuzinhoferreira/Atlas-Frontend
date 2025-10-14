@@ -49,7 +49,7 @@ $('#form-exercicio').on('submit', async function(event) {
     .map(function() { return $(this).val(); }).get();
 
   try {
-    const response = await fetch(`http://127.0.0.1:5000/exercicios/editar/${idExercicio}`, {
+    const response = await fetch(`http://10.92.3.214:5000/exercicios/editar/${idExercicio}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

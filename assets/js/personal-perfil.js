@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Atualiza nome e email do usuário logado na sidebar
   const nomeCompleto = localStorage.getItem('nome-usuario-atlas') || '';
   const emailUsuario = localStorage.getItem('email-usuario-atlas') || '';
@@ -24,7 +24,7 @@ $(document).ready(function() {
   $('.user-icon-sidebar').text(inicialNome);
 
   // Handler principal dos cliques nos itens da nav que tem id
-  $('.atlas-sidebar nav a.atlas-sidebar__nav-item').not('#nav-voltar').on('click', function(e) {
+  $('.atlas-sidebar nav a.atlas-sidebar__nav-item').not('#nav-voltar').on('click', function (e) {
     e.preventDefault();
 
     // Remove ativo dos links
@@ -38,7 +38,7 @@ $(document).ready(function() {
     $('#div-info-usuario').hide();
     $('#div-lista-exer').hide();
     $('#div-edit-usuario').hide();
-      
+
 
     // Mostra a div correspondente pelo id do link clicado
     let idLink = $(this).attr('id'); // exemplo: nav-alunos
@@ -48,41 +48,41 @@ $(document).ready(function() {
   });
 
   // Link voltar navega para a index.html
-  $('#nav-voltar').on('click', function() {
+  $('#nav-voltar').on('click', function () {
     window.location.href = 'index.html';
   });
 });
 
- $(document).on('click', '#btn-add-aluno', function() {
-    $('.atlas-bio-box').hide();
-    $('.atlas-alunos-box').hide();
-    $('#div-abrir-alunos').show();
-  });
+$(document).on('click', '#btn-add-aluno', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-abrir-alunos').show();
+});
 
-$(document).on('click', '#btn-voltar-aluno', function() {
+$(document).on('click', '#btn-voltar-aluno', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('#div-alunos').show();
-});  
+});
 
-$(document).on('click', 'div.aluno-card', function() {
+$(document).on('click', 'div.aluno-card', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('#div-info-usuario').show();
-});  
+});
 
-$(document).on('click', '#btn-gerenciar', function() {
+$(document).on('click', '#btn-gerenciar', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('.atlas-alunos-box2').hide();
   $('.div-lista-exer').hide();
   $('#div-lista-exer').show();
-});  
+});
 
-$(document).on('click', '#btn-edit-usuario', function() {
+$(document).on('click', '#btn-edit-usuario', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
@@ -90,9 +90,9 @@ $(document).on('click', '#btn-edit-usuario', function() {
   $('.div-lista-exer').hide();
   $('#div-lista-exer').hide();
   $('#div-edit-usuarios').show();
-});  
+});
 
-$(document).on('click', '#btn-add-exer', function() {
+$(document).on('click', '#btn-add-exer', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
@@ -101,12 +101,12 @@ $(document).on('click', '#btn-add-exer', function() {
   $('#div-lista-exer').hide();
   $('#div-div-exercicios').hide();
   $('#div-abrir-exercicios').show();
-});  
+});
 
 
 
 $(document).ready(function () {
-  const API_BASE = "http://127.0.0.1:5000/usuarios/personal";
+  const API_BASE = "http://10.92.3.214:5000/usuarios/personal";
   const $alunosGrid = $(".alunos-grid");
   const $btnLeft = $(".btn-voltar-aluno").first();
   const $btnRight = $(".btn-voltar-aluno").last();
@@ -129,7 +129,7 @@ $(document).ready(function () {
 
 
     return $(`
-    <div class="aluno-card" data-id="${id}">
+    <div class="aluno-card" onclick="trazerCampos(${id})" data-id="${id}">
       <div class="aluno-img">[Imagem]</div>
       <div class="aluno-info">
         <div>Nome: ${nome}</div>
@@ -141,7 +141,7 @@ $(document).ready(function () {
   `);
   }
 
-  console.log(localStorage.getItem('jwt-token-atlas')); 
+  console.log(localStorage.getItem('jwt-token-atlas'));
   async function carregarPagina(pagina = 1, tipo = tipoFiltro) {
     paginaAtual = pagina;
     $alunosGrid.empty().append('<div class="loader">Carregando...</div>');
@@ -183,64 +183,64 @@ $(document).ready(function () {
   }
 
   // Função para buscar dados completos do usuário pelo id
-async function buscarDadosUsuarioDetalhado(idUsuario) {
-  const token = localStorage.getItem("jwt-token-atlas");
-  const url = `http://127.0.0.1:5000/usuarios/info/${idUsuario}/personal`;
-  try {
-    const resposta = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
-    });
-    if (!resposta.ok) {
-      throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+  async function buscarDadosUsuarioDetalhado(idUsuario) {
+    const token = localStorage.getItem("jwt-token-atlas");
+    const url = `http://10.92.3.214:5000/usuarios/info/${idUsuario}/personal`;
+    try {
+      const resposta = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      if (!resposta.ok) {
+        throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+      }
+      const json = await resposta.json();
+      if (json.error) {
+        throw new Error("Erro ao buscar dados do usuário");
+      }
+      return json.dados; // Dados detalhados em forma de objeto {Nome, Ativo, CPF, ...}
+    } catch (err) {
+      console.error(err);
+      return null;
     }
-    const json = await resposta.json();
-    if (json.error) {
-      throw new Error("Erro ao buscar dados do usuário");
+  }
+
+  // Evento clique no card
+  $(document).on('click', '.aluno-card', async function () {
+    const id = $(this).data('id');
+    const dadosDetalhados = await buscarDadosUsuarioDetalhado(id);
+    if (!dadosDetalhados) {
+      alert("Não foi possível carregar detalhes do usuário.");
+      return;
     }
-    return json.dados; // Dados detalhados em forma de objeto {Nome, Ativo, CPF, ...}
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-}
+    const $div = $('#div-info-usuario');
 
-// Evento clique no card
-$(document).on('click', '.aluno-card', async function () {
-  const id = $(this).data('id');
-  const dadosDetalhados = await buscarDadosUsuarioDetalhado(id);
-  if (!dadosDetalhados) {
-    alert("Não foi possível carregar detalhes do usuário.");
-    return;
-  }
-  const $div = $('#div-info-usuario');
+    // Preencher cada campo com o valor correto do JSON detalhado da API
+    $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
+    $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
+    $div.find('.info-usuario-item:contains("Telefone:") span').text(dadosDetalhados["Telefone"] || "");
+    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
 
-  // Preencher cada campo com o valor correto do JSON detalhado da API
-  $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
-  $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
-  $div.find('.info-usuario-item:contains("Telefone:") span').text(dadosDetalhados["Telefone"] || "");
-  $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+    // Preencher TIPO (use sempre o campo com <span>)
+    let tipoTexto = "";
+    switch (dadosDetalhados["Tipo"] || dadosDetalhados["TIPO"] || dadosDetalhados["tipo"]) {
+      case 1: case '1': tipoTexto = "Aluno"; break;
+      case 2: case '2': tipoTexto = "Personal"; break;
+      case 3: case '3': tipoTexto = "Admin"; break;
+      default: tipoTexto = "Desconhecido";
+    }
+    $div.find('.info-usuario-item:contains("TIPO:") span').text(tipoTexto);
 
-  // Preencher TIPO (use sempre o campo com <span>)
-  let tipoTexto = "";
-  switch (dadosDetalhados["Tipo"] || dadosDetalhados["TIPO"] || dadosDetalhados["tipo"]) {
-    case 1: case '1': tipoTexto = "Aluno"; break;
-    case 2: case '2': tipoTexto = "Personal"; break;
-    case 3: case '3': tipoTexto = "Admin"; break;
-    default: tipoTexto = "Desconhecido";
-  }
-  $div.find('.info-usuario-item:contains("TIPO:") span').text(tipoTexto);
+    // Campos médicos
+    $div.find('.info-usuario-item:contains("Medicamentos:") span').text(dadosDetalhados["Descrição de medicamentos"] || "Nenhum");
+    $div.find('.info-usuario-item:contains("Limitações:") span').text(dadosDetalhados["Descrição de limitações"] || "Nenhuma");
+    $div.find('.info-usuario-item:contains("Objetivos:") span').text(dadosDetalhados["Descrição de Objetivos"] || "Nenhum");
+    $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(dadosDetalhados["Experiência Anterior com Academia"] || "Nenhuma");
 
-  // Campos médicos
-  $div.find('.info-usuario-item:contains("Medicamentos:") span').text(dadosDetalhados["Descrição de medicamentos"] || "Nenhum");
-  $div.find('.info-usuario-item:contains("Limitações:") span').text(dadosDetalhados["Descrição de limitações"] || "Nenhuma");
-  $div.find('.info-usuario-item:contains("Objetivos:") span').text(dadosDetalhados["Descrição de Objetivos"] || "Nenhum");
-  $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(dadosDetalhados["Experiência Anterior com Academia"] || "Nenhuma");
-
-  $div.show();
-});
+    $div.show();
+  });
 
 
 
@@ -284,7 +284,7 @@ $(document).ready(function () {
     });
   });
 });
-  
+
 $(document).ready(function () {
   // Quando clicar em qualquer card de aluno
   $(document).on('click', '.aluno-card', function () {
@@ -344,7 +344,7 @@ $(document).ready(function () {
     $div.find('.info-usuario-item:contains("Objetivos:") span').text(objetivos);
     $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(experiencia);
 
-    
+
 
     // Mostrar a div
     $div.show();

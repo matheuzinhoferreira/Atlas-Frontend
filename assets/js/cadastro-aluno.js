@@ -30,7 +30,7 @@ $(document).ready(function () {
 // Sistema de cadastro integrado com JWT
 class GerenciadorCadastroAluno {
     constructor() {
-        this.baseURL = 'http://localhost:5000';
+        this.baseURL = 'http://10.92.3.214:5000';
         this.initEventListeners();
     }
 

@@ -2,7 +2,7 @@
 async function carregarExercicios() {
   const token = localStorage.getItem('jwt-token-atlas');
   try {
-    const response = await fetch('http://127.0.0.1:5000/exercicios', {
+    const response = await fetch('http://10.92.3.214:5000/exercicios', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const data = await response.json();
@@ -88,7 +88,7 @@ function exibirExercicios(exercicios) {
     btnExcluir.addEventListener('click', async () => {
       const token = localStorage.getItem('jwt-token-atlas');
       try {
-        const response = await fetch(`http://127.0.0.1:5000/exercicios/excluir/${exercicio.ID_EXERCICIO}`, {
+        const response = await fetch(`http://10.92.3.214:5000/exercicios/excluir/${exercicio.ID_EXERCICIO}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -122,7 +122,7 @@ function exibirExercicios(exercicios) {
   const token = localStorage.getItem('jwt-token-atlas');
 
   try {
-    const response = await fetch(`http://127.0.0.1:5000/exercicios/excluir/${idExercicio}`, {
+    const response = await fetch(`http://10.92.3.214:5000/exercicios/excluir/${idExercicio}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -196,7 +196,7 @@ $('#form-exercicio').on('submit', async function(event) {
     .map(function() { return $(this).val(); }).get();
 
   try {
-    const response = await fetch(`http://127.0.0.1:5000/exercicios/editar/${idExercicio}`, {
+    const response = await fetch(`http://10.92.3.214:5000/exercicios/editar/${idExercicio}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ function exibirExercicios(exercicios) {
     const token = localStorage.getItem('jwt-token-atlas');
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/exercicios/excluir/${idExercicio}`, {
+      const response = await fetch(`http://10.92.3.214:5000/exercicios/excluir/${idExercicio}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
