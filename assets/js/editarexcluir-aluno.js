@@ -2,7 +2,7 @@ async function trazerCampos(id) {
     try {
         const token = localStorage.getItem("jwt-token-atlas")
 
-        const resposta = await fetch("http://10.92.3.214:5000/usuarios/info/" + id + "/2", {
+        const resposta = await fetch("http://10.92.3.214:5000/usuarios/info/" + id + "/personal", {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -33,6 +33,10 @@ async function trazerCampos(id) {
 }
 async function enviarCampos() {
     try {
+
+        // let telefone = document.getElementById("input-telefone-edita").value
+        // telefone = telefone.replaceAll("+", "")
+
         const token = localStorage.getItem("jwt-token-atlas");
         const id = document.getElementById("input-id-edita").value;
         const dadosAtualizados = {
@@ -48,7 +52,7 @@ async function enviarCampos() {
             "email": document.getElementById("input-email-edita").value
         };
 
-        const resposta = await fetch("http://10.92.3.214:5000/usuarios/" + id + "/editar/2", {
+        const resposta = await fetch("http://10.92.3.214:5000/usuarios/" + id + "/editar/personal", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -63,32 +67,6 @@ async function enviarCampos() {
     } catch (erro) {
         console.error("Erro ao enviar campos:", erro);
         alert("Falha ao atualizar dados.");
-    }
-}
-async function excluirUsuario(id) {
-    try {
-        const token = localStorage.getItem("jwt-token-atlas");
-        if (!token) throw new Error("Token não encontrado");
-
-        const confirma = confirm("Tem certeza que quer excluir este usuário? Isso é irreversível!");
-        if (!confirma) return;
-
-        const resposta = await fetch(`http://10.92.3.214:5000/usuarios/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Authorization": "Bearer " + token
-            }
-        });
-
-        if (!resposta.ok) throw new Error("Erro ao excluir usuário");
-
-        alert("Usuário excluído com sucesso!");
-        // Aqui você pode atualizar a interface, por exemplo, esconder a div do usuário:
-        document.getElementById("div-edit-usuarios").style.display = "none";
-
-    } catch (erro) {
-        console.error("Erro ao excluir usuário:", erro);
-        alert("Falha ao excluir usuário.");
     }
 }
 
