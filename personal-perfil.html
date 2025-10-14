@@ -314,7 +314,11 @@
             <input id="input-senha-edita" class="input-field" type="password" />
           </div>
 
-          <button type="button" id="btn-atualizar">🔄 Atualizar Dados</button>
+          <input type="hidden" id="input-id-edita" name="">
+          <button onclick="excluirUsuario()" type="button" id="btn-deletar">Deletar Usuário
+          </button>
+          <button onclick="enviarCampos()" type="button" id="btn-atualizar"> Atualizar Dados</button>
+
         </form>
       </div>
 
