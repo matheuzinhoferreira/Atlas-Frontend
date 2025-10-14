@@ -12,7 +12,7 @@ async function trazerCampos(id) {
         console.log(dados.dados)
 
         document.getElementById("input-nome-edita").value = dados.dados["Nome"];
-        document.getElementById("input-data-edita").value = dados.dados["Data de Nascimento"];
+        document.getElementById("input-data-edita").value = dados.dados["Data_de_Nascimento"];
         document.getElementById("input-cpf-edita").value = dados.dados["CPF"];
         document.getElementById("input-telefone-edita").value = dados.dados["Telefone"];
         document.getElementById("input-histmed-edita").value = dados.dados["Histórico Médico Relevante"];
@@ -20,33 +20,43 @@ async function trazerCampos(id) {
         document.getElementById("input-limitacoes-edita").value = dados.dados["Descrição de limitações"];
         document.getElementById("input-objetivo-edita").value = dados.dados["Descrição de Objetivos"];
         document.getElementById("input-experiencia-edita").value = dados.dados["Experiência Anterior com Academia"];
-        document.getElementById("input-email-edita").value = dados["E-mail"];
+        document.getElementById("input-email-edita").value = dados.dados["E-mail"];
+
 
         document.getElementById("div-edit-usuarios").style.display = "block";
+
+        document.getElementById("input-id-edita").value = id;
     } catch (erro) {
-        console.error("Erro ao trazer campos:", erro);
+        console.error("Erro ao trazer campos:");
         document.addEventListener("DOMContentLoaded", trazerCampos);
     }
 }
 async function enviarCampos() {
     try {
+
+        // let telefone = document.getElementById("input-telefone-edita").value
+        // telefone = telefone.replaceAll("+", "")
+
+        const token = localStorage.getItem("jwt-token-atlas");
+        const id = document.getElementById("input-id-edita").value;
         const dadosAtualizados = {
-            "Nome": document.getElementById("input-nome").value,
-            "Data de Nascimento": document.getElementById("input-data").value,
-            "CPF": document.getElementById("input-cpf").value,
-            "Telefone": document.getElementById("input-telefone").value,
-            "Histórico Médico Relevante": document.getElementById("input-histmed").value,
-            "Descrição de medicamentos": document.getElementById("input-medicamentos").value,
-            "Descrição de limitações": document.getElementById("input-limitacoes").value,
-            "Descrição de Objetivos": document.getElementById("input-objetivo").value,
-            "Experiência Anterior com Academia": document.getElementById("input-experiencia").value,
-            "E-mail": document.getElementById("input-email").value
+            "nome": document.getElementById("input-nome-edita").value,
+            "data_nascimento": document.getElementById("input-data-edita").value,
+            "cpf": document.getElementById("input-cpf-edita").value,
+            "telefone": document.getElementById("input-telefone-edita").value,
+            "historico_medico_relevante": document.getElementById("input-histmed-edita").value,
+            "descricao_medicamentos": document.getElementById("input-medicamentos-edita").value,
+            "descricao_limitacoes": document.getElementById("input-limitacoes-edita").value,
+            "descricao_objetivos": document.getElementById("input-objetivo-edita").value,
+            "descricao_treinamentos_anteriores": document.getElementById("input-experiencia-edita").value,
+            "email": document.getElementById("input-email-edita").value
         };
 
-        const resposta = await fetch("http://10.92.3.214:5000/usuarios/info/" + id + "/personal", {
+        const resposta = await fetch("http://10.92.3.214:5000/usuarios/" + id + "/editar/personal", {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
             },
             body: JSON.stringify(dadosAtualizados)
         });
