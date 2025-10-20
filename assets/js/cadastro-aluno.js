@@ -80,7 +80,7 @@ class GerenciadorCadastroAluno {
         this.mostrarLoading(true);
 
         $.ajax({
-            url: `${this.baseURL}/usuarios/cadastrar`,
+            url: `${this.baseURL}/usuarios/cadastrar/0`,
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

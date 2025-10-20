@@ -1,37 +1,3 @@
-function abrirEdicaoExercicio(idExercicio, exercicio) {
-  // Esconder outras divs relevantes
-  $('.atlas-bio-box').hide();
-  $('.atlas-alunos-box').hide();
-  $('.atlas-alunos-box2').hide();
-  $('.div-lista-exer').hide();
-  $('#div-lista-exer').hide();
-  $('#div-div-exercicios').hide();
-  $('#div-editar-exercicios').hide();
-
-  // Mostrar div de edição com formulário preenchido
-  $('#div-abrir-exercicios').show();
-
-  // Preencher campos do formulário
-  $('#input-nome-exerc').val(exercicio.NOME_EXERCICIO);
-  $('#input-descricao').val(exercicio.DESCRICAO);
-  $('#input-video').val(exercicio.VIDEO || '');
-
-  // Preencher nível de dificuldade (ajuste se necessário para valores corretos)
-  $('#input-dificuldade').val(exercicio.DIFICULDADE);
-
-  // Limpar todos os checkboxes dos grupos musculares
-  $('#checkbox-grupos input[type="checkbox"]').prop('checked', false);
-  if (exercicio.GRUPOS_MUSCULARES && Array.isArray(exercicio.GRUPOS_MUSCULARES)) {
-    exercicio.GRUPOS_MUSCULARES.forEach(valor => {
-      $(`#checkbox-grupos input[type="checkbox"][value="${valor}"]`).prop('checked', true);
-    });
-  }
-
-
-  // Armazenar o ID no formulário para usar na edição (se desejar)
-  $('#form-exercicio').data('id-exercicio', idExercicio);
-}
-
 $('#form-exercicio').on('submit', async function(event) {
   event.preventDefault();
 
@@ -42,7 +8,7 @@ $('#form-exercicio').on('submit', async function(event) {
   const nome = $('#input-nome-exerc').val().trim();
   const descricao = $('#input-descricao').val().trim();
   const video = $('#input-video').val().trim();
-  const dificuldade = $('#input-dificuldade').val();
+  const dificuldade = parseInt($('#input-dificuldade').val()); // converter para número
 
   // Grupos musculares selecionados
   const gruposMusculares = $('#checkbox-grupos input[type="checkbox"]:checked')
@@ -60,20 +26,23 @@ $('#form-exercicio').on('submit', async function(event) {
         descricao,
         video,
         dificuldade,
-        gruposMusculares // se sua API aceitar este campo; senão pode remover
+        gruposMuscularesSelecionados: gruposMusculares  // nome ajustado aqui para a API
       })
     });
 
-    const data = await response.json();
+    let data = {};
+    try {
+      data = await response.json();
+    } catch (e) {
+      data = {};
+    }
 
     if (response.ok) {
-      alert('Exercício editado com sucesso!');
-      // Atualize a listagem de exercícios ou recarregue
+      alert(data.message || 'Exercício editado com sucesso!');
       carregarExercicios();
-      // Esconder formulário de edição após sucesso
       $('#div-abrir-exercicios').hide();
     } else {
-      alert('Erro ao editar exercício: ' + (data.message || 'Erro desconhecido'));
+      alert('Erro ao editar exercício: ' + (data.message || response.statusText));
     }
   } catch (error) {
     console.error(error);

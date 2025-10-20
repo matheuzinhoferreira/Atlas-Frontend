@@ -58,14 +58,27 @@ $(document).on('click', '#nav-professores', function () {
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('#div-abrir-alunos').hide();
+  $('#div-alunos').hide();
+  $('#div-administradores').hide();
   $('#div-professores').show();
+});
+
+$(document).on('click', '#nav-administradores', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-abrir-alunos').hide();
+  $('#div-alunos').hide();
+  $('#div-administradores').show();
+  $('#div-professores').hide();
 });
 
 $(document).on('click', '#nav-alunos', function () {
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
-  $('.div-lista-professores').show();
-  $('#div-abrir-alunos').hide();
+  $('.div-lista-professores').hide();
+  $('#div-professores').hide();
+    $('#div-administradores').hide();
+  $('.div-alunos').show();
 });
 
 $(document).on('click', '#btn-voltar-professor', function () {
@@ -120,11 +133,25 @@ $(document).on('click', '#btn-add-professor', function () {
   $('#div-professores2').show();
 });
 
+$(document).on('click', '#btn-add-administrador', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-prof-box').hide();
+  $('#div-administradores').hide();
+  $('#div-administradores2').show();
+});
+
+$(document).on('click', '#btn-add-aluno', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-prof-box').hide();
+  $('#div-administradores').hide();
+  $('#div-abrir-alunos').show();
+});
+
 
 
 
 $(document).ready(function () {
-  const API_BASE = "http://10.92.3.214:5000/usuarios/admin";
+  const API_BASE = "http://10.92.3.214:5000";
   const $alunosGrid = $(".div-lista-professores");
   const $btnLeft = $(".btn-voltar-professor").first();
   const $btnRight = $(".btn-voltar-professor").last();
@@ -160,14 +187,14 @@ $(document).ready(function () {
   }
 
   console.log(localStorage.getItem('jwt-token-atlas'));
-  async function carregarPagina(pagina = 1, tipo = tipoFiltro) {
+  async function carregarPagina(pagina = 1, tipo = tipoFiltro, tipoLogado = 3) {
     paginaAtual = pagina;
     $alunosGrid.empty().append('<div class="loader">Carregando...</div>');
 
     const token = localStorage.getItem("jwt-token-atlas");
 
     try {
-      const url = `${API_BASE}/${pagina}/${tipo}`;
+      const url = `${API_BASE}/usuarios/${tipoLogado}/${pagina}/${tipo}`;
       console.log('Chamando API:', url);
       console.log('Token:', token);
 
@@ -203,7 +230,7 @@ $(document).ready(function () {
   // Função para buscar dados completos do usuário pelo id
   async function buscarDadosUsuarioDetalhado(idUsuario) {
     const token = localStorage.getItem("jwt-token-atlas");
-    const url = `http://10.92.3.214:5000/usuarios/info/${idUsuario}/personal`;
+    const url = `http://10.92.3.214:5000/usuarios/info/${idUsuario}/3`;
     try {
       const resposta = await fetch(url, {
         method: "GET",

@@ -432,6 +432,7 @@
         .alunos-grid,
         .exer-grid,
         .div-lista-professores,
+        .div-lista-alunos,
         .div-lista-administrador {
         display: grid;
         grid-template-columns: 1fr 1fr;

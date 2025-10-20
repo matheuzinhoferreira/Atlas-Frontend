@@ -49,7 +49,7 @@ class GerenciadorCadastroPersonal {
         this.mostrarLoading(true);
 
         $.ajax({
-            url: `${this.baseURL}/usuarios/cadastrar/personal`,
+            url: `${this.baseURL}/usuarios/cadastrar/2`,
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

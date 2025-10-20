@@ -88,7 +88,123 @@
           <!-- ... -->
         </div>
 
-        <button id="btn-add-professor" class="btn-add-aluno">Adicionar professor</button>
+        <button id="btn-add-professor" class="btn-add-aluno">Adicionar Professor</button>
+
+        <div class="pai-botoes">
+          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
+          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div id="div-administradores2" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Administradores</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+      </div>
+
+      <div id="div-abrir-alunos" style="display: none;" class="atlas-bio-box">
+        <form>
+          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
+          <div>
+            <label for="input-nome" class="input-label">Nome Completo</label>
+            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
+          </div>
+          <div>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          </div>
+          <div>
+            <label for="input-cpf" class="input-label">CPF</label>
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+          </div>
+          <div>
+            <label for="input-telefone" class="input-label">Telefone</label>
+            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
+          </div>
+          <div>
+            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
+            <input id="input-histmed" class="input-field" type="text"
+              placeholder="Descreva o histórico médico (se houver)" />
+          </div>
+          <div>
+            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
+            <input id="input-medicamentos" class="input-field" type="text"
+              placeholder="Informe medicamentos necessários (se houver)" />
+          </div>
+          <div>
+            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
+            <input id="input-experiencia" class="input-field" type="text"
+              placeholder="Descreva a experiência (se houver)" />
+          </div>
+          <div>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <input id="input-limitacoes" class="input-field" type="text"
+              placeholder="Descreva suas limitações (se houver)" />
+          </div>
+          <div>
+            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
+            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
+              required />
+          </div>
+          <div>
+            <label for="input-email" class="input-label">E-mail</label>
+            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
+          </div>
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
+          </div>
+          <button type="submit">Criar Registro</button>
+        </form>
+      </div>
+
+      <div id="div-alunos" class="atlas-prof-box" style="display: none;">
+        <div class="prof-header">
+          <div class="prof-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchAluno" placeholder="Pesquisar Alunos">
+          </div>
+        </div>
+        <div class="div-lista-alunos">
+          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
+          <div class="prof-card">
+            <div class="prof-img">[Imagem]</div>
+            <div class="prof-info">
+              <div>Nome: [NOME]</div>
+              <div>E-mail: [EMAIL]</div>
+              <div>Telefone: [TELEFONE]</div>
+              <div>Histórico: [HISTORICO]</div>
+            </div>
+          </div>
+          <!-- ... -->
+        </div>
+
+        <button id="btn-add-aluno" class="btn-add-aluno">Adicionar Alunos</button>
 
         <div class="pai-botoes">
           <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
@@ -180,7 +296,7 @@
         <div class="admin-header">
           <div class="admin-search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchAluno" placeholder="Pesquisar Professor">
+            <input type="text" id="searchAluno" placeholder="Pesquisar Administrador">
           </div>
         </div>
         <div class="div-lista-administrador">
@@ -203,37 +319,6 @@
           <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
           <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
-      </div>
-
-      <div id="div-administradores" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Administradores</h2>
-          <div>
-            <label for="input-nome" class="input-label">Nome Completo</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
-          </div>
-          <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
-          </div>
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
-          </div>
-          <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-email" class="input-label">E-mail</label>
-            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
-          </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
-        </form>
       </div>
 
 
@@ -438,62 +523,6 @@
         </form>
       </div>
       <!-- MUDANÇAS ACABAM AQUI -->
-
-      <div id="div-personais" style="display: none;" class="atlas-bio-box">
-        <form>
-          <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
-          <div>
-            <label for="input-nome" class="input-label">Nome Completo</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
-          </div>
-          <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
-          </div>
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
-          </div>
-          <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone" class="input-field" type="text" placeholder="Ex: 5518999998888" required />
-          </div>
-          <div>
-            <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text"
-              placeholder="Descreva o histórico médico (se houver)" />
-          </div>
-          <div>
-            <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
-            <input id="input-medicamentos" class="input-field" type="text"
-              placeholder="Informe medicamentos necessários (se houver)" />
-          </div>
-          <div>
-            <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text"
-              placeholder="Descreva a experiência (se houver)" />
-          </div>
-          <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text"
-              placeholder="Descreva suas limitações (se houver)" />
-          </div>
-          <div>
-            <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
-            <input id="input-objetivo" class="input-field" type="text" placeholder="Descreva o objetivo com a academia"
-              required />
-          </div>
-          <div>
-            <label for="input-email" class="input-label">E-mail</label>
-            <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
-          </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
-        </form>
-      </div>
 
       <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
         <form>

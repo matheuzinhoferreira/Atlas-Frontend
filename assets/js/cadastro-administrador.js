@@ -6,7 +6,7 @@ class GerenciadorCadastroAdmin {
 
   initEventListeners() {
     $(document).ready(() => {
-      $('#div-administradores form').on('submit', (e) => {
+      $('#div-administradores2 form').on('submit', (e) => {
         e.preventDefault();
         this.cadastrarAdmin();
       });
@@ -48,7 +48,7 @@ class GerenciadorCadastroAdmin {
     this.mostrarLoading(true);
 
     $.ajax({
-      url: `${this.baseURL}/usuarios/cadastrar/admin`,
+      url: `${this.baseURL}/usuarios/cadastrar/3`,
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -68,17 +68,17 @@ class GerenciadorCadastroAdmin {
   }
 
   coletarDadosFormulario() {
-    let dataISO = $('#div-administradores #input-data').val() || '';
+    let dataISO = $('#div-administradores2 #input-data').val() || '';
     let dataSplit = dataISO ? dataISO.split('-') : ['', '', ''];
     let dataBR = dataSplit.length === 3 ? `${dataSplit[2]}/${dataSplit[1]}/${dataSplit[0]}` : '';
 
     return {
-      nome: ($('#div-administradores #input-nome').val() || '').trim(),
+      nome: ($('#div-administradores2 #input-nome').val() || '').trim(),
       data_nascimento: dataBR,
-      cpf: ($('#div-administradores #input-cpf').val() || '').replace(/[^0-9]/g, ''),
-      telefone: ($('#div-administradores #input-telefone').val() || '').replace(/[^0-9]/g, ''),
-      email: ($('#div-administradores #input-email').val() || '').toLowerCase().trim(),
-      senha: $('#div-administradores #input-senha').val() || ''
+      cpf: ($('#div-administradores2 #input-cpf').val() || '').replace(/[^0-9]/g, ''),
+      telefone: ($('#div-administradores2 #input-telefone').val() || '').replace(/[^0-9]/g, ''),
+      email: ($('#div-administradores2 #input-email').val() || '').toLowerCase().trim(),
+      senha: $('#div-administradores2 #input-senha').val() || ''
     };
   }
 
@@ -129,7 +129,7 @@ class GerenciadorCadastroAdmin {
   }
 
   mostrarLoading(estado) {
-    const botao = $('#div-administradores button[type="submit"]');
+    const botao = $('#div-administradores2 button[type="submit"]');
     if (estado) {
       botao.prop('disabled', true).text('Cadastrando...');
     } else {
@@ -191,7 +191,7 @@ class GerenciadorCadastroAdmin {
   }
 
   limparFormulario() {
-    $('#div-administradores form')[0].reset();
+    $('#div-administradores2 form')[0].reset();
   }
 
   redirecionarLogin() {
