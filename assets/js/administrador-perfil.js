@@ -77,7 +77,7 @@ $(document).on('click', '#nav-alunos', function () {
   $('.atlas-alunos-box').hide();
   $('.div-lista-professores').hide();
   $('#div-professores').hide();
-    $('#div-administradores').hide();
+  $('#div-administradores').hide();
   $('.div-alunos').show();
 });
 
@@ -151,14 +151,14 @@ $(document).on('click', '#btn-add-aluno', function () {
 
 
 $(document).ready(function () {
-  const API_BASE = "http://10.92.3.214:5000";
-  const $alunosGrid = $(".div-lista-professores");
-  const $btnLeft = $(".btn-voltar-professor").first();
-  const $btnRight = $(".btn-voltar-professor").last();
+  const API_BASE = "http://10.92.3.156:5000";
+  const $alunosGrid = $(".div-lista-alunos");
+  const $btnLeft = $(".btn-voltar-alunos").first();
+  const $btnRight = $(".btn-voltar-alunos").last();
 
   let paginaAtual = 1;
   const maxPorPagina = 8;
-  let tipoFiltro = 2; // Tipo 1 para alunos
+  let tipoFiltro = 1; // Tipo 1 para alunos
 
   // Função para criar o card de usuário
   function montarCardUsuario(usuario) {
@@ -230,7 +230,7 @@ $(document).ready(function () {
   // Função para buscar dados completos do usuário pelo id
   async function buscarDadosUsuarioDetalhado(idUsuario) {
     const token = localStorage.getItem("jwt-token-atlas");
-    const url = `http://10.92.3.214:5000/usuarios/info/${idUsuario}/3`;
+    const url = `http://10.92.3.156:5000/usuarios/info/${idUsuario}/3`;
     try {
       const resposta = await fetch(url, {
         method: "GET",
@@ -306,3 +306,87 @@ $(document).ready(function () {
   carregarPagina(1, tipoFiltro);
 });
 ;
+$(document).ready(function () {
+  $('#searchAluno').on('input', function () {
+    const termo = $(this).val().toLowerCase().trim();
+
+    // Para cada card aluno dentro da grid
+    $('.alunos-grid .aluno-card').each(function () {
+      // Captura todo o texto do card (nome, email, telefone, histórico)
+      const textoCard = $(this).text().toLowerCase();
+
+      // Mostra se o termo pesquisa existir no card, esconde se não
+      if (textoCard.indexOf(termo) !== -1) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+});
+
+$(document).ready(function () {
+  // Quando clicar em qualquer card de aluno
+  $(document).on('click', '.aluno-card', function () {
+    const $card = $(this);
+    const id = $card.data('id');
+
+    const nome = $card.find('.aluno-info div').eq(0).text().replace('Nome: ', '');
+    const email = $card.find('.aluno-info div').eq(1).text().replace('E-mail: ', '');
+    const telefone = $card.find('.aluno-info div').eq(2).text().replace('Telefone: ', '');
+    const historico = $card.find('.aluno-info div').eq(3).text().replace('Histórico: ', '');
+
+    // Aqui você usaria os dados reais do banco ao invés dos que estão no card, mas vou seguir seu exemplo
+    // Exemplo de dados. Substitua pelo seu objeto de usuário real que busca do banco.
+    let usuarioDetalhe = {
+      email: email,
+      tipo: 1, // ou outro valor
+      telefone: telefone,
+      descricao_medicamentos: '', // se vazio, exibe "Nenhum"
+      descricao_limitacoes: '',   // se vazio, exibe "Nenhuma"
+      descricao_objetivos: '',    // se vazio, exibe ""
+      descricao_treinamentos_anteriores: '' // se vazio, exibe "Nenhuma"
+    }
+
+    const $div = $('#div-info-usuario');
+
+    $div.find('.info-usuario-img').text('[Imagem]');
+    $div.find('.info-usuario-item:contains("E-mail:") span').text(usuarioDetalhe.email);
+    $div.find('.info-usuario-item:contains("[TIPO]")').text(
+      usuarioDetalhe.tipo == 1 ? 'Aluno' :
+        usuarioDetalhe.tipo == 2 ? 'Personal' :
+          usuarioDetalhe.tipo == 3 ? 'Admin' :
+            ''
+    );
+    $div.find('.info-usuario-item:contains("Telefone:") span').text(usuarioDetalhe.telefone);
+
+    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+
+
+    // Para Medicamentos
+    let medicamentos = usuarioDetalhe.descricao_medicamentos.trim();
+    if (medicamentos === '') medicamentos = 'Nenhum';
+
+    // Para Limitações
+    let limitacoes = usuarioDetalhe.descricao_limitacoes.trim();
+    if (limitacoes === '') limitacoes = 'Nenhuma';
+
+    // Para Objetivos
+    let objetivos = usuarioDetalhe.descricao_objetivos.trim();
+    if (objetivos === '') objetivos = 'Nenhum';
+
+    // Para Experiência anterior
+    let experiencia = usuarioDetalhe.descricao_treinamentos_anteriores.trim();
+    if (experiencia === '') experiencia = 'Nenhuma';
+
+    $div.find('.info-usuario-item:contains("Medicamentos:") span').text(medicamentos);
+    $div.find('.info-usuario-item:contains("Limitações:") span').text(limitacoes);
+    $div.find('.info-usuario-item:contains("Objetivos:") span').text(objetivos);
+    $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(experiencia);
+
+
+
+    // Mostrar a div
+    $div.show();
+  });
+});
