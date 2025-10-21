@@ -2,7 +2,7 @@ async function trazerCampos(id) {
     try {
         const token = localStorage.getItem("jwt-token-atlas")
 
-        const resposta = await fetch("http://10.92.3.214:5000/usuarios/info/" + id + "/admin", {
+        const resposta = await fetch(`${window.apiBase.ip}/usuarios/info/${id}/3`, {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -36,7 +36,7 @@ async function enviarCampos() {
             "E-mail": document.getElementById("input-email").value
         };
 
-        const resposta = await fetch("http://10.92.3.214:5000/usuarios/" + id + "editar/admin", {
+        const resposta = await fetch(`${window.apiBase.ip}/usuarios/${id}/editar/3`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

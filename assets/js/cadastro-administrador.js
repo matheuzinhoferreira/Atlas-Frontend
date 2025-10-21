@@ -1,6 +1,6 @@
 class GerenciadorCadastroAdmin {
   constructor() {
-    this.baseURL = 'http://10.92.3.214:5000'; // ajuste conforme seu backend
+    this.baseURL = window.apiBase.ip; // ajuste conforme seu backend
     this.initEventListeners();
   }
 

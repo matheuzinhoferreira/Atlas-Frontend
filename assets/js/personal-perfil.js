@@ -119,7 +119,7 @@ $(document).on('click', '#div-exercicios.btn-editar', function () {
 
 
 $(document).ready(function () {
-  const API_BASE = "http://10.92.3.214:5000";
+  const API_BASE = window.apiBase.ip;
   const $alunosGrid = $(".alunos-grid");
   const $btnLeft = $(".btn-voltar-aluno").first();
   const $btnRight = $(".btn-voltar-aluno").last();

@@ -1,7 +1,7 @@
 // Sistema de login JWT para Personal/Admin - Atlas Gym - VERSÃO DEBUG
 class SistemaLoginPersonal {
     constructor() {
-        this.baseURL = 'http://10.92.3.214:5000';
+        this.baseURL = window.apiBase.ip;
         this.initEventListeners();
         this.verificarUsuarioLogado();
     }

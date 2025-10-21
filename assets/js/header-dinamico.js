@@ -197,7 +197,7 @@ class HeaderDinamico {
         if (token) {
             // Chamar API de logout
             $.ajax({
-                url: 'http://10.92.3.214:5000/logout',
+                url: `${window.apiBase.ip}/logout`,
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`
