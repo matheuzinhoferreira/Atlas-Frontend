@@ -309,11 +309,6 @@
             <input id="input-email-edita" class="input-field" type="email" />
           </div>
 
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha-edita" class="input-field" type="password" />
-          </div>
-
           <input type="hidden" id="input-id-edita" name="">
           <button onclick="excluirUsuario()" type="button" id="btn-deletar">Deletar Usuário
           </button>
@@ -389,7 +384,7 @@
 
 
       <div id="div-abrir-exercicios" style="display: none;" class="atlas-bio-box">
-        <form id="form-exercicio">
+        <form id="form-exercicio1">
           <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
           <div>
             <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
@@ -440,8 +435,8 @@
       </div>
 
       <div id="div-editar-exercicios" style="display: none;" class="atlas-bio-box">
-        <form id="form-exercicio">
-          <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
+        <form id="form-exercicio2">
+          <h2 class="atlas-bio-title">Edição de Exercícios</h2>
           <div>
             <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
             <input id="input-nome-exerc" class="input-field" type="text" required placeholder="Supino reto" />
@@ -486,7 +481,7 @@
             <input id="input-video" class="input-field" type="text"
               placeholder="https://www.youtube.com/user/NomeDoCanal" />
           </div>
-          <button type="submit">Criar Exercício</button>
+          <button id="btn-concluir-edicao" type="submit">Editar Exercício</button>
         </form>
       </div>
 
