@@ -119,14 +119,16 @@ $(document).on('click', '#btn-voltar-professor', function () {
 $(document).on('click', 'div.aluno-card', function () {
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
-  $('#div-info-alunos').show();
+  $('#div-info-alunos').hide();
+  $('#div-edit-usuarios').show();
 });
 
 $(document).on('click', '.aluno-card', function () {
   $('.atlas-bio-box').hide();
-  $('#div-edit-usuarios').show();
   $('.atlas-alunos-box2').hide();
   $('#div-alunos').hide();
+  $('#div-info-usuarios').hide();
+  $('#div-edit-usuarios').show(); 
 });
 
 $(document).on('click', '#btn-gerenciar', function () {
