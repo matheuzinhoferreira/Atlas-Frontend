@@ -277,27 +277,6 @@
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
             <input id="input-telefone-edita" class="input-field" type="text" />
-            <script>
-              const inputTelefone = document.getElementById("input-telefone-edita");
-
-                inputTelefone.addEventListener("input", (e) => {
-                  let valor = e.target.value.replace(/\D/g, " "); 
-
-                  if (valor.length > 13) valor = valor.slice(0, 13);
-
-                  if (valor.length <= 2) {
-                    e.target.value = `+${valor}`;
-                  } else if (valor.length <= 4) {
-                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2)}`;
-                  } else if (valor.length <= 9) {
-                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4)}`;
-                  } else {
-                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4, 9)}-${valor.slice(9)}`;
-                  }
-                });
-
-            </script>
-            
           </div>
 
           <div>
@@ -328,6 +307,11 @@
           <div>
             <label for="input-email" class="input-label">E-mail</label>
             <input id="input-email-edita" class="input-field" type="email" />
+          </div>
+
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha-edita" class="input-field" type="password" />
           </div>
 
           <input type="hidden" id="input-id-edita" name="">

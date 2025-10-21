@@ -2,7 +2,7 @@ async function trazerCampos(id) {
     try {
         const token = localStorage.getItem("jwt-token-atlas")
 
-        const resposta = await fetch("http://192.168.1.119:5000/usuarios/info/" + id + "/2", {
+        const resposta = await fetch("http://10.92.3.214:5000/usuarios/info/" + id + "/personal", {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -11,16 +11,16 @@ async function trazerCampos(id) {
 
         console.log(dados.dados)
 
-        document.getElementById("input-nome-edita").value = dados.dados["nome"];
-        document.getElementById("input-data-edita").value = dados.dados["data_nascimento"];
-        document.getElementById("input-cpf-edita").value = dados.dados["cpf"];
-        document.getElementById("input-telefone-edita").value = dados.dados["telefone"];
-        document.getElementById("input-histmed-edita").value = dados.dados["historico_medico_relevante"];
-        document.getElementById("input-medicamentos-edita").value = dados.dados["descricao_medicamentos"];
-        document.getElementById("input-limitacoes-edita").value = dados.dados["descricao_limitacoes"];
-        document.getElementById("input-objetivo-edita").value = dados.dados["descricao_objetivos"];
-        document.getElementById("input-experiencia-edita").value = dados.dados["descricao_treinamentos_anteriores"];
-        document.getElementById("input-email-edita").value = dados.dados["email"];
+        document.getElementById("input-nome-edita").value = dados.dados["Nome"];
+        document.getElementById("input-data-edita").value = dados.dados["Data_de_Nascimento"];
+        document.getElementById("input-cpf-edita").value = dados.dados["CPF"];
+        document.getElementById("input-telefone-edita").value = dados.dados["Telefone"];
+        document.getElementById("input-histmed-edita").value = dados.dados["Histórico Médico Relevante"];
+        document.getElementById("input-medicamentos-edita").value = dados.dados["Descrição de medicamentos"];
+        document.getElementById("input-limitacoes-edita").value = dados.dados["Descrição de limitações"];
+        document.getElementById("input-objetivo-edita").value = dados.dados["Descrição de Objetivos"];
+        document.getElementById("input-experiencia-edita").value = dados.dados["Experiência Anterior com Academia"];
+        document.getElementById("input-email-edita").value = dados.dados["E-mail"];
 
 
         document.getElementById("div-edit-usuarios").style.display = "block";
@@ -33,17 +33,17 @@ async function trazerCampos(id) {
 }
 async function enviarCampos() {
     try {
+
+        // let telefone = document.getElementById("input-telefone-edita").value
+        // telefone = telefone.replaceAll("+", "")
+
         const token = localStorage.getItem("jwt-token-atlas");
         const id = document.getElementById("input-id-edita").value;
-
-        console.log("ID:", id);
-        console.log("Token:", token ? "encontrado" : "faltando");
-
         const dadosAtualizados = {
             "nome": document.getElementById("input-nome-edita").value,
             "data_nascimento": document.getElementById("input-data-edita").value,
             "cpf": document.getElementById("input-cpf-edita").value,
-            "telefone": document.getElementById("input-telefone-edita").value.replace(/\D/g, ''),
+            "telefone": document.getElementById("input-telefone-edita").value,
             "historico_medico_relevante": document.getElementById("input-histmed-edita").value,
             "descricao_medicamentos": document.getElementById("input-medicamentos-edita").value,
             "descricao_limitacoes": document.getElementById("input-limitacoes-edita").value,
@@ -52,9 +52,7 @@ async function enviarCampos() {
             "email": document.getElementById("input-email-edita").value
         };
 
-        console.log("Body enviado:", dadosAtualizados);
-
-        const resposta = await fetch(`http://192.168.1.119:5000/usuarios/${id}/editar/2`, {
+        const resposta = await fetch("http://10.92.3.214:5000/usuarios/" + id + "/editar/personal", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -62,10 +60,6 @@ async function enviarCampos() {
             },
             body: JSON.stringify(dadosAtualizados)
         });
-
-        const respostaTexto = await resposta.text();
-        console.log("Status:", resposta.status);
-        console.log("Resposta do servidor:", respostaTexto);
 
         if (!resposta.ok) throw new Error("Erro ao enviar alterações");
 
@@ -75,3 +69,4 @@ async function enviarCampos() {
         alert("Falha ao atualizar dados.");
     }
 }
+
