@@ -20,6 +20,7 @@
   <script src="assets/js/personal-perfil.js"></script>
   <script src="assets/js/header-dinamico.js"></script>
   <script src="assets/js/administrador-perfil.js"></script>
+  <script src="assets/js/editarexcluir-alunoporadm.js"> </script>
   </script>
 </head>
 
@@ -88,11 +89,11 @@
           <!-- ... -->
         </div>
 
-        <button id="btn-add-professor" class="btn-add-aluno">Adicionar Professor</button>
+        <button id="btn-add-professor" class="btn-add-prof">Adicionar Professor</button>
 
         <div class="pai-botoes">
-          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
-          <button id="" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-right"></i></button>
+          <button id="" class="btn-voltar-professor"><i class="fa-solid fa-arrow-left"></i></button>
+          <button id="" class="btn-voltar-professor"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
@@ -109,7 +110,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -140,7 +142,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -162,7 +165,7 @@
               placeholder="Descreva a experiência (se houver)" />
           </div>
           <div>
-            <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
+            <label for="input-limitacoes" class="input-label">Quais são suas limitações?</label>
             <input id="input-limitacoes" class="input-field" type="text"
               placeholder="Descreva suas limitações (se houver)" />
           </div>
@@ -183,7 +186,7 @@
         </form>
       </div>
 
-      <div id="div-alunos" class="atlas-prof-box" style="display: none;">
+      <div id="div-alunos" class="atlas-alunos1-box" style="display: none;">
         <div class="prof-header">
           <div class="prof-search">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -191,17 +194,16 @@
           </div>
         </div>
         <div class="div-lista-alunos">
-          <!-- Exemplo de cartão de aluno, repita para cada aluno dinamicamente -->
-          <div class="prof-card">
-            <div class="prof-img">[Imagem]</div>
-            <div class="prof-info">
+          <!-- Exemplo de cartão de aluno -->
+          <div class="aluno-card">
+            <div class="aluno-img">[Imagem]</div>
+            <div class="aluno-info">
               <div>Nome: [NOME]</div>
               <div>E-mail: [EMAIL]</div>
               <div>Telefone: [TELEFONE]</div>
               <div>Histórico: [HISTORICO]</div>
             </div>
           </div>
-          <!-- ... -->
         </div>
 
         <button id="btn-add-aluno" class="btn-add-aluno">Adicionar Alunos</button>
@@ -266,7 +268,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -358,7 +361,7 @@
       </div>
 
       <!-- MUDANÇAS COMEÇAM AQUI -->
-      <!-- listagem dos professores -->
+      <!-- listagem dos professores
       <div id="div-info-usuario" class="atlas-professores-box2" style="display:none;">
         <div class="info-usuario-flex">
           <div class="info-usuario-col-esq">
@@ -383,7 +386,88 @@
       </div>
 
       <div id="div-edit-usuarios" style="display: none;" class="atlas-bio-box">
+          <button id="btn-voltar-aluno" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
+          <form>
+            <h2 class="atlas-bio-title">Edição de Aluno</h2>
+          
+            <div>
+              <label for="input-nome" class="input-label">Nome Completo</label>
+              <input id="input-nome-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-data" class="input-label">Data de Nascimento</label>
+              <input id="input-data-edita" class="input-field" type="date" />
+            </div>
+          
+            <div>
+              <label for="input-cpf" class="input-label">CPF</label>
+              <input id="input-cpf-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-telefone" class="input-label">Telefone</label>
+              <input id="input-telefone-edita" class="input-field" type="text" />
+              <script>
+                const inputTelefone = document.getElementById("input-telefone-edita");
 
+                inputTelefone.addEventListener("input", (e) => {
+                  let valor = e.target.value.replace(/\D/g, '');
+
+                  if (valor.length > 13) valor = valor.slice(0, 13);
+
+                  if (valor.length <= 2) {
+                    e.target.value = `+${valor}`;
+                  } else if (valor.length <= 4) {
+                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2)}`;
+                  } else if (valor.length <= 9) {
+                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4)}`;
+                  } else {
+                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4, 9)}-${valor.slice(9)}`;
+                  }
+                });
+
+              </script>
+          
+            </div>
+          
+            <div>
+              <label for="input-histmed" class="input-label">Histórico Médico</label>
+              <input id="input-histmed-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-medicamentos" class="input-label">Medicamentos</label>
+              <input id="input-medicamentos-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-limitacoes" class="input-label">Limitações</label>
+              <input id="input-limitacoes-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-objetivo" class="input-label">Objetivos</label>
+              <input id="input-objetivo-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-experiencia" class="input-label">Experiência Anterior</label>
+              <input id="input-experiencia-edita" class="input-field" type="text" />
+            </div>
+          
+            <div>
+              <label for="input-email" class="input-label">E-mail</label>
+              <input id="input-email-edita" class="input-field" type="email" />
+            </div>
+          
+            <input type="hidden" id="input-id-edita" name="">
+            <button onclick="excluirUsuario()" type="button" id="btn-deletar">Deletar Usuário
+            </button>
+            <button onclick="enviarCampos()" type="button" id="btn-atualizar"> Atualizar Dados</button>
+          
+          </form>
+          </div>
         <button id="btn-voltar-professor" class="btn-voltar-professor"><i class="fa-solid fa-arrow-left"></i></button>
         <form>
           <h2 class="atlas-bio-title">Edição de Personal</h2>
@@ -430,15 +514,15 @@
 
           <button type="button" id="btn-atualizar">Atualizar Dados</button>
         </form>
-      </div>
+      </div> -->
 
       <!-- listagem de alunos -->
-      <div id="div-info-usuario" class="atlas-professores-box2" style="display:none;">
+      <div id="div-info-alunos" class="atlas-alunos-box2" style="display:none;">
         <div class="info-usuario-flex">
           <div class="info-usuario-col-esq">
             <div class="info-usuario-img">[Imagem]</div>
             <button id="btn-gerenciar" class="btn-plano-info">Gerenciar planos</button>
-            <button id="btn-edit-usuario" class="btn-edit-usuario">Editar Usuário</button>
+            <button id="btn-edit-alunos" class="btn-edit-alunos">Editar Usuário</button>
           </div>
           <div class="info-usuario-col-dir">
             <div class="info-usuario-item">Nome: <span>[NOME]</span></div>
@@ -458,9 +542,10 @@
         </div>
       </div>
 
+
       <div id="div-edit-usuarios" style="display: none;" class="atlas-bio-box">
 
-        <button id="btn-voltar-professor" class="btn-voltar-professor"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="btn-voltar-aluno" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
         <form>
           <h2 class="atlas-bio-title">Edição de Aluno</h2>
 
@@ -482,6 +567,27 @@
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
             <input id="input-telefone-edita" class="input-field" type="text" />
+            <!-- <script>
+              const inputTelefone = document.getElementById("input-telefone-edita");
+
+              inputTelefone.addEventListener("input", (e) => {
+                let valor = e.target.value.replace(/\D/g, '');
+
+                if (valor.length > 13) valor = valor.slice(0, 13);
+
+                if (valor.length <= 2) {
+                  e.target.value = `+${valor}`;
+                } else if (valor.length <= 4) {
+                  e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2)}`;
+                } else if (valor.length <= 9) {
+                  e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4)}`;
+                } else {
+                  e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4, 9)}-${valor.slice(9)}`;
+                }
+              });
+
+            </script> -->
+
           </div>
 
           <div>
@@ -514,12 +620,11 @@
             <input id="input-email-edita" class="input-field" type="email" />
           </div>
 
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha-edita" class="input-field" type="password" />
-          </div>
+          <input type="hidden" id="input-id-edita" name="">
+          <button onclick="excluirUsuario()" type="button" id="btn-deletar">Deletar Usuário
+          </button>
+          <button onclick="enviarCampos()" type="button" id="btn-atualizar"> Atualizar Dados</button>
 
-          <button type="button" id="btn-atualizar">🔄 Atualizar Dados</button>
         </form>
       </div>
       <!-- MUDANÇAS ACABAM AQUI -->
@@ -537,7 +642,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -545,8 +651,8 @@
           </div>
           <div>
             <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
-              required />
+            <input id="input-histmed" class="input-field" type="text"
+              placeholder="Descreva o histórico médico (se houver)" required />
           </div>
           <div>
             <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
@@ -555,13 +661,13 @@
           </div>
           <div>
             <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
-              required />
+            <input id="input-experiencia" class="input-field" type="text"
+              placeholder="Descreva a experiência (se houver)" required />
           </div>
           <div>
             <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
-              required />
+            <input id="input-limitacoes" class="input-field" type="text"
+              placeholder="Descreva suas limitações (se houver)" required />
           </div>
           <div>
             <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
@@ -581,7 +687,7 @@
 
       </div>
 
-    
+
       <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
         <form>
           <h2 class="atlas-bio-title">Cadastro de Alunos</h2>
@@ -595,7 +701,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -603,8 +710,8 @@
           </div>
           <div>
             <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
-              required />
+            <input id="input-histmed" class="input-field" type="text"
+              placeholder="Descreva o histórico médico (se houver)" required />
           </div>
           <div>
             <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
@@ -613,13 +720,13 @@
           </div>
           <div>
             <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
-              required />
+            <input id="input-experiencia" class="input-field" type="text"
+              placeholder="Descreva a experiência (se houver)" required />
           </div>
           <div>
             <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
-              required />
+            <input id="input-limitacoes" class="input-field" type="text"
+              placeholder="Descreva suas limitações (se houver)" required />
           </div>
           <div>
             <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
@@ -639,7 +746,7 @@
 
       </div>
 
-      
+
 
       <div id="div-relatorios" style="display: none;" class="atlas-bio-box">
         <form>
@@ -654,7 +761,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -662,8 +770,8 @@
           </div>
           <div>
             <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
-              required />
+            <input id="input-histmed" class="input-field" type="text"
+              placeholder="Descreva o histórico médico (se houver)" required />
           </div>
           <div>
             <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
@@ -672,13 +780,13 @@
           </div>
           <div>
             <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
-              required />
+            <input id="input-experiencia" class="input-field" type="text"
+              placeholder="Descreva a experiência (se houver)" required />
           </div>
           <div>
             <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
-              required />
+            <input id="input-limitacoes" class="input-field" type="text"
+              placeholder="Descreva suas limitações (se houver)" required />
           </div>
           <div>
             <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>
@@ -711,7 +819,8 @@
           </div>
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)" required />
+            <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"
+              required />
           </div>
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
@@ -719,8 +828,8 @@
           </div>
           <div>
             <label for="input-histmed" class="input-label">Possui algum histórico médico relevante?</label>
-            <input id="input-histmed" class="input-field" type="text" placeholder="Descreva o histórico médico (se houver)"
-              required />
+            <input id="input-histmed" class="input-field" type="text"
+              placeholder="Descreva o histórico médico (se houver)" required />
           </div>
           <div>
             <label for="input-medicamentos" class="input-label">Necessita de medicamento?</label>
@@ -729,13 +838,13 @@
           </div>
           <div>
             <label for="input-experiencia" class="input-label">Possui alguma experiência com a academia?</label>
-            <input id="input-experiencia" class="input-field" type="text" placeholder="Descreva a experiência (se houver)"
-              required />
+            <input id="input-experiencia" class="input-field" type="text"
+              placeholder="Descreva a experiência (se houver)" required />
           </div>
           <div>
             <label for="input-limitacoes" class="input-label">Quais são suas limitações</label>
-            <input id="input-limitacoes" class="input-field" type="text" placeholder="Descreva suas limitações (se houver)"
-              required />
+            <input id="input-limitacoes" class="input-field" type="text"
+              placeholder="Descreva suas limitações (se houver)" required />
           </div>
           <div>
             <label for="input-objetivo" class="input-label">Qual é o seu objetivo?</label>

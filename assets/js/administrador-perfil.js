@@ -32,26 +32,55 @@ $(document).ready(function () {
     // Aplica ativo no link clicado
     $(this).addClass('ativo');
 
-    // Esconde todas as divs pai 'atlas-bio-box'
+    // Escondendo todas as divs pai 'atlas-bio-box'
     $('.atlas-bio-box').hide();
     $('.atlas-alunos-box').hide();
-    $('#div-info-usuario').hide();
+    $('#div-info-alunos').hide();
     $('#div-lista-exer').hide();
     $('#div-edit-usuario').hide();
     $('#div-professores').hide();
 
 
-    // Mostra a div correspondente pelo id do link clicado
-    let idLink = $(this).attr('id'); // exemplo: nav-alunos
-    let idDiv = idLink.replace('nav-', 'div-'); // exemplo: div-alunos
+    // Mostrando a div correspondente pelo id do link clicado
+    let idLink = $(this).attr('id');
+    let idDiv = idLink.replace('nav-', 'div-');
 
     $('#' + idDiv).show();
   });
 
-  // Link voltar navega para a index.html
   $('#nav-voltar').on('click', function () {
     window.location.href = 'index.html';
   });
+});
+
+$(document).on('click', '#nav-minhaconta', function () {
+  $('.atlas-alunos1-box').hide();
+  $('.atlas-prof-box').hide()
+  $('.atlas-admin-box').hide();
+  $('#div-minhaconta').show();
+});
+
+// $(document).on('click', '#div-alunos', function () {
+//   $('#div-info-usuario').show();
+//   $('.atlas-alunos1-box').hide();
+// });
+
+$(document).on('click', '#nav-relatorios', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-abrir-alunos').hide();
+  $('#div-alunos').hide();
+  $('#div-administradores').hide();
+  $('#div-professores').hide();
+});
+
+$(document).on('click', '#nav-punicoes', function () {
+  $('.atlas-bio-box').hide();
+  $('.atlas-alunos-box').hide();
+  $('#div-abrir-alunos').hide();
+  $('#div-alunos').hide();
+  $('#div-administradores').hide();
+  $('#div-professores').hide();
 });
 
 $(document).on('click', '#nav-professores', function () {
@@ -77,26 +106,30 @@ $(document).on('click', '#nav-alunos', function () {
   $('.atlas-alunos-box').hide();
   $('.div-lista-professores').hide();
   $('#div-professores').hide();
-    $('#div-administradores').hide();
+  $('#div-administradores').hide();
   $('.div-alunos').show();
 });
 
 $(document).on('click', '#btn-voltar-professor', function () {
-  // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('#div-alunos').show();
 });
 
 $(document).on('click', 'div.aluno-card', function () {
-  // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
-  $('#div-info-usuario').show();
+  $('#div-info-alunos').show();
+});
+
+$(document).on('click', '.aluno-card', function () {
+  $('.atlas-bio-box').hide();
+  $('#div-edit-usuarios').show();
+  $('.atlas-alunos-box2').hide();
+  $('#div-alunos').hide();
 });
 
 $(document).on('click', '#btn-gerenciar', function () {
-  // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('.atlas-professores-box2').hide();
@@ -104,20 +137,18 @@ $(document).on('click', '#btn-gerenciar', function () {
   $('#div-lista-exer').show();
 });
 
-
-$(document).on('click', '#btn-edit-usuario', function () {
-  // Esconde todas as divs de box e mostra a lista de alunos
+$(document).on('click', '#btn-edit-alunos', function () {
   $('.atlas-bio-box').hide();
-  $('.atlas-alunos-box').hide();
+  $('.atlas-alunos-box2').hide();
   $('.atlas-professores-box2').hide();
   $('.div-lista-professores').hide();
   $('.div-lista-exer').hide();
   $('#div-lista-exer').hide();
+  $('#div-info-prof').hide();
   $('#div-edit-usuarios').show();
 });
 
 $(document).on('click', '#btn-add-exer', function () {
-  // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('.atlas-professores-box2').hide();
@@ -144,23 +175,28 @@ $(document).on('click', '#btn-add-aluno', function () {
   $('.atlas-bio-box').hide();
   $('.atlas-prof-box').hide();
   $('#div-administradores').hide();
+  $('#div-alunos').hide();
   $('#div-abrir-alunos').show();
+
 });
 
+$(document).on('click', '#btn-voltar-alunos', function () {
+  $('#div-edit-usuarios').hide()
+  $('#div-alunos').show();
+});
 
-
-
+// ALUNO
 $(document).ready(function () {
   const API_BASE = "http://10.92.3.214:5000";
-  const $alunosGrid = $(".div-lista-professores");
-  const $btnLeft = $(".btn-voltar-professor").first();
-  const $btnRight = $(".btn-voltar-professor").last();
+  const API_BASE = "http://10.92.3.160:5000";
+  const $btnLeft = $(".btn-voltar-alunos").first();
+  const $btnRight = $(".btn-voltar-alunos").last();
 
   let paginaAtual = 1;
   const maxPorPagina = 8;
-  let tipoFiltro = 2; // Tipo 1 para alunos
+  let tipoFiltro = 1; // alunos
 
-  // Função para criar o card de usuário
+  // Criando o card de usuário
   function montarCardUsuario(usuario) {
     let id = usuario[0] || "";
     let nome = usuario[1] || "";
@@ -174,9 +210,9 @@ $(document).ready(function () {
 
 
     return $(`
-    <div class="prof-card" onclick="trazerCampos(${id})" data-id="${id}">
-      <div class="prof-img">[Imagem]</div>
-      <div class="prof-info">
+    <div class="aluno-card" onclick="trazerCampos(${id})" data-id="${id}">
+      <div class="aluno-img">[Imagem]</div>
+      <div class="aluno-info">
         <div>Nome: ${nome}</div>
         <div>E-mail: ${email}</div>
         <div>Telefone: ${telefone}</div>
@@ -260,7 +296,7 @@ $(document).ready(function () {
       alert("Não foi possível carregar detalhes do usuário.");
       return;
     }
-    const $div = $('#div-info-usuario');
+    const $div = $('#div-info-alunos');
 
     $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
     $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
@@ -306,3 +342,81 @@ $(document).ready(function () {
   carregarPagina(1, tipoFiltro);
 });
 ;
+$(document).ready(function () {
+  $('#searchAluno').on('input', function () {
+    const termo = $(this).val().toLowerCase().trim();
+
+    // Para cada card aluno dentro da grid
+    $('.alunos-grid .aluno-card').each(function () {
+      // Captura todo o texto do card (nome, email, telefone, histórico)
+      const textoCard = $(this).text().toLowerCase();
+
+      // Mostra se o termo pesquisa existir no card, esconde se não
+      if (textoCard.indexOf(termo) !== -1) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+});
+
+$(document).ready(function () {
+  $(document).on('click', '.aluno-card', function () {
+    const $card = $(this);
+    const id = $card.data('id');
+
+    const nome = $card.find('.aluno-info div').eq(0).text().replace('Nome: ', '');
+    const email = $card.find('.aluno-info div').eq(1).text().replace('E-mail: ', '');
+    const telefone = $card.find('.aluno-info div').eq(2).text().replace('Telefone: ', '');
+    const historico = $card.find('.aluno-info div').eq(3).text().replace('Histórico: ', '');
+
+    let usuarioDetalhe = {
+      email: email,
+      tipo: 1, //
+      telefone: telefone,
+      descricao_medicamentos: '', // se vazio, exibe "Nenhum"
+      descricao_limitacoes: '',   // se vazio, exibe "Nenhuma"
+      descricao_objetivos: '',    // se vazio, exibe ""
+      descricao_treinamentos_anteriores: '' // se vazio, exibe "Nenhuma"
+    }
+
+    const $div = $('#div-info-alunos');
+
+    $div.find('.info-usuario-img').text('[Imagem]');
+    $div.find('.info-usuario-item:contains("E-mail:") span').text(usuarioDetalhe.email);
+    $div.find('.info-usuario-item:contains("[TIPO]")').text(
+      usuarioDetalhe.tipo == 1 ? 'Aluno' :
+        usuarioDetalhe.tipo == 2 ? 'Personal' :
+          usuarioDetalhe.tipo == 3 ? 'Admin' :
+            ''
+    );
+    $div.find('.info-usuario-item:contains("Telefone:") span').text(usuarioDetalhe.telefone);
+
+    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+
+
+    // Para Medicamentos
+    let medicamentos = usuarioDetalhe.descricao_medicamentos.trim();
+    if (medicamentos === '') medicamentos = 'Nenhum';
+
+    // Para Limitações
+    let limitacoes = usuarioDetalhe.descricao_limitacoes.trim();
+    if (limitacoes === '') limitacoes = 'Nenhuma';
+
+    // Para Objetivos
+    let objetivos = usuarioDetalhe.descricao_objetivos.trim();
+    if (objetivos === '') objetivos = 'Nenhum';
+
+    // Para Experiência anterior
+    let experiencia = usuarioDetalhe.descricao_treinamentos_anteriores.trim();
+    if (experiencia === '') experiencia = 'Nenhuma';
+
+    $div.find('.info-usuario-item:contains("Medicamentos:") span').text(medicamentos);
+    $div.find('.info-usuario-item:contains("Limitações:") span').text(limitacoes);
+    $div.find('.info-usuario-item:contains("Objetivos:") span').text(objetivos);
+    $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(experiencia);
+
+    $div.show();
+  });
+});
