@@ -2,7 +2,7 @@ async function trazerCampos(id) {
     try {
         const token = localStorage.getItem("jwt-token-atlas");
 
-        const resposta = await fetch(`${window.apiBase.ip}/usuarios/info/${id}/2`, {
+        const resposta = await fetch("http://10.92.3.167:5000/usuarios/info/" + id + "/2", {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -62,7 +62,7 @@ async function enviarCampos(idUsuario, tipoLogado = 2) {
         };
 
 
-        const resposta = await fetch(`${window.apiBase.ip}/usuarios/${id}/editar/2`, {
+        const resposta = await fetch("http://10.92.3.214:5000/usuarios/" + id + "/editar/2", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -94,7 +94,6 @@ $(document).on('click', '#btn-edit-usuario', function () {
 
 $(document).on('click', '#btn-add-exer', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
-  console.log('Clicou em adicionar exercício');
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
   $('.atlas-alunos-box2').hide();
@@ -104,22 +103,10 @@ $(document).on('click', '#btn-add-exer', function () {
   $('#div-abrir-exercicios').show();
 });
 
-$(document).on('click', '#div-exercicios.btn-editar', function () {
-  // Esconde todas as divs de box e mostra a lista de alunos
-  console.log('clicou editar exer');
-  $('.atlas-bio-box').hide();
-  $('.atlas-alunos-box').hide();
-  $('.atlas-alunos-box2').hide();
-  $('.div-lista-exer').hide();
-  $('#div-lista-exer').hide();
-  $('#div-div-exercicios').hide();
-  $('#div-editar-exercicios').show();
-});
-
 
 
 $(document).ready(function () {
-  const API_BASE = window.apiBase.ip;
+  const API_BASE = "http://10.92.3.167:5000/usuarios/2";
   const $alunosGrid = $(".alunos-grid");
   const $btnLeft = $(".btn-voltar-aluno").first();
   const $btnRight = $(".btn-voltar-aluno").last();
@@ -155,14 +142,14 @@ $(document).ready(function () {
   }
 
   console.log(localStorage.getItem('jwt-token-atlas'));
-  async function carregarPagina(pagina = 1, tipo = tipoFiltro, tipoLogado = 2) {
+  async function carregarPagina(pagina = 1, tipo = tipoFiltro) {
     paginaAtual = pagina;
     $alunosGrid.empty().append('<div class="loader">Carregando...</div>');
 
     const token = localStorage.getItem("jwt-token-atlas");
 
     try {
-      const url = `${API_BASE}/usuarios/${tipoLogado}/${pagina}/${tipo}`;
+      const url = `${API_BASE}/${pagina}/${tipo}`;
       console.log('Chamando API:', url);
       console.log('Token:', token);
 
@@ -196,39 +183,40 @@ $(document).ready(function () {
   }
 
   // Função para buscar dados completos do usuário pelo id
-     async function buscarDadosUsuarioDetalhado(idUsuario, tipoLogado = 2) {
-        const token = localStorage.getItem("jwt-token-atlas");
-        const url = `${API_BASE}/usuarios/info/${idUsuario}/${tipoLogado}`;
-        try {
-            const resposta = await fetch(url, {
-                method: "GET",
-                headers: { "Authorization": `Bearer ${token}` },
-            });
-            if (!resposta.ok) {
-                throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
-            }
-            const json = await resposta.json();
-            if (json.error) {
-                throw new Error("Erro ao buscar dados do usuário: " + json.message);
-            }
-            return json.dados;
-        } catch (err) {
-            console.error(err);
-            mostrarMensagem('Erro ao carregar detalhes do usuário.', 'error');
-            return null;
-        }
+  async function buscarDadosUsuarioDetalhado(idUsuario) {
+    const token = localStorage.getItem("jwt-token-atlas");
+    const url = `http://10.92.3.167:5000/usuarios/info/${idUsuario}/personal`;
+    try {
+      const resposta = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      if (!resposta.ok) {
+        throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+      }
+      const json = await resposta.json();
+      if (json.error) {
+        throw new Error("Erro ao buscar dados do usuário");
+      }
+      return json.dados; // Dados detalhados em forma de objeto {Nome, Ativo, CPF, ...}
+    } catch (err) {
+      console.error(err);
+      return null;
     }
+  }
+
   // Evento clique no card
   $(document).on('click', '.aluno-card', async function () {
     const id = $(this).data('id');
     const dadosDetalhados = await buscarDadosUsuarioDetalhado(id);
     if (!dadosDetalhados) {
-      alert("Não foi possível carreBgar detalhes do usuário.");
+      alert("Não foi possível carregar detalhes do usuário.");
       return;
     }
     const $div = $('#div-info-usuario');
 
-    // Preencher cada campo com o valor correto do JSON detalhado da API
     $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
     $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
     $div.find('.info-usuario-item:contains("Telefone:") span').text(dadosDetalhados["Telefone"] || "");
@@ -293,5 +281,69 @@ $(document).ready(function () {
         $(this).hide();
       }
     });
+  });
+});
+
+$(document).ready(function () {
+  // Quando clicar em qualquer card de aluno
+  $(document).on('click', '.aluno-card', function () {
+    const $card = $(this);
+    const id = $card.data('id');
+
+    const nome = $card.find('.aluno-info div').eq(0).text().replace('Nome: ', '');
+    const email = $card.find('.aluno-info div').eq(1).text().replace('E-mail: ', '');
+    const telefone = $card.find('.aluno-info div').eq(2).text().replace('Telefone: ', '');
+    const historico = $card.find('.aluno-info div').eq(3).text().replace('Histórico: ', '');
+
+    let usuarioDetalhe = {
+      email: email,
+      tipo: 1, // ou outro valor
+      telefone: telefone,
+      descricao_medicamentos: '', // se vazio, exibe "Nenhum"
+      descricao_limitacoes: '',   // se vazio, exibe "Nenhuma"
+      descricao_objetivos: '',    // se vazio, exibe ""
+      descricao_treinamentos_anteriores: '' // se vazio, exibe "Nenhuma"
+    }
+
+    const $div = $('#div-info-usuario');
+
+    $div.find('.info-usuario-img').text('[Imagem]');
+    $div.find('.info-usuario-item:contains("E-mail:") span').text(usuarioDetalhe.email);
+    $div.find('.info-usuario-item:contains("[TIPO]")').text(
+      usuarioDetalhe.tipo == 1 ? 'Aluno' :
+        usuarioDetalhe.tipo == 2 ? 'Personal' :
+          usuarioDetalhe.tipo == 3 ? 'Admin' :
+            ''
+    );
+    $div.find('.info-usuario-item:contains("Telefone:") span').text(usuarioDetalhe.telefone);
+
+    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+
+
+    // Para Medicamentos
+    let medicamentos = usuarioDetalhe.descricao_medicamentos.trim();
+    if (medicamentos === '') medicamentos = 'Nenhum';
+
+    // Para Limitações
+    let limitacoes = usuarioDetalhe.descricao_limitacoes.trim();
+    if (limitacoes === '') limitacoes = 'Nenhuma';
+
+    // Para Objetivos
+    let objetivos = usuarioDetalhe.descricao_objetivos.trim();
+    if (objetivos === '') objetivos = 'Nenhum';
+
+    // Para Experiência anterior
+    let experiencia = usuarioDetalhe.descricao_treinamentos_anteriores.trim();
+    if (experiencia === '') experiencia = 'Nenhuma';
+
+    $div.find('.info-usuario-item:contains("Medicamentos:") span').text(medicamentos);
+    $div.find('.info-usuario-item:contains("Limitações:") span').text(limitacoes);
+    $div.find('.info-usuario-item:contains("Objetivos:") span').text(objetivos);
+    $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(experiencia);
+
+
+
+    // Mostrar a div
+    $div.show();
   });
 });

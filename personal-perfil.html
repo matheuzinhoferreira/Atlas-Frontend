@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="assets/js/globais.js"></script>
   <script src="assets/js/cadastro-aluno.js"></script>
   <script src="assets/js/personal-perfil.js"></script>
   <script src="assets/js/header-dinamico.js"></script>
@@ -278,6 +276,27 @@
           <div>
             <label for="input-telefone" class="input-label">Telefone</label>
             <input id="input-telefone-edita" class="input-field" type="text" />
+            <script>
+              const inputTelefone = document.getElementById("input-telefone-edita");
+
+                inputTelefone.addEventListener("input", (e) => {
+                  let valor = e.target.value.replace(/\D/g, " "); 
+
+                  if (valor.length > 13) valor = valor.slice(0, 13);
+
+                  if (valor.length <= 2) {
+                    e.target.value = `+${valor}`;
+                  } else if (valor.length <= 4) {
+                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2)}`;
+                  } else if (valor.length <= 9) {
+                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4)}`;
+                  } else {
+                    e.target.value = `+${valor.slice(0, 2)} (${valor.slice(2, 4)}) ${valor.slice(4, 9)}-${valor.slice(9)}`;
+                  }
+                });
+
+            </script>
+            
           </div>
 
           <div>
@@ -308,6 +327,11 @@
           <div>
             <label for="input-email" class="input-label">E-mail</label>
             <input id="input-email-edita" class="input-field" type="email" />
+          </div>
+
+          <div>
+            <label for="input-senha" class="input-label">Senha</label>
+            <input id="input-senha-edita" class="input-field" type="password" />
           </div>
 
           <input type="hidden" id="input-id-edita" name="">
@@ -385,7 +409,7 @@
 
 
       <div id="div-abrir-exercicios" style="display: none;" class="atlas-bio-box">
-        <form id="form-exercicio1">
+        <form id="form-exercicio">
           <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
           <div>
             <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
@@ -436,8 +460,8 @@
       </div>
 
       <div id="div-editar-exercicios" style="display: none;" class="atlas-bio-box">
-        <form id="form-exercicio2">
-          <h2 class="atlas-bio-title">Edição de Exercícios</h2>
+        <form id="form-exercicio">
+          <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
           <div>
             <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
             <input id="input-nome-exerc" class="input-field" type="text" required placeholder="Supino reto" />
@@ -482,7 +506,7 @@
             <input id="input-video" class="input-field" type="text"
               placeholder="https://www.youtube.com/user/NomeDoCanal" />
           </div>
-          <button id="btn-concluir-edicao" type="submit">Editar Exercício</button>
+          <button type="submit">Criar Exercício</button>
         </form>
       </div>
 
