@@ -42,12 +42,18 @@ async function enviarCampos(idUsuario, tipoLogado = 2) {
         const token = localStorage.getItem("jwt-token-atlas");
         const id = document.getElementById("input-id-edita").value;
 
+
+        let data = document.getElementById("input-data-edita-aluno").value; // YYYY-MM-DD
+        // transforma para DD-MM-YYYY
+        const [ano, mes, dia] = data.split("-");
+        data = `${dia}-${mes}-${ano}`;
+
         let telefone = document.getElementById("input-telefone-edita").value;
         telefone = telefone.replace(/\D/g, ""); // limpa qualquer coisa que não seja número
 
         const dadosAtualizados = {
             nome: document.getElementById("input-nome-edita").value,
-            data_nascimento: document.getElementById("input-data-edita").value,
+            data_nascimento: data,
             cpf: document.getElementById("input-cpf-edita").value,
             telefone: telefone,
             historico_medico_relevante: document.getElementById("input-histmed-edita").value,

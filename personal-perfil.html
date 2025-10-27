@@ -70,32 +70,32 @@
             <input id="input-email" class="input-field" type="email" placeholder="exemplo@dominio.com" required />
           </div>
           <div>
-            <label for="input-nome" class="input-label">Nome Completo*</label>
-            <input id="input-nome" class="input-field" type="text" placeholder="Seu nome completo" required />
+            <label for="input-nome1" class="input-label">Nome Completo*</label>
+            <input id="input-nome1" class="input-field" type="text" placeholder="Seu nome completo" required />
           </div>
           <div>
-            <label for="input-data-nasc" class="input-label">Data de Nascimento*</label>
-            <input id="input-data-nasc" class="input-field" type="date" required />
+            <label for="input-data-nasc1" class="input-label">Data de Nascimento*</label>
+            <input id="input-data-nasc1" class="input-field" type="date" required />
           </div>
           <div>
-            <label for="input-cpf" class="input-label">CPF</label>
-            <input id="input-cpf" class="input-field" type="text" placeholder="Somente números" required />
+            <label for="input-cpf1" class="input-label">CPF</label>
+            <input id="input-cpf1" class="input-field" type="text" placeholder="Somente números" required />
           </div>
           <div>
-            <label for="input-cref" class="input-label">CREF</label>
-            <input id="input-cref" class="input-field" type="text" placeholder="Seu número CREF" required />
+            <label for="input-cref1" class="input-label">CREF</label>
+            <input id="input-cref1" class="input-field" type="text" placeholder="Seu número CREF" required />
           </div>
 
           <h2 style="margin-top: 10px;" class="atlas-bio-title">Alterar senha.</h2>
 
           <div>
-            <label for="input-senha-atual" class="input-label">Senha Atual</label>
-            <input id="input-senha-atual" class="input-field" type="password" placeholder="Digite sua senha atual"
+            <label for="input-senha-atual1" class="input-label">Senha Atual</label>
+            <input id="input-senha-atual1" class="input-field" type="password" placeholder="Digite sua senha atual"
               required />
           </div>
           <div>
-            <label for="input-senha-nova" class="input-label">Senha Nova</label>
-            <input id="input-senha-nova" class="input-field" type="password" placeholder="Crie uma nova senha forte"
+            <label for="input-senha-nova1" class="input-label">Senha Nova</label>
+            <input id="input-senha-nova1" class="input-field" type="password" placeholder="Crie uma nova senha forte"
               required />
           </div>
           <button type="submit">Salvar alterações</button>
@@ -220,15 +220,15 @@
             <label for="input-email" class="input-label">E-mail</label>
             <input id="input-email" class="input-field" type="email" placeholder="seuemail@exemplo.com" required />
           </div>
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha" class="input-field" type="password" placeholder="Crie uma senha forte" required />
-          </div>
-          <button type="submit">Criar Registro</button>
+          
+        <button type="submit">Criar Registro</button>
         </form>
-      </div>
-
-      <div id="div-info-usuario" class="atlas-alunos-box2" style="display:none;">
+        </div>
+        <!-- 
+              <div id="div-info-usuario" class="atlas-alunos-box2" style="display:none;">
+                <div class="info-usuario-flex">
+                  <div class="info-usuario-col-esq">
+       <div id="div-info-usuario" class="atlas-alunos-box2" style="display:none;">
         <div class="info-usuario-flex">
           <div class="info-usuario-col-esq">
             <div class="info-usuario-img">[Imagem]</div>
@@ -251,9 +251,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div id="div-edit-usuarios" style="display: none;" class="atlas-bio-box">
+    <div id="div-edit-usuarios" style="display: none;" class="atlas-bio-box">
 
         <button id="btn-voltar-aluno" class="btn-voltar-aluno"><i class="fa-solid fa-arrow-left"></i></button>
         <form>
@@ -265,18 +265,18 @@
           </div>
 
           <div>
-            <label for="input-data" class="input-label">Data de Nascimento</label>
-            <input id="input-data-edita" class="input-field" type="date" />
-          </div>
-
-          <div>
-            <label for="input-cpf" class="input-label">CPF</label>
+            <label for="input-data" class="input-label">Data de nascimento</label>
+            <input id="input-data-edita" value="2025-10-10" class="input-field" type="date" placeholder="Selecione a data"
+              required />
+            <div>
+              <label for="input-cpf" class="input-label">CPF</label>
             <input id="input-cpf-edita" class="input-field" type="text" />
           </div>
 
           <div>
-            <label for="input-telefone" class="input-label">Telefone</label>
-            <input id="input-telefone-edita" class="input-field" type="text" />
+      <div>
+        <label for="input-telefone" class="input-label">Telefone</label>
+        <input id="input-telefone-edita" class="input-field" type="text" placeholder="Ex: 5511999887766" maxlength="13" />
             <script>
               // const inputTelefone = document.getElementById("input-telefone-edita");
 
@@ -330,15 +330,11 @@
             <input id="input-email-edita" class="input-field" type="email" />
           </div>
 
-          <div>
-            <label for="input-senha" class="input-label">Senha</label>
-            <input id="input-senha-edita" class="input-field" type="password" />
-          </div>
 
           <input type="hidden" id="input-id-edita" name="">
-          <button onclick="excluirUsuario()" type="button" id="btn-deletar">Deletar Usuário
+          <button onclick="excluirUsuario()" type="button" class="deletar-aluno" id="btn-deletar">Deletar Usuário
           </button>
-          <button onclick="enviarCampos()" type="button" id="btn-atualizar"> Atualizar Dados</button>
+          <button onclick="enviarCampos()" type="button" class="update-aluno" id="btn-atualizar"> Atualizar Dados</button>
 
         </form>
       </div>
@@ -409,11 +405,11 @@
       </div>
 
 
-      <div id="div-abrir-exercicios" style="display: none;" class="atlas-bio-box">
-        <form id="form-exercicio1">
-          <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
-          <div>
-            <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
+    <div id="div-abrir-exercicios" style="display: none;" class="atlas-bio-box">
+      <form id="form-exercicio1">
+        <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
+        <div>
+          <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
             <input id="input-nome-exerc" class="input-field" type="text" required placeholder="Supino reto" />
           </div>
           <div>
@@ -460,11 +456,13 @@
         </form>
       </div>
 
-      <div id="div-editar-exercicios" style="display: none;" class="atlas-bio-box">
-        <form id="form-exercicio2">
-          <h2 class="atlas-bio-title">Edição de Exercícios</h2>
-          <div>
-            <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
+    <div id="div-editar-exercicios" style="display: none;" class="atlas-bio-box">
+      <form id="form-exercicio2">
+        <h2 class="atlas-bio-title">Edição de Exercícios</h2>
+        <h2 class="atlas-bio-title">Cadastro de Exercícios</h2>
+        <div>
+          <label for="input-nome-exerc" class="input-label">Nome do Exercício</label>
+
             <input id="input-nome-exerc" class="input-field" type="text" required placeholder="Supino reto" />
           </div>
           <div>
@@ -504,12 +502,11 @@
           </div>
           <div>
             <label for="input-video" class="input-label">URL Vídeo (opcional)</label>
-            <input id="input-video" class="input-field" type="text"
-              placeholder="https://www.youtube.com/user/NomeDoCanal" />
-          </div>
-          <button type="submit">Editar Exercício</button>
-        </form>
-      </div>
+                      <input id="input-video" class="input-field" type="text" placeholder="https://www.youtube.com/user/NomeDoCanal" />
+                 </div>
+             <button id="btn-concluir-edicao" type="submit">Editar Exercício</button>
+           </form>
+         </div>
 
 
       <div id="div-punicoes" style="display: none;" class="atlas-bio-box">
@@ -520,9 +517,11 @@
             <input id="input-nome" class="input-field" type="text" placeholder="Digite o nome completo" required />
           </div>
           <div>
-            <label for="input-data" class="input-label">Data de nascimento</label>
-            <input id="input-data" class="input-field" type="date" placeholder="Selecione a data" required />
+          <div>
+            <label for="input-data" class="input-label">Data de Nascimento</label>
+            <input id="input-data-edita-aluno" class="input-field" type="date" />
           </div>
+
           <div>
             <label for="input-cpf" class="input-label">CPF</label>
             <input id="input-cpf" class="input-field" type="text" placeholder="Digite o CPF (apenas números)"

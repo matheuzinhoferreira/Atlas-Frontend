@@ -70,7 +70,8 @@ $(document).on('click', 'div.aluno-card', function () {
   // Esconde todas as divs de box e mostra a lista de alunos
   $('.atlas-bio-box').hide();
   $('.atlas-alunos-box').hide();
-  $('#div-info-usuario').show();
+  $('#div-info-usuario').hide();
+  $('#div-edit-usuarios').show();
 });
 
 $(document).on('click', '#btn-gerenciar', function () {
