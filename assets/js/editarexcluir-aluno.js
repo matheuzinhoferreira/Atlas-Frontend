@@ -10,28 +10,24 @@ async function trazerCampos(id) {
         const dados = await resposta.json();
         console.log(dados.dados);
 
-        // Formata data_nascimento para "dd mm yyyy"
-        const dataVemAPI = dados.data_nascimento;
-        const parteData = dataVemAPI ? dataVemAPI.split('T')[0] : '';
-        const dataPartes = parteData.split('-');
-        let dataFormatada = '';
-        if (dataPartes.length === 3) {
-        dataFormatada = `${dataPartes[0]}/${dataPartes[1]}/${dataPartes[2]}`;
+        document.getElementById("input-nome-edita").value = dados.dados.nome;
+        const dataBr = dados.dados.data_nascimento;
+        if (dataBr) {
+            const partes = dataBr.split("-");
+            const dataFormatada = `${partes[2]}-${partes[1]}-${partes[0]}`;
+            console.log(dataFormatada)
+            document.getElementById("input-data-edita-aluno").value = dataFormatada;
         }
-        
-        console.log("Data formatada:", dataFormatada);
-        document.getElementById("input-nome-edita").value = dados.dados?.nome ?? '';
-        console.log("Nome:", dados.dados?.nome ?? '');
-        document.getElementById("input-data-edita").value = dados.dados?.data_nascimento ?? '';
-        document.getElementById("input-cpf-edita").value = dados.dados?.cpf ?? '';
-        document.getElementById("input-telefone-edita").value = dados.dados?.telefone ?? '';
-        document.getElementById("input-histmed-edita").value = dados.dados?.historico_medico_relevante ?? '';
-        document.getElementById("input-medicamentos-edita").value = dados.dados?.descricao_medicamentos ?? '';
-        document.getElementById("input-limitacoes-edita").value = dados.dados?.descricao_limitacoes ?? '';
-        document.getElementById("input-objetivo-edita").value = dados.dados?.descricao_objetivos ?? '';
-        document.getElementById("input-experiencia-edita").value = dados.dados?.descricao_treinamentos_anteriores ?? '';
-        document.getElementById("input-email-edita").value = dados.dados?.email ?? '';
-        
+
+        document.getElementById("input-cpf-edita").value = dados.dados.cpf;
+        document.getElementById("input-telefone-edita").value = dados.dados.telefone;
+        document.getElementById("input-histmed-edita").value = dados.dados.historico_medico_relevante;
+        document.getElementById("input-medicamentos-edita").value = dados.dados.descricao_medicamentos;
+        document.getElementById("input-limitacoes-edita").value = dados.dados.descricao_limitacoes;
+        document.getElementById("input-objetivo-edita").value = dados.dados.descricao_objetivos;
+        document.getElementById("input-experiencia-edita").value = dados.dados.descricao_treinamentos_anteriores;
+        document.getElementById("input-email-edita").value = dados.dados.email;
+
         document.getElementById("input-id-edita").value = id;
     } catch (erro) {
         console.error("Erro ao trazer campos:", erro);
