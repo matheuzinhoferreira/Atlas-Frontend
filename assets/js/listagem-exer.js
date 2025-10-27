@@ -35,7 +35,7 @@ $(document).ready(function () {
     async function carregarExercicios() {
         const token = localStorage.getItem('jwt-token-atlas');
         try {
-            const response = await fetch('http://127.0.0.1:5000/exercicios/0', {
+            const response = await fetch(`${window.apiBase.ip}/exercicios/0`, {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -108,7 +108,7 @@ $(document).ready(function () {
             btnEditar.addEventListener('click', async () => {
                 const token = localStorage.getItem('jwt-token-atlas');
                 try {
-                    const response = await fetch(`http://127.0.0.1:5000/exercicios/detalhes/${exercicio.ID_EXERCICIO}`, {
+                    const response = await fetch(`${window.apiBase.ip}/exercicios/detalhes/${exercicio.ID_EXERCICIO}`, {
                         method: 'GET',
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
@@ -138,7 +138,7 @@ $(document).ready(function () {
                     return;
                 }
                 try {
-                    const response = await fetch(`http://10.92.3.214:5000/exercicios/excluir/${idExercicio}`, {
+                    const response = await fetch(`${window.apiBase.ip}/exercicios/excluir/${idExercicio}`, {
                         method: 'DELETE',
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
@@ -209,7 +209,7 @@ $(document).ready(function () {
 
             (async () => {
                 try {
-                    const response = await fetch(`http://10.92.3.214:5000/exercicios/editar/${idExercicio}`, {
+                    const response = await fetch(`${window.apiBase.ip}/exercicios/editar/${idExercicio}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -273,7 +273,7 @@ $(document).on('submit', '#form-exercicio1', async function(e) {
 
 
   try {
-    const resposta = await fetch('http://10.92.3.214:5000/exercicios/criar/', {
+      const resposta = await fetch(`${window.apiBase.ip}/exercicios/criar/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

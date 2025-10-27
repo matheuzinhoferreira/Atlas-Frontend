@@ -106,7 +106,7 @@ $(document).on('click', '#btn-add-exer', function () {
 
 
 $(document).ready(function () {
-  const API_BASE = "http://10.92.3.167:5000/usuarios/2";
+  const API_BASE = `${window.apiBase.ip}/usuarios/2`;
   const $alunosGrid = $(".alunos-grid");
   const $btnLeft = $(".btn-voltar-aluno").first();
   const $btnRight = $(".btn-voltar-aluno").last();
@@ -185,7 +185,7 @@ $(document).ready(function () {
   // Função para buscar dados completos do usuário pelo id
   async function buscarDadosUsuarioDetalhado(idUsuario) {
     const token = localStorage.getItem("jwt-token-atlas");
-    const url = `http://10.92.3.167:5000/usuarios/info/${idUsuario}/personal`;
+    const url = `${window.apiBase.ip}/usuarios/info/${idUsuario}/personal`;
     try {
       const resposta = await fetch(url, {
         method: "GET",

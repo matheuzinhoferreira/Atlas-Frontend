@@ -2,7 +2,7 @@
         try {
             const token = localStorage.getItem("jwt-token-atlas")
 
-            const resposta = await fetch("http://10.92.3.167:5000/usuarios/info/" + id + "/3", {
+            const resposta = await fetch(`${window.apiBase.ip}/usuarios/info/` + id + "/3", {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -54,7 +54,7 @@
 
             console.log("Body enviado:", dadosAtualizados);
 
-            const resposta = await fetch(`http://10.92.3.167:5000/usuarios/${id}/editar/3`, {
+            const resposta = await fetch(`${window.apiBase.ip}/usuarios/${id}/editar/3`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
