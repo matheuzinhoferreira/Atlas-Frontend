@@ -42,27 +42,30 @@ async function trazerCampos(id) {
 
 async function enviarCampos(idUsuario, tipoLogado = 2) {
     try {
-
-        // let telefone = document.getElementById("input-telefone-edita").value
-        // telefone = telefone.replaceAll("+", "")
-
         const token = localStorage.getItem("jwt-token-atlas");
         const id = document.getElementById("input-id-edita").value;
+
+        let telefone = document.getElementById("input-telefone-edita").value;
+        telefone = telefone.replace(/\D/g, ""); // limpa qualquer coisa que não seja número
+
         const dadosAtualizados = {
             nome: document.getElementById("input-nome-edita").value,
             data_nascimento: document.getElementById("input-data-edita").value,
             cpf: document.getElementById("input-cpf-edita").value,
-            telefone: document.getElementById("input-telefone-edita").value,
+            telefone: telefone,
             historico_medico_relevante: document.getElementById("input-histmed-edita").value,
             descricao_medicamentos: document.getElementById("input-medicamentos-edita").value,
-            descricao_limitacões: document.getElementById("input-limitacoes-edita").value,
+            descricao_limitacoes: document.getElementById("input-limitacoes-edita").value,
             descricao_objetivos: document.getElementById("input-objetivo-edita").value,
             descricao_treinamentos_anteriores: document.getElementById("input-experiencia-edita").value,
             email: document.getElementById("input-email-edita").value
         };
 
+        console.log("ID:", id);
+        console.log("Token:", token);
+        console.log("Dados:", dadosAtualizados);
 
-        const resposta = await fetch(`${window.apiBase.ip}/usuarios/` + id + "/editar/2", {
+        const resposta = await fetch(`${window.apiBase.ip}/usuarios/${id}/editar/${tipoLogado}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -70,7 +73,11 @@ async function enviarCampos(idUsuario, tipoLogado = 2) {
             },
             body: JSON.stringify(dadosAtualizados)
         });
-        
+
+        console.log("Status resposta:", resposta.status);
+        const retorno = await resposta.text();
+        console.log("Retorno API:", retorno);
+
         if (!resposta.ok) throw new Error("Erro ao enviar alterações");
 
         alert("Dados atualizados com sucesso!");
