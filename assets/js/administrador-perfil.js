@@ -232,8 +232,8 @@ $(document).ready(function () {
     const token = localStorage.getItem("jwt-token-atlas");
 
     try {
-      const url = `${API_BASE}/usuarios/${tipoLogado}/${pagina}/${tipo}`;
-      console.log('Chamando API:', url);
+      const url = `${window.apiBase.ip}/usuarios/${tipoLogado}/${pagina}/${tipo}`;
+      console.log('Chamando API:', window.apiBase);
       console.log('Token:', token);
 
       const resposta = await fetch(url, {
@@ -270,7 +270,7 @@ $(document).ready(function () {
     const token = localStorage.getItem("jwt-token-atlas");
     const url = `${window.apiBase.ip}/usuarios/info/${idUsuario}/3`;
     try {
-      const resposta = await fetch(url, {
+      const resposta = await fetch(window.apiBase, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -348,12 +348,11 @@ $(document).ready(function () {
   $('#searchAluno').on('input', function () {
     const termo = $(this).val().toLowerCase().trim();
 
-    // Para cada card aluno dentro da grid
     $('.alunos-grid .aluno-card').each(function () {
-      // Captura todo o texto do card (nome, email, telefone, histórico)
+      // Capturando todo o texto do card 
       const textoCard = $(this).text().toLowerCase();
 
-      // Mostra se o termo pesquisa existir no card, esconde se não
+      // Mostrando se o termo pesquisa existir no card, esconde se não
       if (textoCard.indexOf(termo) !== -1) {
         $(this).show();
       } else {
@@ -398,19 +397,15 @@ $(document).ready(function () {
     $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
 
 
-    // Para Medicamentos
     let medicamentos = usuarioDetalhe.descricao_medicamentos.trim();
     if (medicamentos === '') medicamentos = 'Nenhum';
 
-    // Para Limitações
     let limitacoes = usuarioDetalhe.descricao_limitacoes.trim();
     if (limitacoes === '') limitacoes = 'Nenhuma';
 
-    // Para Objetivos
     let objetivos = usuarioDetalhe.descricao_objetivos.trim();
     if (objetivos === '') objetivos = 'Nenhum';
 
-    // Para Experiência anterior
     let experiencia = usuarioDetalhe.descricao_treinamentos_anteriores.trim();
     if (experiencia === '') experiencia = 'Nenhuma';
 
