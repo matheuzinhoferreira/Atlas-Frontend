@@ -22,6 +22,7 @@
   <script src="assets/js/header-dinamico.js"></script>
   <script src="assets/js/administrador-perfil.js"></script>
   <script src="assets/js/editarexcluir-alunoporadm.js"> </script>
+  <script src="assets/js/listagem-professor-p-adm.js" ></script>
   </script>
 </head>
 
@@ -84,7 +85,7 @@
               <div>Nome: [NOME]</div>
               <div>E-mail: [EMAIL]</div>
               <div>Telefone: [TELEFONE]</div>
-              <div>Histórico: [HISTORICO]</div>
+              <div>CPF: [CPF]</div>
             </div>
           </div>
           <!-- ... -->
@@ -362,8 +363,8 @@
       </div>
 
       <!-- MUDANÇAS COMEÇAM AQUI -->
-      <!-- listagem dos professores
-      <div id="div-info-usuario" class="atlas-professores-box2" style="display:none;">
+      <!-- listagem dos professores -->
+      <!-- <div id="div-info-usuario" class="atlas-professores-box2" style="display:none;">
         <div class="info-usuario-flex">
           <div class="info-usuario-col-esq">
             <div class="info-usuario-img">[Imagem]</div>
@@ -622,9 +623,9 @@
           </div>
 
           <input type="hidden" id="input-id-edita" name="">
-          <button onclick="excluirUsuario()" type="button" id="btn-deletar">Deletar Usuário
+          <button onclick="excluirUsuario()" type="button" class="delete-aluno" id="btn-deletar">Deletar Usuário
           </button>
-          <button onclick="enviarCampos()" type="button" id="btn-atualizar"> Atualizar Dados</button>
+          <button onclick="enviarCampos()" type="button" class="update-aluno" id="btn-atualizar"> Atualizar Dados</button>
 
         </form>
       </div>
