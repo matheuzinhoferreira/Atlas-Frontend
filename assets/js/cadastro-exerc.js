@@ -26,3 +26,45 @@ function mostrarMensagem(mensagem, tipo) {
         });
     }, 4000);
 }
+$(document).on('submit', '#form-exercicio', async function (e) {
+    e.preventDefault();
+    const nome = $('#input-nome-exerc').val().trim();
+    console.log("Nome capturado:", nome);
+    const descricao = $('#input-descricao').val().trim();
+    const video = $('#input-video').val().trim();
+    const dificuldade = $('#input-dificuldade').val();
+    const numGrupos = 14;
+    const gruposMuscularesSelecionados = [];
+    
+    $('#checkbox-grupos input[type="checkbox"]:checked').each(function () {
+        gruposMuscularesSelecionados.push(parseInt($(this).val()));
+    });
+    const token = localStorage.getItem('jwt-token-atlas');
+    const body = {
+        nome,
+        descricao,
+        dificuldade,
+        video: video || null,
+        gruposMuscularesSelecionados
+    };
+    try {
+        const resposta = await fetch(`${window.apiBase.ip}/exercicios/criar/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(body)
+        });
+        const json = await resposta.json();
+        if (!resposta.ok || json.error) {
+            mostrarMensagem(json.message, 'error');
+            return;
+        }
+
+        mostrarMensagem('Exercício criado com sucesso!', 'success');
+        $('#form-exercicio')[0].reset();
+    } catch (err) {
+        mostrarMensagem('Erro na comunicação com o servidor.', 'error');
+    }
+});
