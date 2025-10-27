@@ -518,7 +518,7 @@
         }
 
         .delete-aluno {
-            background: var(--cor-roxa-bl);
+            background: var(--cor-vermelha-bl);
             color: var(--cor-preta-bl);
             font-weight: bold;
             font-size: 14px;
