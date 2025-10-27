@@ -499,6 +499,41 @@
         filter: brightness(1.08);
         }
 
+        .update-aluno {
+            background: var(--cor-roxa-bl);
+            color: var(--cor-preta-bl);
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            float: right;
+            transition: filter .19s;
+            margin-top: 15px;
+        }
+        .update-aluno:hover {
+            filter: brightness(1.08);
+        }
+
+        .delete-aluno {
+            background: var(--cor-roxa-bl);
+            color: var(--cor-preta-bl);
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            cursor: pointer;
+            transition: filter .19s;
+            margin-top: 15px;
+        }
+        .delete-aluno:hover {
+            filter: brightness(1.08);
+        }
+
         .btn-voltar-aluno,
         .btn-voltar-exer,
         .btn-voltar-professor {
