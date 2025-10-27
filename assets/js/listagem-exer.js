@@ -202,6 +202,7 @@ $(document).ready(function () {
             const descricao = $('#div-editar-exercicios #input-descricao').val().trim();
             const video = $('#div-editar-exercicios #input-video').val().trim();
             const dificuldade = parseInt($('#div-editar-exercicios #input-dificuldade').val());
+            console.log("Dificuldade capturada:", dificuldade);
             const gruposMusculares = $('#div-editar-exercicios #checkbox-grupos input[type="checkbox"]:checked')
                 .map(function () { return parseInt($(this).val()); }).get();
 
@@ -243,22 +244,25 @@ $(document).ready(function () {
             return false;
         });
 
-        
-
 $(document).on('submit', '#form-exercicio1', async function(e) {
   e.preventDefault();
 
-  const nome = $('#input-nome-exerc').val().trim();
+    const nome = $('#form-exercicio1 #input-nome-exerc').val().trim();
   console.log("Nome capturado:", nome);
-  const descricao = $('#input-descricao').val().trim();
-  const video = $('#input-video').val().trim();
-  const dificuldade = $('#input-dificuldade').val();
+    const descricao = $('#form-exercicio1 #input-descricao').val().trim();
+  console.log("Descrição capturada:", descricao);
+    const video = $('#form-exercicio1 #input-video').val().trim();
+  console.log("Vídeo capturado:", video);
+    const dificuldade = $('#form-exercicio1 #input-dificuldade').val()
+  console.log("Dificuldade capturada:", dificuldade)
+  ;
 
   const numGrupos = 14;
   const gruposMuscularesSelecionados = [];
 
   $('#checkbox-grupos input[type="checkbox"]:checked').each(function() {
   gruposMuscularesSelecionados.push(parseInt($(this).val()));
+  console.log("Grupo muscular selecionado:", $(this).val());
 });
 
   const token = localStorage.getItem('jwt-token-atlas');

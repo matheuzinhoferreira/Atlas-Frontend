@@ -185,7 +185,7 @@ $(document).ready(function () {
   // Função para buscar dados completos do usuário pelo id
   async function buscarDadosUsuarioDetalhado(idUsuario) {
     const token = localStorage.getItem("jwt-token-atlas");
-    const url = `${window.apiBase.ip}/usuarios/info/${idUsuario}/personal`;
+    const url = `${window.apiBase.ip}/usuarios/info/${idUsuario}/2`;
     try {
       const resposta = await fetch(url, {
         method: "GET",
@@ -208,41 +208,38 @@ $(document).ready(function () {
   }
 
   // Evento clique no card
-  $(document).on('click', '.aluno-card', async function () {
-    const id = $(this).data('id');
-    const dadosDetalhados = await buscarDadosUsuarioDetalhado(id);
-    if (!dadosDetalhados) {
-      alert("Não foi possível carregar detalhes do usuário.");
-      return;
-    }
-    const $div = $('#div-info-usuario');
+  // $(document).on('click', '.aluno-card', async function () {
+  //   const id = $(this).data('id');
+  //   const dadosDetalhados = await buscarDadosUsuarioDetalhado(id);
+  //   if (!dadosDetalhados) {
+  //     alert("Não foi possível carregar detalhes do usuário.");
+  //     return;
+  //   }
+  //   const $div = $('#div-info-usuario');
 
-    $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
-    $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
-    $div.find('.info-usuario-item:contains("Telefone:") span').text(dadosDetalhados["Telefone"] || "");
-    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+  //   $div.find('.info-usuario-item:contains("Nome:") span').text(dadosDetalhados["Nome"] || "");
+  //   $div.find('.info-usuario-item:contains("E-mail:") span').text(dadosDetalhados["E-mail"] || "");
+  //   $div.find('.info-usuario-item:contains("Telefone:") span').text(dadosDetalhados["Telefone"] || "");
+  //   $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
 
-    // Preencher TIPO (use sempre o campo com <span>)
-    let tipoTexto = "";
-    switch (dadosDetalhados["Tipo"] || dadosDetalhados["TIPO"] || dadosDetalhados["tipo"]) {
-      case 1: case '1': tipoTexto = "Aluno"; break;
-      case 2: case '2': tipoTexto = "Personal"; break;
-      case 3: case '3': tipoTexto = "Admin"; break;
-      default: tipoTexto = "Desconhecido";
-    }
-    $div.find('.info-usuario-item:contains("TIPO:") span').text(tipoTexto);
+  //   // Preencher TIPO (use sempre o campo com <span>)
+  //   let tipoTexto = "";
+  //   switch (dadosDetalhados["Tipo"] || dadosDetalhados["TIPO"] || dadosDetalhados["tipo"]) {
+  //     case 1: case '1': tipoTexto = "Aluno"; break;
+  //     case 2: case '2': tipoTexto = "Personal"; break;
+  //     case 3: case '3': tipoTexto = "Admin"; break;
+  //     default: tipoTexto = "Desconhecido";
+  //   }
+  //   $div.find('.info-usuario-item:contains("TIPO:") span').text(tipoTexto);
 
-    // Campos médicos
-    $div.find('.info-usuario-item:contains("Medicamentos:") span').text(dadosDetalhados["Descrição de medicamentos"] || "Nenhum");
-    $div.find('.info-usuario-item:contains("Limitações:") span').text(dadosDetalhados["Descrição de limitações"] || "Nenhuma");
-    $div.find('.info-usuario-item:contains("Objetivos:") span').text(dadosDetalhados["Descrição de Objetivos"] || "Nenhum");
-    $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(dadosDetalhados["Experiência Anterior com Academia"] || "Nenhuma");
+  //   // Campos médicos
+  //   $div.find('.info-usuario-item:contains("Medicamentos:") span').text(dadosDetalhados["Descrição de medicamentos"] || "Nenhum");
+  //   $div.find('.info-usuario-item:contains("Limitações:") span').text(dadosDetalhados["Descrição de limitações"] || "Nenhuma");
+  //   $div.find('.info-usuario-item:contains("Objetivos:") span').text(dadosDetalhados["Descrição de Objetivos"] || "Nenhum");
+  //   $div.find('.info-usuario-item:contains("Experiência anterior:") span').text(dadosDetalhados["Experiência Anterior com Academia"] || "Nenhuma");
 
-    $div.show();
-  });
-
-
-
+  //   $div.show();
+  // });
 
   // Atualizar estado dos botões de navegação
   function atualizarBotoes(qtdNaPagina) {
@@ -317,7 +314,7 @@ $(document).ready(function () {
     );
     $div.find('.info-usuario-item:contains("Telefone:") span').text(usuarioDetalhe.telefone);
 
-    $div.find('.info-usuario-item:contains("CPF:") span').text(dadosDetalhados["CPF"] || "");
+    $div.find('.info-usuario-item:contains("CPF:") span').text(usuarioDetalhe.cpf);
 
 
     // Para Medicamentos

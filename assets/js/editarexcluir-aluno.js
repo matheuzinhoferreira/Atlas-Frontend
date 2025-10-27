@@ -11,26 +11,27 @@ async function trazerCampos(id) {
         console.log(dados.dados);
 
         // Formata data_nascimento para "dd mm yyyy"
-        const dataVemAPI = dados.dados.data_nascimento;
+        const dataVemAPI = dados.data_nascimento;
         const parteData = dataVemAPI ? dataVemAPI.split('T')[0] : '';
         const dataPartes = parteData.split('-');
         let dataFormatada = '';
         if (dataPartes.length === 3) {
         dataFormatada = `${dataPartes[0]}/${dataPartes[1]}/${dataPartes[2]}`;
         }
+        
         console.log("Data formatada:", dataFormatada);
-        document.getElementById("input-nome-edita").value = dados.dados.nome;
-        document.getElementById("input-data-edita").value = dataFormatada;
-        console.log("Data atribuída ao campo:", document.getElementById("input-data-edita").value);
-        document.getElementById("input-cpf-edita").value = dados.dados.cpf;
-        document.getElementById("input-telefone-edita").value = dados.dados.telefone;
-        document.getElementById("input-histmed-edita").value = dados.dados.historico_medico_relevante;
-        document.getElementById("input-medicamentos-edita").value = dados.dados.descricao_medicamentos;
-        document.getElementById("input-limitacoes-edita").value = dados.dados.descricao_limitacoes;
-        document.getElementById("input-objetivo-edita").value = dados.dados.descricao_objetivos;
-        document.getElementById("input-experiencia-edita").value = dados.dados.descricao_treinamentos_anteriores;
-        document.getElementById("input-email-edita").value = dados.dados.email;
-
+        document.getElementById("input-nome-edita").value = dados.dados?.nome ?? '';
+        console.log("Nome:", dados.dados?.nome ?? '');
+        document.getElementById("input-data-edita").value = dados.dados?.data_nascimento ?? '';
+        document.getElementById("input-cpf-edita").value = dados.dados?.cpf ?? '';
+        document.getElementById("input-telefone-edita").value = dados.dados?.telefone ?? '';
+        document.getElementById("input-histmed-edita").value = dados.dados?.historico_medico_relevante ?? '';
+        document.getElementById("input-medicamentos-edita").value = dados.dados?.descricao_medicamentos ?? '';
+        document.getElementById("input-limitacoes-edita").value = dados.dados?.descricao_limitacoes ?? '';
+        document.getElementById("input-objetivo-edita").value = dados.dados?.descricao_objetivos ?? '';
+        document.getElementById("input-experiencia-edita").value = dados.dados?.descricao_treinamentos_anteriores ?? '';
+        document.getElementById("input-email-edita").value = dados.dados?.email ?? '';
+        
         document.getElementById("input-id-edita").value = id;
     } catch (erro) {
         console.error("Erro ao trazer campos:", erro);
