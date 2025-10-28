@@ -2,7 +2,7 @@ async function trazerCampos(id) {
     try {
         const token = localStorage.getItem("jwt-token-atlas");
 
-        const resposta = await fetch(`${window.apiBase.ip}/usuarios/info/` + id + "/2", {
+        const resposta = await fetch(`${window.apiBase.ip}/usuarios/info/` + id + `/${localStorage.getItem('tipo-usuario-atlas')}`, {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -78,15 +78,15 @@ async function enviarCampos(idUsuario, tipoLogado = 2) {
         });
 
         console.log("Status resposta:", resposta.status);
-        const retorno = await resposta.text();
+        const retorno = await resposta.json();
         console.log("Retorno API:", retorno);
 
-        if (!resposta.ok) throw new Error("Erro ao enviar alterações");
+        if (!resposta.ok) throw new Error(retorno['message']);
 
         alert("Dados atualizados com sucesso!");
     } catch (erro) {
         console.error("Erro ao enviar campos:", erro);
-        alert("Falha ao atualizar dados.");
+        alert("Falha ao atualizar dados. Erro: " + erro.message);
     }
 }
 

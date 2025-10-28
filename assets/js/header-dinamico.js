@@ -145,9 +145,9 @@ class HeaderDinamico {
     // Evento para redirecionar ao clicar em "Meu Perfil" conforme tipo
     $('.btn-meu-perfil').on('click', function(e) {
         e.preventDefault();
-        if (tipo === '3') {
-            window.location.href = 'administrador-perfil.html';
-        } else if (tipo === '2') {
+        if (tipo == '3') {
+            window.location.href = 'personal-perfil.html'; // Não estamos mais usando administrador-perfil
+        } else if (tipo == '2') {
             window.location.href = 'personal-perfil.html';
         } else {
             window.location.href = 'login.html';

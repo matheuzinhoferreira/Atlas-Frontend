@@ -1,8 +1,132 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
+:root {
+    --cor-roxa-bl: #8A2BE2;
+    --cor-preta-bl: #000000;
+    --cor-branca-bl: #FFFFFF;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-claro: #F5F5F5;
+    --cor-cinza-medio: #E0E0E0;
+}
+
+/* Tema Escuro (Padrão) */
+body {
+    background-color: var(--cor-preta-bl);
+    color: var(--cor-branca-bl);
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* BOTÃO DE TEMA COM CORES DO SITE E TAMANHO RESPONSIVO */
+#botao-tema {
+    position: fixed;
+    top: 25px;
+    left: 200px;
+    /* Posicionado ao lado da logo */
+    font-size: 1.4rem;
+    background: var(--cor-roxa-bl);
+    border: 2px solid var(--cor-branca-bl);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--cor-branca-bl);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(138, 43, 226, 0.3);
+}
+
+#botao-tema:hover {
+    transform: scale(1.1);
+    background: var(--cor-branca-bl);
+    color: var(--cor-roxa-bl);
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+
+/* TEMA CLARO */
+body.claro {
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro #botao-tema {
+    background: var(--cor-roxa-bl);
+    color: var(--cor-branca-bl);
+    border: 2px solid var(--cor-roxa-bl);
+}
+
+body.claro #botao-tema:hover {
+    background: var(--cor-branca-bl);
+    color: var(--cor-roxa-bl);
+}
+
+body.claro .barra-preta {
+    background: var(--cor-cinza-medio);
+}
+
+body.claro .sobre-atlas {
+    background: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro .sobre-chamada {
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro .sobre-right {
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro .sobre-titulo-barra {
+    background: var(--cor-cinza-escuro);
+}
+
+body.claro .sobre-divisor {
+    border-top: 1px solid var(--cor-cinza-escuro);
+}
+
+/* RODAPÉ NO TEMA CLARO */
+body.claro .footer {
+    background-color: var(--cor-branca-bl);
+    color: var(--cor-preta-bl);
+}
+
+body.claro .footer a {
+    color: var(--cor-preta-bl);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.claro .footer a:hover {
+    color: var(--cor-roxa-bl);
+}
+
+body.claro .footer-divider {
+    border-top: 2px solid var(--cor-preta-bl);
+    opacity: 0.7;
+    margin-left: 500px;
+}
+
+/* LOGO COM FUNDO PRETO NO TEMA CLARO */
+body.claro .footer-logo {
+    background-color: var(--cor-preta-bl);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+body.claro .footer-logo img {
+    filter: brightness(0) invert(1);
+}
+
+/* BANNER */
 .banner-atlas {
     position: relative;
     height: 100vh;
@@ -19,24 +143,33 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.95) 0%,
-        rgba(0,0,0,0.00) 20%
-    );
-}   
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.00) 20%);
+}
 
 .banner-atlas::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.95) 0%,
-        rgba(0,0,0,0.70) 25%,     
-        rgba(0,0,0,0.00) 60%      
-    );
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.70) 25%,
+            rgba(0, 0, 0, 0.00) 60%);
+}
+
+body.claro .banner-atlas::before {
+    background: linear-gradient(to bottom,
+            rgba(245, 245, 245, 0.95) 0%,
+            rgba(245, 245, 245, 0.00) 20%);
+}
+
+body.claro .banner-atlas::after {
+    background: linear-gradient(to top,
+            rgba(245, 245, 245, 0.95) 0%,
+            rgba(245, 245, 245, 0.70) 25%,
+            rgba(245, 245, 245, 0.00) 60%);
 }
 
 .banner-content {
@@ -56,7 +189,7 @@
     justify-content: center;
     gap: 16px;
     color: var(--cor-roxa-bl);
-    
+
 }
 
 .bold-purple {
@@ -98,7 +231,7 @@
 .sobre-atlas {
     background: #000;
     color: #fff;
-    padding: 120px 0 40px 0; 
+    padding: 120px 0 40px 0;
     min-height: 420px;
 }
 
@@ -163,15 +296,171 @@
     width: 100%;
 }
 
-/* Ajustes para dispositivos médios/tablets até 768px */
+.footer {
+    background-color: var(--cor-preta-bl);
+    color: var(--cor-branca-bl);
+    padding: 40px 0 20px 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.footer-logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+.footer-links {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-links div {
+    text-align: left;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--cor-branca-bl);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--cor-roxa-bl);
+}
+
+.footer-social-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: scale(1.1);
+}
+
+.footer-social img {
+    width: 35px;
+    height: 35px;
+}
+
+.footer-app span {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.app-buttons a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.app-buttons a:hover {
+    transform: scale(1.05);
+}
+
+.app-buttons img {
+    height: 40px;
+    width: auto;
+}
+
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid #D9D9D9;
+    opacity: 0.3;
+    margin: 30px 0 20px auto;
+    margin-right: 1300px;
+    width: 1000px;
+}
+
+.footer-copy {
+    text-align: center;
+    padding: 0 28px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* BOTÃO DIMINUINDO PROPORCIONALMENTE COM O SITE */
+
+/* Desktop grande - mantém tamanho padrão */
+@media (min-width: 1200px) {
+    #botao-tema {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+        left: 200px;
+    }
+}
+
+/* Desktop médio */
+@media (max-width: 1199px) and (min-width: 992px) {
+    #botao-tema {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
+        left: 180px;
+    }
+}
+
+/* Tablet grande */
+@media (max-width: 991px) and (min-width: 769px) {
+    #botao-tema {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        left: 160px;
+        top: 22px;
+    }
+}
+
+/* Tablet */
 @media (max-width: 768px) {
     .banner-atlas {
-        height: 55vh; /* diminuiu um pouco a altura */
+        height: 55vh;
         min-height: 280px;
     }
 
     .banner-content h1 {
-        font-size: 42px; /* reduzido para menos impacto visual */
+        font-size: 42px;
         justify-content: center;
         gap: 6px;
     }
@@ -192,13 +481,14 @@
         text-align: center;
     }
 
-    .sobre-left, .sobre-right {
+    .sobre-left,
+    .sobre-right {
         max-width: 100%;
         flex: none;
     }
 
     .sobre-chamada {
-        font-size: 16px; /* um pouco menor */
+        font-size: 16px;
         margin-bottom: 10px;
     }
 
@@ -210,24 +500,45 @@
     .sobre-divisor {
         margin: 70px 0 0 0;
     }
+
     .sobre-titulo {
-        font-size: 18px; /* ainda menor para celulares */
+        font-size: 18px;
     }
 
-    
+    /* Botão tema em tablet */
+    #botao-tema {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        left: 140px;
+        top: 20px;
+    }
+
+    .footer-links {
+        gap: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links div {
+        text-align: center;
+    }
+
+    .footer-divider {
+        width: 70%;
+        margin-right: 12px;
+    }
 }
 
-
-
-/* Ajustes para smartphones até 480px */
+/* Smartphone grande */
 @media (max-width: 630px) {
     .banner-atlas {
-        height: 45vh; /* altura abaixada para caber melhor */
+        height: 45vh;
         min-height: 200px;
     }
 
     .banner-content h1 {
-        font-size: 26px; /* muito menor para melhor encaixe */
+        font-size: 26px;
         gap: 4px;
         line-height: 1.1;
     }
@@ -238,13 +549,70 @@
     }
 
     .sobre-chamada {
-        font-size: 14px; /* menor para texto principal */
+        font-size: 14px;
     }
 
     .sobre-right {
         font-size: 12px;
     }
-     .sobre-titulo {
-        font-size: 18px; /* ainda menor para celulares */
+
+    .sobre-titulo {
+        font-size: 18px;
+    }
+
+    /* Botão tema em smartphone grande */
+    #botao-tema {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        left: 120px;
+        top: 18px;
+    }
+
+    .footer-links {
+        gap: 20px;
+    }
+
+    .app-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-divider {
+        width: 80%;
+        margin-right: 12px;
+    }
+}
+
+/* Smartphone médio */
+@media (max-width: 480px) {
+    #botao-tema {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+        left: 100px;
+        top: 16px;
+    }
+}
+
+/* Smartphone pequeno */
+@media (max-width: 380px) {
+    #botao-tema {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+        left: 90px;
+        top: 14px;
+    }
+}
+
+/* Smartphone muito pequeno */
+@media (max-width: 320px) {
+    #botao-tema {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+        left: 80px;
+        top: 12px;
     }
 }

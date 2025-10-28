@@ -49,7 +49,7 @@ class GerenciadorCadastroPersonal {
         this.mostrarLoading(true);
 
         $.ajax({
-            url: `${this.baseURL}/usuarios/cadastrar/2`,
+            url: `${this.baseURL}/usuarios/cadastrar/${localStorage.getItem('tipo-usuario-atlas')}`,
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,

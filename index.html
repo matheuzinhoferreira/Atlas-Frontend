@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial | Atlas Gym</title>
+
+    <!-- CSS PRINCIPAL -->
     <link rel="stylesheet" href="assets/css/root.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/header.css" />
     <link rel="stylesheet" href="assets/css/footer.css">
+
+    <!-- FONTES E ICONES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- JS PRINCIPAL -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="assets/js/globais.js"></script>
     <script src="assets/js/header-scroll.js"></script>
     <script src="assets/js/header-dinamico.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
 </head>
+
 <body>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="assets/js/header-scroll.js"></script>
+    <!-- BOTÃO DE TROCAR TEMA -->
+    <button id="botao-tema" aria-label="Alternar tema">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <!-- CABEÇALHO -->
     <header class="header">
         <div class="container-header">
             <div class="left-header">
@@ -32,10 +42,13 @@
                     <img src="assets/img/logo-atlas.png" class="logo" alt="Atlas Gym">
                 </a>
             </div>
-           <div class="area-usuario-header" style="display: none;"></div>
+            <div class="area-usuario-header" style="display: none;"></div>
         </div>
     </header>
+
     <div class="barra-preta"></div>
+
+    <!-- BANNER PRINCIPAL -->
     <section class="banner-atlas">
         <div class="banner-content">
             <h1>
@@ -43,78 +56,87 @@
                 <span class="outline-purple">TRANSFORMAÇÃO!</span>
             </h1>
             <p class="subtitle-banner">
-                TUDO ISSO COM A MELHOR ACADEMIA DA AMERICA LATINA!
+                TUDO ISSO COM A MELHOR ACADEMIA DA AMÉRICA LATINA!
             </p>
         </div>
     </section>
 
+    <!-- SEÇÃO SOBRE -->
     <section class="sobre-atlas">
-    <div class="sobre-container">
-        <h2 class="sobre-titulo">
-            <span class="sobre-titulo-barra"></span>
-            SOBRE A ATLAS GYM
-        </h2>
-        <div class="sobre-content">
-            <div class="sobre-left">
-                <h3 class="sobre-chamada">
-                    UMA NOVA EXPERIÊNCIA DE <br>
-                    ACADEMIA PREMIUM.
-                </h3>
+        <div class="sobre-container">
+            <h2 class="sobre-titulo">
+                <span class="sobre-titulo-barra"></span>
+                SOBRE A ATLAS GYM
+            </h2>
+            <div class="sobre-content">
+                <div class="sobre-left">
+                    <h3 class="sobre-chamada">
+                        UMA NOVA EXPERIÊNCIA DE <br>
+                        ACADEMIA PREMIUM.
+                    </h3>
+                </div>
+                <div class="sobre-right">
+                    <p>
+                        A Atlas Gym oferece treinamentos para todos os perfis e objetivos, com programas flexíveis e
+                        personalizados para você.
+                        Com uma infraestrutura completa, salas modernas e equipamentos de alta qualidade, proporcionamos
+                        o ambiente perfeito para o seu fitness.
+                        Nossa equipe de profissionais dedica-se para apoiar sua evolução, promovendo performance, saúde
+                        e bem-estar.
+                        Cada detalhe é pensado para tornar a sua jornada mais eficaz e transformadora, ajudando você a
+                        conquistar a melhor versão de si mesmo.
+                    </p>
+                </div>
             </div>
-            <div class="sobre-right">
-                <p>
-                    A Atlas Gym oferece treinamentos para todos os perfis e objetivos, com programas flexíveis e personalizados para você. Com uma infraestrutura completa, salas modernas e equipamentos de alta qualidade, proporcionamos o ambiente perfeito para o seu fitness. Nossa equipe de profissionais dedica-se para apoiar sua evolução, promovendo performance, saúde e bem-estar. Cada detalhe é pensado para tornar a sua jornada mais eficaz e transformadora, ajudando você a conquistar a melhor versão de si mesmo.
-                </p>
-            </div>
+            <hr class="sobre-divisor" />
         </div>
-        <hr class="sobre-divisor" />
-    </div>
-</section>
+    </section>
 
+    <!-- RODAPÉ -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-            <img src="assets/img/logo-atlas.png" alt="Atlas Gym" />
+                <img src="assets/img/logo-atlas.png" alt="Atlas Gym" />
             </div>
             <div class="footer-links">
-            <div>
-                <ul>
-                <li><a href="#">Treinos</a></li>
-                <li><a href="#">Horário de treinos</a></li>
-                <li><a href="#">Programas de treinos</a></li>
-                <li><a href="#">Sobre a bio</a></li>
-                </ul>
-            </div>
-            <div>
-                <ul>
-                <li><a href="#">Trabalhe conosco</a></li>
-                <li><a href="#">Termos e condições</a></li>
-                <li><a href="#">Portal de privacidade</a></li>
-                <li><a href="#">Contratos e Documentos</a></li>
-                </ul>
-            </div>
-            <div>
-                <ul>
-                <li><a href="#">Imprensa</a></li>
-                <li><a href="#">Ajuda</a></li>
-                <li><a href="#">Contato</a></li>
-                </ul>
-            </div>
-            </div>
-            <div class="footer-social-app">
-            <div class="footer-social">
-                <a href="#"><img src="assets/img/facebook.png" alt="Facebook" /></a>
-                <a href="#"><img src="assets/img/instagram.png" alt="Instagram" /></a>
-                <a href="#"><img src="assets/img/spotify.png" alt="Spotify" /></a>
-                <a href="#"><img src="assets/img/youtube.png" alt="YouTube" /></a>
-            </div>
-            <div class="footer-app">
-                <span>CONHEÇA NOSSO APP! BAIXE AGORA:</span>
-                <div class="app-buttons">
-                <a href="#"><img src="assets/img/download-appstore.png" alt="App Store" /></a>
-                <a href="#"><img src="assets/img/download-googleplay.png" alt="Google Play" /></a>
+                <div>
+                    <ul>
+                        <li><a href="#">Treinos</a></li>
+                        <li><a href="#">Horário de treinos</a></li>
+                        <li><a href="#">Programas de treinos</a></li>
+                        <li><a href="#">Sobre a bio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="#">Trabalhe conosco</a></li>
+                        <li><a href="#">Termos e condições</a></li>
+                        <li><a href="#">Portal de privacidade</a></li>
+                        <li><a href="#">Contratos e Documentos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="#">Imprensa</a></li>
+                        <li><a href="#">Ajuda</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="footer-social-app">
+                <div class="footer-social">
+                    <a href="#"><img src="assets/img/facebook.png" alt="Facebook" /></a>
+                    <a href="#"><img src="assets/img/instagram.png" alt="Instagram" /></a>
+                    <a href="#"><img src="assets/img/spotify.png" alt="Spotify" /></a>
+                    <a href="#"><img src="assets/img/youtube.png" alt="YouTube" /></a>
+                </div>
+                <div class="footer-app">
+                    <span>CONHEÇA NOSSO APP! BAIXE AGORA:</span>
+                    <div class="app-buttons">
+                        <a href="#"><img src="assets/img/download-appstore.png" alt="App Store" /></a>
+                        <a href="#"><img src="assets/img/download-googleplay.png" alt="Google Play" /></a>
+                    </div>
+                </div>
             </div>
         </div>
         <hr class="footer-divider" />
@@ -123,7 +145,8 @@
         </div>
     </footer>
 
+    <!-- SCRIPT DO TEMA -->
+    <script src="assets/js/index.js"></script>
 </body>
 
-</script>
 </html>

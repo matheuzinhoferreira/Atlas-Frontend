@@ -162,7 +162,7 @@ class SistemaLoginPersonal {
 
         // Redirecionamento por tipo
         if (response.tipo === 3) {
-            window.location.href = 'administrador-perfil.html';
+            window.location.href = 'personal-perfil.html'; // Administrador-perfil não mais
         } else if (response.tipo === 2) {
             window.location.href = 'personal-perfil.html';
         } else {
