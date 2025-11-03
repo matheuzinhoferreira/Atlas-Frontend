@@ -10,12 +10,16 @@
     --cor-cinza-escuro: #333333;
     --cor-cinza-claro: #F5F5F5;
     --cor-cinza-medio: #E0E0E0;
+    --cor-destaque: #FF6B35;
+    --cor-gradiente-1: #8A2BE2;
+    --cor-gradiente-2: #FF6B35;
+    --cor-gradiente-3: #00D4FF;
 }
 
-/* Tema Escuro (Padrão) */
+/* ✅ SITE TODO BRANCO POR PADRÃO */
 body {
-    background-color: var(--cor-preta-bl);
-    color: var(--cor-branca-bl);
+    background-color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
     transition: background-color 0.3s, color 0.3s;
     font-family: 'Montserrat', sans-serif;
 }
@@ -49,188 +53,42 @@ body {
     box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
 }
 
-/* TEMA CLARO */
-body.claro {
-    background-color: var(--cor-cinza-claro);
-    color: var(--cor-cinza-escuro);
+/* ✅ TEMA ESCURO (AGORA É O ALTERNATIVO) */
+body.escuro {
+    background-color: var(--cor-preta-bl);
+    color: var(--cor-branca-bl);
 }
 
-body.claro #botao-tema {
+body.escuro #botao-tema {
     background: var(--cor-roxa-bl);
     color: var(--cor-branca-bl);
     border: 2px solid var(--cor-roxa-bl);
 }
 
-body.claro #botao-tema:hover {
+body.escuro #botao-tema:hover {
     background: var(--cor-branca-bl);
     color: var(--cor-roxa-bl);
 }
 
-body.claro .barra-preta {
-    background: var(--cor-cinza-medio);
+/* ✅ CABEÇALHO SEMPRE PRETO */
+.header {
+    background-color: var(--cor-preta-bl) !important;
 }
 
-body.claro .sobre-atlas {
-    background: var(--cor-cinza-claro);
-    color: var(--cor-cinza-escuro);
-}
-
-body.claro .sobre-chamada {
-    color: var(--cor-cinza-escuro);
-}
-
-body.claro .sobre-right {
-    color: var(--cor-cinza-escuro);
-}
-
-body.claro .sobre-titulo-barra {
-    background: var(--cor-cinza-escuro);
-}
-
-body.claro .sobre-divisor {
-    border-top: 1px solid var(--cor-cinza-escuro);
-}
-
-/* RODAPÉ NO TEMA CLARO */
-body.claro .footer {
-    background-color: var(--cor-branca-bl);
-    color: var(--cor-preta-bl);
-}
-
-body.claro .footer a {
-    color: var(--cor-preta-bl);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-body.claro .footer a:hover {
-    color: var(--cor-roxa-bl);
-}
-
-body.claro .footer-divider {
-    border-top: 2px solid var(--cor-preta-bl);
-    opacity: 0.7;
-    margin-left: 500px;
-}
-
-/* LOGO COM FUNDO PRETO NO TEMA CLARO */
-body.claro .footer-logo {
-    background-color: var(--cor-preta-bl);
-    padding: 15px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-body.claro .footer-logo img {
-    filter: brightness(0) invert(1);
-}
-
-/* BANNER */
-.banner-atlas {
-    position: relative;
-    height: 100vh;
-    min-height: 480px;
-    width: 100%;
-    background: url("../img/banner-atlas.png") center center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.banner-atlas::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.95) 0%,
-            rgba(0, 0, 0, 0.00) 20%);
-}
-
-.banner-atlas::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.95) 0%,
-            rgba(0, 0, 0, 0.70) 25%,
-            rgba(0, 0, 0, 0.00) 60%);
-}
-
-body.claro .banner-atlas::before {
-    background: linear-gradient(to bottom,
-            rgba(245, 245, 245, 0.95) 0%,
-            rgba(245, 245, 245, 0.00) 20%);
-}
-
-body.claro .banner-atlas::after {
-    background: linear-gradient(to top,
-            rgba(245, 245, 245, 0.95) 0%,
-            rgba(245, 245, 245, 0.70) 25%,
-            rgba(245, 245, 245, 0.00) 60%);
-}
-
-.banner-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: 100%;
-}
-
-.banner-content h1 {
-    font-size: 90px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    color: var(--cor-roxa-bl);
-
-}
-
-.bold-purple {
-    color: var(--cor-roxa-bl);
-    font-style: italic;
-    font-weight: 800;
-    margin-right: 8px;
-    font-family: 'Barlow Condensed', sans-serif;
-}
-
-.outline-purple {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--cor-roxa-bl);
-    font-style: italic;
-    font-weight: 900;
-    letter-spacing: 1px;
-    font-family: 'Barlow Condensed', sans-serif;
-
-}
-
-.subtitle-banner {
-    color: var(--cor-roxa-bl);
-    text-transform: uppercase;
-    font-size: 18px;
-    letter-spacing: 2px;
-    margin-top: 12px;
-    font-weight: 400;
-}
-
+/* ✅ BARRA PRETA SEMPRE PRETA */
 .barra-preta {
     width: 100%;
     height: 92px;
-    background: var(--cor-preta-bl);
+    background: var(--cor-preta-bl) !important;
     top: 0;
     left: 0;
     z-index: 99;
 }
 
+/* ✅ SEÇÃO SOBRE BRANCA */
 .sobre-atlas {
-    background: #000;
-    color: #fff;
+    background: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
     padding: 120px 0 40px 0;
     min-height: 420px;
 }
@@ -248,13 +106,14 @@ body.claro .banner-atlas::after {
     letter-spacing: 1px;
     margin-bottom: 46px;
     position: relative;
+    color: var(--cor-cinza-escuro);
 }
 
 .sobre-titulo-barra {
     display: block;
     width: 78px;
     height: 2px;
-    background: var(--cor-branca-bl);
+    background: var(--cor-roxa-bl);
     margin: 0 auto 20px auto;
 }
 
@@ -275,7 +134,7 @@ body.claro .banner-atlas::after {
     font-size: 32px;
     font-weight: 600;
     line-height: 1.2;
-    color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
     margin-bottom: 0;
     letter-spacing: 1px;
 }
@@ -283,7 +142,7 @@ body.claro .banner-atlas::after {
 .sobre-right {
     flex: 2 1 380px;
     font-size: 16px;
-    color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
     line-height: 1.5;
     max-width: 590px;
 }
@@ -296,9 +155,10 @@ body.claro .banner-atlas::after {
     width: 100%;
 }
 
+/* ✅ RODAPÉ BRANCO */
 .footer {
-    background-color: var(--cor-preta-bl);
-    color: var(--cor-branca-bl);
+    background-color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
     padding: 40px 0 20px 0;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -340,7 +200,7 @@ body.claro .banner-atlas::after {
 }
 
 .footer-links a {
-    color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -380,6 +240,7 @@ body.claro .banner-atlas::after {
     margin-bottom: 15px;
     font-weight: 600;
     font-size: 14px;
+    color: var(--cor-cinza-escuro);
 }
 
 .app-buttons {
@@ -402,14 +263,12 @@ body.claro .banner-atlas::after {
     width: auto;
 }
 
-
 .footer-divider {
+    margin: 10px 0 0 0;
     border: none;
     border-top: 1px solid #D9D9D9;
     opacity: 0.3;
-    margin: 30px 0 20px auto;
-    margin-right: 1300px;
-    width: 1000px;
+    width: 100%;
 }
 
 .footer-copy {
@@ -417,6 +276,248 @@ body.claro .banner-atlas::after {
     padding: 0 28px;
     font-size: 14px;
     opacity: 0.8;
+    color: var(--cor-cinza-escuro);
+}
+
+/* ✅ BANNER COM GRADIENTES PARA TEMA BRANCO */
+.banner-atlas {
+    position: relative;
+    height: 100vh;
+    min-height: 480px;
+    width: 100%;
+    background: url("../img/banner-atlas.png") center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-atlas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom,
+            rgba(245, 245, 245, 0.95) 0%,
+            rgba(245, 245, 245, 0.00) 20%);
+}
+
+.banner-atlas::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to top,
+            rgba(245, 245, 245, 0.95) 0%,
+            rgba(245, 245, 245, 0.70) 25%,
+            rgba(245, 245, 245, 0.00) 60%);
+}
+
+/* ✅ BANNER PARA TEMA ESCURO */
+body.escuro .banner-atlas::before {
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.00) 20%);
+}
+
+body.escuro .banner-atlas::after {
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.70) 25%,
+            rgba(0, 0, 0, 0.00) 60%);
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+/* ✅ FRASE "FORÇA E TRANSFORMAÇÃO" SUPER DESTACADA */
+/* ✅ FRASE "FORÇA E TRANSFORMAÇÃO" COM LETRAS BRANCAS E CONTORNO ROXO */
+.banner-content h1 {
+    font-size: 90px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bold-purple {
+    color: var(--cor-branca-bl);
+    font-style: italic;
+    font-weight: 900;
+    margin-right: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-shadow:
+        2px 2px 0 var(--cor-roxa-bl),
+        -2px -2px 0 var(--cor-roxa-bl),
+        2px -2px 0 var(--cor-roxa-bl),
+        -2px 2px 0 var(--cor-roxa-bl),
+        0 2px 0 var(--cor-roxa-bl),
+        2px 0 0 var(--cor-roxa-bl),
+        0 -2px 0 var(--cor-roxa-bl),
+        -2px 0 0 var(--cor-roxa-bl),
+        2px 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: inline-block;
+}
+
+.outline-purple {
+    color: var(--cor-branca-bl);
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-shadow:
+        2px 2px 0 var(--cor-roxa-bl),
+        -2px -2px 0 var(--cor-roxa-bl),
+        2px -2px 0 var(--cor-roxa-bl),
+        -2px 2px 0 var(--cor-roxa-bl),
+        0 2px 0 var(--cor-roxa-bl),
+        2px 0 0 var(--cor-roxa-bl),
+        0 -2px 0 var(--cor-roxa-bl),
+        -2px 0 0 var(--cor-roxa-bl),
+        2px 2px 5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: inline-block;
+}
+
+.subtitle-banner {
+    color: var(--cor-branca-bl);
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    font-weight: 600;
+    text-shadow:
+        1px 1px 0 var(--cor-roxa-bl),
+        -1px -1px 0 var(--cor-roxa-bl),
+        1px -1px 0 var(--cor-roxa-bl),
+        -1px 1px 0 var(--cor-roxa-bl),
+        0 1px 0 var(--cor-roxa-bl),
+        1px 0 0 var(--cor-roxa-bl),
+        0 -1px 0 var(--cor-roxa-bl),
+        -1px 0 0 var(--cor-roxa-bl),
+        1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 42px;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .bold-purple,
+    .outline-purple {
+        text-shadow:
+            1px 1px 0 var(--cor-roxa-bl),
+            -1px -1px 0 var(--cor-roxa-bl),
+            1px -1px 0 var(--cor-roxa-bl),
+            -1px 1px 0 var(--cor-roxa-bl),
+            0 1px 0 var(--cor-roxa-bl),
+            1px 0 0 var(--cor-roxa-bl),
+            0 -1px 0 var(--cor-roxa-bl),
+            -1px 0 0 var(--cor-roxa-bl),
+            1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .subtitle-banner {
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 8px 16px;
+        text-shadow:
+            0.5px 0.5px 0 var(--cor-roxa-bl),
+            -0.5px -0.5px 0 var(--cor-roxa-bl),
+            0.5px -0.5px 0 var(--cor-roxa-bl),
+            -0.5px 0.5px 0 var(--cor-roxa-bl),
+            0 0.5px 0 var(--cor-roxa-bl),
+            0.5px 0 0 var(--cor-roxa-bl),
+            0 -0.5px 0 var(--cor-roxa-bl),
+            -0.5px 0 0 var(--cor-roxa-bl),
+            0.5px 0.5px 2px rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media (max-width: 630px) {
+    .banner-content h1 {
+        font-size: 26px;
+        gap: 4px;
+        line-height: 1.1;
+    }
+
+    .bold-purple,
+    .outline-purple {
+        text-shadow:
+            0.5px 0.5px 0 var(--cor-roxa-bl),
+            -0.5px -0.5px 0 var(--cor-roxa-bl),
+            0.5px -0.5px 0 var(--cor-roxa-bl),
+            -0.5px 0.5px 0 var(--cor-roxa-bl),
+            0 0.5px 0 var(--cor-roxa-bl),
+            0.5px 0 0 var(--cor-roxa-bl),
+            0 -0.5px 0 var(--cor-roxa-bl),
+            -0.5px 0 0 var(--cor-roxa-bl),
+            0.5px 0.5px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .subtitle-banner {
+        font-size: 12px;
+        letter-spacing: 1px;
+        padding: 6px 12px;
+        margin-top: 10px;
+    }
+}
+
+/* ✅ ESTILOS PARA TEMA ESCURO */
+body.escuro .sobre-atlas {
+    background: var(--cor-preta-bl);
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .sobre-chamada {
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .sobre-right {
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .sobre-titulo {
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .sobre-titulo-barra {
+    background: var(--cor-branca-bl);
+}
+
+body.escuro .sobre-divisor {
+    border-top: 1px solid var(--cor-branca-bl);
+}
+
+body.escuro .footer {
+    background-color: var(--cor-preta-bl);
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .footer a {
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .footer-app span {
+    color: var(--cor-branca-bl);
+}
+
+body.escuro .footer-copy {
+    color: var(--cor-branca-bl);
 }
 
 /* BOTÃO DIMINUINDO PROPORCIONALMENTE COM O SITE */
@@ -424,8 +525,8 @@ body.claro .banner-atlas::after {
 /* Desktop grande - mantém tamanho padrão */
 @media (min-width: 1200px) {
     #botao-tema {
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
         font-size: 1.4rem;
         left: 200px;
     }
@@ -434,8 +535,8 @@ body.claro .banner-atlas::after {
 /* Desktop médio */
 @media (max-width: 1199px) and (min-width: 992px) {
     #botao-tema {
-        width: 42px;
-        height: 42px;
+        width: 35px;
+        height: 35px;
         font-size: 1.3rem;
         left: 180px;
     }
@@ -465,9 +566,15 @@ body.claro .banner-atlas::after {
         gap: 6px;
     }
 
+    .bold-purple,
+    .outline-purple {
+        font-size: 42px;
+    }
+
     .subtitle-banner {
-        font-size: 13px;
-        margin-top: 6px;
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 8px 16px;
     }
 
     .sobre-container {
@@ -543,9 +650,16 @@ body.claro .banner-atlas::after {
         line-height: 1.1;
     }
 
+    .bold-purple,
+    .outline-purple {
+        font-size: 26px;
+    }
+
     .subtitle-banner {
-        font-size: 10px;
-        margin-top: 4px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        padding: 6px 12px;
+        margin-top: 10px;
     }
 
     .sobre-chamada {
