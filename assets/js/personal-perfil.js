@@ -4,6 +4,7 @@ async function alternarAtivo(id_usuario) {
 }
 
 function carregarUsuarios(tipoFiltro = 1) {
+  if (isNaN(tipoFiltro)) {tipoFiltro = 1;}
   const API_BASE = `${window.apiBase.ip}/usuarios/${localStorage.getItem('tipo-usuario-atlas')
     }`;
   const $alunosGrid = $(".alunos-grid");
