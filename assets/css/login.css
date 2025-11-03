@@ -1,31 +1,153 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
+:root {
+    --cor-roxa-bl: #8A2BE2;
+    --cor-preta-bl: #000000;
+    --cor-branca-bl: #FFFFFF;
+    --cor-cinza-escuro: #333333;
+    --cor-cinza-claro: #F5F5F5;
+    --cor-cinza-medio: #E0E0E0;
+}
+
+/* Tema Escuro (Padrão) */
+body {
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-preta-bl);
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* BOTÃO DE TEMA PARA LOGIN */
+#botao-tema {
+    position: fixed;
+    top: 25px;
+    left: 200px;
+    font-size: 1.4rem;
+    background: var(--cor-roxa-bl);
+    border: 2px solid var(--cor-branca-bl);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--cor-branca-bl);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(138, 43, 226, 0.3);
+}
+
+#botao-tema:hover {
+    transform: scale(1.1);
+    background: var(--cor-branca-bl);
+    color: var(--cor-roxa-bl);
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+
+/* TEMA CLARO PARA LOGIN */
+body.claro {
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro #botao-tema {
+    background: var(--cor-roxa-bl);
+    color: var(--cor-branca-bl);
+    border: 2px solid var(--cor-roxa-bl);
+}
+
+body.claro #botao-tema:hover {
+    background: var(--cor-branca-bl);
+    color: var(--cor-roxa-bl);
+}
+
+/* ✅ CORREÇÃO: CABEÇALHO SEMPRE PRETO */
 .header-logo {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 0;
-    background-color: var(--cor-preta-bl);
+    background-color: var(--cor-preta-bl) !important;
+    /* ✅ FORÇA SEMPRE PRETO */
     cursor: pointer;
 }
 
-.logo{
-    height: 60px;   
+/* ✅ Remove qualquer estilo do tema claro para o cabeçalho */
+body.claro .header-logo {
+    background-color: var(--cor-preta-bl) !important;
 }
 
-body {
+body.claro .barra-preta {
+    background: var(--cor-cinza-medio);
+}
+
+/* FORMULÁRIO NO TEMA CLARO */
+body.claro .input-field {
+    background-color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
+    border: 1px solid var(--cor-roxa-bl);
+    box-shadow: 0 4px 20px 0 rgba(138, 43, 226, 0.3);
+}
+
+body.claro .input-field:focus {
+    box-shadow: 0 4px 60px 0 var(--cor-roxa-bl), 0 0 0 1px var(--cor-roxa-bl);
+    border-color: var(--cor-roxa-bl);
+}
+
+body.claro .input-label {
+    color: var(--cor-roxa-bl);
+}
+
+body.claro .a-section,
+body.claro .a-esqueci {
+    color: var(--cor-roxa-bl);
+}
+
+/* RODAPÉ NO TEMA CLARO */
+body.claro .footer {
+    background-color: var(--cor-branca-bl);
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro .footer a {
+    color: var(--cor-cinza-escuro);
+}
+
+body.claro .footer a:hover {
+    color: var(--cor-roxa-bl);
+}
+
+body.claro .footer-divider {
+    border-top: 1px solid var(--cor-cinza-escuro);
+}
+
+/* LOGO COM FUNDO PRETO NO RODAPÉ (TEMA CLARO) */
+body.claro .footer-logo {
     background-color: var(--cor-preta-bl);
-    color: var(--cor-branca-bl);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 
-.container{
+body.claro .footer-logo img {
+    filter: brightness(0) invert(1);
+}
+
+/* ESTILOS ORIGINAIS DO LOGIN */
+.logo {
+    height: 60px;
+}
+
+.container {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    height: 100vh; 
-    width: 98vw; 
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    width: 98vw;
 }
 
 .form-section {
@@ -46,27 +168,29 @@ body {
 .input-field {
     width: 363px;
     padding: 13px;
-    border: 1px solid var(--cor-roxa-bl);         
-    border-radius: var(--mini-b-radius); 
-    background-color: var(--cor-preta-bl);
-    color: var(--cor-branca-bl);         
-    box-shadow: 0 4px 20px 0 #dba2ff7e;  
+    border: 1px solid var(--cor-roxa-bl);
+    border-radius: var(--mini-b-radius);
+    background-color: var(--cor-cinza-claro);
+    color: var(--cor-preta-bl);
+    box-shadow: 0 4px 20px 0 #dba2ff7e;
     font-size: 1rem;
     outline: none;
-    transition: box-shadow .2s, border .2s;
+    transition: box-shadow .2s, border .2s, background-color 0.3s, color 0.3s;
 }
+
 .input-field:focus {
-    box-shadow: 0 4px 60px 0 var(--cor-roxa-bl)   , 0 0 0 1px var(--cor-roxa-bl);    
-    border-color: var(--cor-roxa-bl);   
+    box-shadow: 0 4px 60px 0 var(--cor-roxa-bl), 0 0 0 1px var(--cor-roxa-bl);
+    border-color: var(--cor-roxa-bl);
 }
 
 .input-label {
     display: block;
     margin-bottom: 7px;
-    color: #DBA2FF;
+    color: #000000;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
 .form-title {
@@ -90,35 +214,37 @@ body {
     font-size: 18px;
     margin-bottom: 45px;
     transition: box-shadow 0.3s ease, background 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-submit:hover {
     box-shadow: 0 6px 60px 0 #dba2ffaa;
     background: linear-gradient(90deg, #7a5295 0%, #c694ff 60%);
-    cursor: pointer;
 }
 
 .a-section {
-    color: var(--cor-roxa-bl);
+    color: var(--cor-preta-bl);
     text-decoration: underline;
     font-size: 12px;
     font-weight: 400;
     margin-bottom: 20px;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, color 0.3s ease;
 }
+
 .a-section:hover {
     cursor: pointer;
     opacity: 0.8;
 }
 
 .a-esqueci {
-    align-self: flex-end; 
-    color: var(--cor-roxa-bl);
+    align-self: flex-end;
+    color: var(--cor-preta-bl);
     text-decoration: underline;
     font-size: 12px;
     font-weight: 400;
     margin-bottom: 20px;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, color 0.3s ease;
 }
 
 .a-esqueci:hover {
@@ -131,20 +257,27 @@ body {
     align-items: center;
     justify-content: center;
     background-image: url('../img/atlasgym.png');
-    box-shadow: 0 0 2500px 90px var(--cor-preta-bl) inset, 0 0 80px 8px var(--cor-preta-bl) inset;
+    box-shadow: 0 0 2500px 90px var(--cor-cinza-claro) inset, 0 0 80px 8px var(--cor-cinza-claro) inset;
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 100vh;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Ajuste da imagem para tema claro */
+body.claro .img-section {
+    box-shadow: 0 0 2500px 90px var(--cor-cinza-claro) inset, 0 0 80px 8px var(--cor-cinza-claro) inset;
 }
 
 .labelponto {
     color: var(--cor-roxa-bl);
 }
 
-.barra-preta{
+.barra-preta {
     background-color: var(--cor-preta-bl);
     padding: 100px;
+    transition: background-color 0.3s ease;
 }
 
 /* Adicione estas linhas ao seu CSS existente */
@@ -182,74 +315,80 @@ body {
     outline: none;
 }
 
-/* ✅ CSS PARA ÁREA DINÂMICA DO USUÁRIO */
-.area-usuario-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-left: auto;
+/* BOTÃO DIMINUINDO PROPORCIONALMENTE COM O SITE */
+
+/* Desktop grande - mantém tamanho padrão */
+@media (min-width: 1200px) {
+    #botao-tema {
+        width: 35px;
+        height: 35px;
+        font-size: 1.4rem;
+        left: 200px;
+    }
 }
 
-/* Se quiser manter o estilo original do profile-icon */
-.area-usuario-header .btn-entrar-header {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+/* Desktop médio */
+@media (max-width: 1199px) and (min-width: 992px) {
+    #botao-tema {
+        width: 35px;
+        height: 35px;
+        font-size: 1.3rem;
+        left: 180px;
+    }
 }
 
-.area-usuario-header .usuario-logado-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+/* Tablet grande */
+@media (max-width: 991px) and (min-width: 769px) {
+    #botao-tema {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        left: 160px;
+        top: 22px;
+    }
 }
 
-/* Para manter compatibilidade com seu CSS existente */
-.area-usuario-header .user-icon {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.area-usuario-header .user-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-
-/* Ajustar padding do input senha para dar espaço ao botão */
-
-
+/* Tablet */
 @media (max-width: 768px) {
     .container {
-        grid-template-columns: 1fr; /* Uma coluna só */
-        height: auto; /* Ajusta a altura automática */
+        grid-template-columns: 1fr;
+        /* Uma coluna só */
+        height: auto;
+        /* Ajusta a altura automática */
     }
 
     .img-section {
-        display: none; /* Esconder a imagem para economizar espaço */
+        display: none;
+        /* Esconder a imagem para economizar espaço */
     }
 
     .form-section {
-        width: 90vw; /* Ajusta largura do formulário para caber */
+        width: 90vw;
+        /* Ajusta largura do formulário para caber */
         margin: 0 auto;
     }
 
     .input-field {
-        width: 88%; /* Campos de input responsivos */
+        width: 88%;
+        /* Campos de input responsivos */
     }
 
     .btn-submit {
         width: 100%;
     }
+
+    /* Botão tema em tablet */
+    #botao-tema {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        left: 140px;
+        top: 20px;
+    }
 }
 
-/* Para telas ainda menores, até 480px (smartphones pequenos) */
-@media (max-width: 480px) {
+/* Smartphone grande */
+@media (max-width: 630px) {
     .form-title {
         font-size: 1.8em;
         margin-bottom: 30px;
@@ -264,5 +403,45 @@ body {
         height: 40px;
     }
 
-    
+    /* Botão tema em smartphone grande */
+    #botao-tema {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        left: 120px;
+        top: 18px;
+    }
+}
+
+/* Smartphone médio */
+@media (max-width: 480px) {
+    #botao-tema {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+        left: 100px;
+        top: 16px;
+    }
+}
+
+/* Smartphone pequeno */
+@media (max-width: 380px) {
+    #botao-tema {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+        left: 90px;
+        top: 14px;
+    }
+}
+
+/* Smartphone muito pequeno */
+@media (max-width: 320px) {
+    #botao-tema {
+        width: 25px;
+        height: 25px;
+        font-size: 0.7rem;
+        left: 80px;
+        top: 12px;
+    }
 }
